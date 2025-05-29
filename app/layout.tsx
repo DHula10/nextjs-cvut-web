@@ -4,8 +4,9 @@ import "./styles/globals.css"
 import DevNavigation from "./components/devHeader";
 
 export const metadata: Metadata = {
-  title: "TRANSFER",
-  description: "Projekt TRANSFER od ČVUT",
+  title: "Transfer technologií ČVUT",
+  keywords: ["transfer", "technologie", "ČVUT", "transfer technologií, inqbay, ingine"],
+  description: "Centrum transferu technologií od ČVUT",
 };
 
 export default function RootLayout({
