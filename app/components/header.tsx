@@ -1,5 +1,7 @@
 //import
 
+// Hlavička pro všechny stránky kromě HOME
+
 const Header = () =>{
 
     //logic
@@ -14,23 +16,15 @@ const Header = () =>{
           style={styles.logo}
         />
         <nav style={styles.nav}>
-          <h6>
-            <a href="#ambice" style={styles.link}>Ambice</a>
-          </h6>
-          <h6>
-            <a href="#co-delame" style={styles.link}>Co děláme</a>
-          </h6>
-          <h6>
-            <a href="#realizace" style={styles.link}>Realizace</a>
-          </h6>
-          <h6>
-            <a href="#kontakt" style={styles.link}>Kontakt</a>
-          </h6>
+            <a href="#ambice" className="heading6">Ambice</a>
+            <a href="#co-delame" className="heading6">Co děláme</a>
+            <a href="#realizace" className="heading6">Realizace</a>
+            <a href="#kontakt" className="heading6">Kontakt</a>
         </nav>
       </div>
     </header>
   );
-}
+};
 
 export default Header
 
@@ -38,6 +32,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   header: {
     background: 'radial-gradient(127.46% 109.43% at 0% 100%, #0072BC 0%, #000 100%)',
     padding: '20px 40px',
+    color: 'white',
   },
   container: {
     width: '100%',
@@ -46,7 +41,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  logo: {
+  logo: { 
     height: '60px',
   },
   nav: {
@@ -55,7 +50,4 @@ const styles: { [key: string]: React.CSSProperties } = {
     width: '40%',
     justifyContent: 'flex-start',
   },
-  link:{
-    color: 'white',
-  }
 };

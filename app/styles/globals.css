@@ -55,6 +55,15 @@ h6 {
   line-height: 20px;
 }
 
+.heading6 {
+  /* H6 desktop */
+  font-family: Technika;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+
 .body-s {
   /* Body S desktop */
   font-family: Technika;
@@ -80,4 +89,17 @@ h6 {
   font-style: normal;
   font-weight: 400;
   line-height: 28px;
+}
+
+/* 
+Asi taky bugnutý font a barva nevím, zda je ideální mít v té komponentě, 
+ale jinak se to hází default bílá, takže buď to vymyslet jinak nebo asi nechat 
+*/
+.footerText {
+  color: #7EB1C5;
+  font-family: Technika;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 112.5%;  /* 112.5% / 18px */
 }
