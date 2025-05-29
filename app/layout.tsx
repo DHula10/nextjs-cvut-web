@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./styles/globals.css"
 
 import DevNavigation from "./components/devHeader";
+import  Header  from "./components/header";
 
 export const metadata: Metadata = {
   title: "Transfer technologií ČVUT",
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <DevNavigation />
+        <Header />
         {children}
       </body>
     </html>
