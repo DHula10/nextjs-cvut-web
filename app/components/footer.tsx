@@ -22,7 +22,6 @@ const Footer = () => {
                             Copyright ČVUT s.r.o. <br /> 2024, all rights <br /> reserved
                         </p>
                     </div>
-
                 </section>
 
                 {/* SECTION: Adresa */}

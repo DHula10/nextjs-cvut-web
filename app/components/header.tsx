@@ -3,10 +3,8 @@
 // Hlavička pro všechny stránky kromě HOME
 
 const Header = () =>{
-
     //logic
-
-    //return html
+    
     return (
     <header style={styles.header}>
       <div style={styles.container}>
