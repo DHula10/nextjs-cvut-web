@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./variables.css";
+@import "./fonts.css";
 
 h1 {
   /* H1 desktop */
@@ -21,7 +22,7 @@ h2 {
 
 h3 {
   /* H3 desktop */
-  font-family: Technika;
+  font-family: "Technika";
   font-size: 40px;
   font-style: normal;
   font-weight: 700;
@@ -30,7 +31,7 @@ h3 {
 
 h4 {
   /* H4 desktop */
-  font-family: Technika;
+  font-family: "Technika";
   font-size: 32px;
   font-style: normal;
   font-weight: 700;
@@ -39,7 +40,7 @@ h4 {
 
 h5 {
   /* H5 desktop */
-  font-family: Technika;
+  font-family: "Technika";
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -48,7 +49,7 @@ h5 {
 
 h6 {
   /* H6 desktop */
-  font-family: Technika;
+  font-family: "Technika";
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -57,7 +58,7 @@ h6 {
 
 .heading6 {
   /* H6 desktop */
-  font-family: Technika;
+  font-family: "Technika";
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -125,7 +126,7 @@ ale jinak se to hází default bílá, takže buď to vymyslet jinak nebo asi ne
 */
 .footerText {
   color: #7EB1C5;
-  font-family: Technika;
+  font-family: "Technika";
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

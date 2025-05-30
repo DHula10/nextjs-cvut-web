@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'Technika';
+  src: url('/fonts/Technika-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Technika';
+  src: url('/fonts/Technika-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Technika';
+  src: url('/fonts/Technika-Book.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Technika';
+  src: url('/fonts/Technika-BookItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Technika';
+  src: url('/fonts/Technika-Regular.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Technika';
+  src: url('/fonts/Technika-Italic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Technika';
+  src: url('/fonts/Technika-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Technika';
+  src: url('/fonts/Technika-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+body {
+  font-family: 'Technika', Arial, Helvetica, sans-serif;
+}
