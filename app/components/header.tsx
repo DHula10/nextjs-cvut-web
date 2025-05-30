@@ -9,7 +9,7 @@ const Header = () =>{
     <header style={styles.header}>
       <div style={styles.container}>
         <img
-          src="/Logo.svg"
+          src="logos/Logo.svg"
           alt="ČVUT logo"
           style={styles.logo}
         />

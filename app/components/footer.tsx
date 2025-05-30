@@ -16,7 +16,7 @@ const Footer = () => {
                     <div style={styles.logoDiv}>
                         <img
                             style={styles.logo}
-                            src="/Logo.svg"
+                            src="logos/Logo.svg"
                         />
                         <p style={styles.copyright} className="footerText">
                             Copyright ČVUT s.r.o. <br /> 2024, all rights <br /> reserved
@@ -64,10 +64,10 @@ const Footer = () => {
                     <h6>Sledujte nás</h6>
                     <div style={styles.socials}>
                         <a href="">
-                            <img src="/LinkedinLogo.svg" alt="Linkedin logo" />
+                            <img src="logos/LinkedinLogo.svg" alt="Linkedin logo" />
                         </a>
                         <a href="">
-                            <img src="/FacebookLogo.svg" alt="Facebook logo" />
+                            <img src="logos/FacebookLogo.svg" alt="Facebook logo" />
                         </a>
                     </div>
                 </section>
