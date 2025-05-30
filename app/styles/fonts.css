@@ -54,6 +54,12 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'Technika Stencil';
+  src: url('/fonts/TechnikaStencil-Bold.otf') format('opentype');
+  font-weight: 700;
+}
+
 body {
   font-family: 'Technika', Arial, Helvetica, sans-serif;
 }
