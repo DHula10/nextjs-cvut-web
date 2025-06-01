@@ -1,56 +1,50 @@
 import React from 'react';
 
 type ButtonProps = {
-    isLink: boolean;
-    label: string;
-    bgColor?: string;
-    href?: string;
-    inverse?: boolean;
+  isLink: boolean;
+  label: string;
+  bgColor?: 'r' | 'g' | 'o' | 'y';
+  href?: string;
+  inverse?: boolean;
+  onClick?: () => void;
 };
 
-const Button = ({ isLink, label, bgColor, href, inverse = false }: ButtonProps) => {
+const colorMap = {
+  r: 'bg-cvut-red',
+  g: 'bg-cvut-green',
+  o: 'bg-cvut-orange',
+  y: 'bg-cvut-yellow',
+};
 
-    let bgClass = '';
-    switch (bgColor) {
-        case 'r':
-            bgClass = 'bg-cvut-red';
-            break;
-        case 'g':
-            bgClass = 'bg-cvut-green';
-            break;
-        case 'o':
-            bgClass = 'bg-cvut-orange';
-            break
-        case 'y':
-            bgClass = 'bg-cvut-yellow';
-            break;
-        default:
-            bgClass = '';
-    }
+const Button = ({ isLink, label, bgColor, href, inverse = false, onClick }: ButtonProps) => {
+  const bgClass = bgColor ? colorMap[bgColor] : '';
+  const textClass = inverse ? 'text-cvut-black' : 'text-cvut-white';
+  const opacityClass = inverse ? 'opacity-50' : '';
 
+  const content = (
+    <>
+      <span className={`text-base font-bold leading-4 uppercase ${textClass}`}>
+        {label}
+      </span>
+      <span
+        className={`absolute left-0 top-1/2 -translate-y-1/2 rounded-full -z-10 h-16 w-16
+        ${bgClass} ${opacityClass}
+        transition-all duration-300 group-hover:w-full group-active:scale-90`}
+      />
+    </>
+  );
 
-    const content = (
-        <>
-            <span className={`text-base font-bold leading-4 uppercase ${inverse ? 'text-cvut-black' : 'text-cvut-white'}`}>
-                {label}
-            </span>
-            <span className={`absolute left-0 top-1/2 -translate-y-1/2 rounded-full w-16 -z-10 h-16 
-                ${bgClass} 
-                ${inverse ? 'opacity-50' : ''} 
-                transition-all duration-300 w-16 group-hover:w-full`}></span>
-        </>
-    );
+  const commonClasses = 'p-6 relative group cursor-pointer';
 
-    return isLink ? (
-        <a className="p-6 relative group overflow-hidden " href={href}>
-            {content}
-        </a>
-    ) :
-        (
-            <button className="p-6 relative group overflow-hidden">
-                {content}
-            </button>
-        );
+  return isLink ? (
+    <a className={commonClasses} href={href}>
+      {content}
+    </a>
+  ) : (
+    <button className={commonClasses} type='button' onClick={onClick}>
+      {content}
+    </button>
+  );
 };
 
 export default Button;
