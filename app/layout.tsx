@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./styles/globals.css"
+import "./styles/variables.css";
 
 import DevNavigation from "./components/devHeader";
 import  Header  from "./components/header";
@@ -23,10 +24,6 @@ export default function RootLayout({
         <DevNavigation />
         <Header />
         {children}
-
-        <Button circleColor='#E9540E' textColor='black' text='CHCI KONZULTACI'/>
-        <Button circleColor='limegreen' textColor='lightgray' text='Více Info'/>
-
         <Footer />
       </body>
     </html>
