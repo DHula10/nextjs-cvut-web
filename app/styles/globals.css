@@ -2,6 +2,10 @@
 @import "./variables.css";
 @import "./fonts.css";
 
+h1,h2,h3,h4,h5,h6 {
+  width: fit-content;
+}
+
 h1 {
   /* H1 desktop */
   font-family: "Technika Stencil";
@@ -116,7 +120,7 @@ h6 {
   font-family: Technika;
   font-size: 24px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 28px;
 }
 

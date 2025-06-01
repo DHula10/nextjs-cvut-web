@@ -34,7 +34,7 @@ const Button = ({ isLink, label, bgColor, href, inverse = false, onClick }: Butt
     </>
   );
 
-  const commonClasses = 'p-6 relative group cursor-pointer';
+  const commonClasses = 'p-6 w-fit relative z-10 group cursor-pointer';
 
   return isLink ? (
     <a className={commonClasses} href={href}>
