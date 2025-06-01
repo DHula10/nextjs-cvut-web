@@ -1,4 +1,12 @@
-const DevNavigation = () => {
+
+type DevNavigationProps = {
+    isHidden?: boolean;
+};
+
+
+const DevNavigation = ({isHidden}: DevNavigationProps) => {
+    if (isHidden) return null;
+
     return (
         <nav className="text-sm dev-navigation bg-red-600 text-white py-2 px-4">
             <strong className="text-base">temporary navigation for development purposes</strong>

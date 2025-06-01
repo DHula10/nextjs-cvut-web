@@ -5,7 +5,6 @@ import "./styles/variables.css";
 import DevNavigation from "./components/devHeader";
 import  Header  from "./components/header";
 import Footer from "./components/footer";
-import Button from "./components/button";
 
 export const metadata: Metadata = {
   title: "Transfer technologií ČVUT",
@@ -21,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="cs">
       <body>
-        <DevNavigation />
+        <DevNavigation isHidden />
         <Header />
         {children}
         <Footer />
