@@ -6,7 +6,7 @@ const Header = () =>{
     //logic
     
     return (
-    <header style={styles.header}>
+    <header style={styles.header} className="absolute top-0 left-0 w-full z-50">
       <div style={styles.container}>
         <img
           src="logos/Logo.svg"
