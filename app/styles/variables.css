@@ -1,3 +1,18 @@
-:root{
-    --cvut-test: #db3434; 
+@import 'tailwindcss';
+
+@theme{
+    --color-cvut-white: #ffffff;
+    --color-cvut-black: #000000;
+    --color-cvut-blue: #0072BC;
+    --color-cvut-blue-light: #6BB1E3;
+    --color-cvut-gray: #9D9D9C;
+    --color-cvut-green: #A0B102;
+    --color-cvut-red: #D70929;
+    --color-cvut-orange: #E9540E;
+    --color-cvut-turquoise: #01A9AC;
+    --color-cvut-turquoise-dark: #015864;
+    --color-cvut-cherry: #A30F3F;
+    --color-cvut-yellow: #F9B002;
+    --color-cvut-blue-ultra-light: #F2F7FC;
+    --color-cvut-gradient-blue: radial-gradient(127.46% 109.43% at 0% 100%, #0072BC 0%, #000 100%);
 }
