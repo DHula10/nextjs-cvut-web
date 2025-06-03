@@ -7,11 +7,11 @@ const Footer = () => {
                 {/* SECTION: Navigace a logo */}
                 <section style={styles.column}>
                     <nav style={styles.nav}>
-                        <a href="" className="heading6">Vize</a>
-                        <a href="" className="heading6">Co děláme</a>
-                        <a href="" className="heading6">Realizace</a>
-                        <a href="" className="heading6">Kontakt</a>
-                        <a href="" className="heading6">Fakturační údaje</a>
+                        <a href="" className="heading6 link">Vize</a>
+                        <a href="" className="heading6 link">Co děláme</a>
+                        <a href="" className="heading6 link">Realizace</a>
+                        <a href="" className="heading6 link">Kontakt</a>
+                        <a href="" className="heading6 link">Fakturační údaje</a>
                     </nav>
                     <div style={styles.logoDiv}>
                         <img

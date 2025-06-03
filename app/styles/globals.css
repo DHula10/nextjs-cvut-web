@@ -75,11 +75,11 @@ h6 {
   width: fit-content;
 }
 
-.heading6:hover{
+.link:hover{
   color: #6BB1E3;
 }
 
-.heading6::after {
+.link::after {
   content: "";
   position: absolute;
   bottom: -2px; /* vzdálenost podtržení od textu */
@@ -92,7 +92,7 @@ h6 {
   transition: transform 0.3s ease;
 }
 
-.heading6:hover::after {
+.link:hover::after {
   transform: scaleX(1);
   color: #6BB1E3;
 }

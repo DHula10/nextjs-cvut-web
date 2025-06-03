@@ -14,10 +14,10 @@ const Header = () =>{
           style={styles.logo}
         />
         <nav style={styles.nav}>
-            <a href="#ambice" className="heading6">Ambice</a>
-            <a href="#co-delame" className="heading6">Co děláme</a>
-            <a href="#realizace" className="heading6">Realizace</a>
-            <a href="#kontakt" className="heading6">Kontakt</a>
+            <a href="#ambice" className="heading6 link">Ambice</a>
+            <a href="#co-delame" className="heading6 link">Co děláme</a>
+            <a href="#realizace" className="heading6 link">Realizace</a>
+            <a href="#kontakt" className="heading6 link">Kontakt</a>
         </nav>
       </div>
     </header>
