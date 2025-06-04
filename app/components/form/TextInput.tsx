@@ -37,7 +37,7 @@ export default function TextInput({
             <input
                 id={name}
                 name={name}
-                className='bg-cvut-black/5 rounded-2xl p-4 focus:outline-cvut-blue/40 body-s '
+                className={`bg-cvut-black/5 rounded-2xl p-4 body-s focus:outline-cvut-blue/40 ${error ? 'outline outline-cvut-red' : ''}`}
                 type={type}
                 placeholder={placeholder}
                 value={value}
@@ -46,7 +46,9 @@ export default function TextInput({
                 pattern={regexPattern}
                 disabled={disabled}
             />
-            {error && <span className='body-s text-cvut-red'>{errorMessage}</span>}
+            <span className={`body-s text-cvut-red transition-opacity duration-200 ${error ? 'visible' : 'invisible'}`}>
+                {errorMessage}
+            </span>
         </div>
     );
 }
