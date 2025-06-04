@@ -136,3 +136,9 @@ ale jinak se to hází default bílá, takže buď to vymyslet jinak nebo asi ne
   font-weight: 400;
   line-height: 112.5%;  /* 112.5% / 18px */
 }
+
+
+textarea {
+  scrollbar-color: #0071bc40 #ffffff00; /* čvut-blue 40%, transparent */
+  scrollbar-width: thin; /* tenký scrollbar */
+}
