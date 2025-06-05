@@ -7,6 +7,7 @@ type ButtonProps = {
   href?: string;
   inverse?: boolean;
   onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
 };
 
 const colorMap = {
@@ -16,7 +17,7 @@ const colorMap = {
   y: 'bg-cvut-yellow',
 };
 
-const Button = ({ isLink, label, bgColor, href, inverse = false, onClick }: ButtonProps) => {
+const Button = ({ isLink, label, bgColor, href, inverse = false, onClick, type = 'button', ...rest }: ButtonProps) => {
   const bgClass = bgColor ? colorMap[bgColor] : '';
   const textClass = inverse ? 'text-cvut-black' : 'text-cvut-white';
   const opacityClass = inverse ? 'opacity-50' : '';
@@ -37,11 +38,11 @@ const Button = ({ isLink, label, bgColor, href, inverse = false, onClick }: Butt
   const commonClasses = 'p-6 w-fit relative z-10 group cursor-pointer';
 
   return isLink ? (
-    <a className={commonClasses} href={href}>
+    <a className={commonClasses} href={href} {...rest}>
       {content}
     </a>
   ) : (
-    <button className={commonClasses} type='button' onClick={onClick}>
+    <button className={commonClasses} type={type} onClick={onClick} {...rest}>
       {content}
     </button>
   );
