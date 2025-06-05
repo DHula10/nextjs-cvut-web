@@ -1,27 +1,24 @@
 import React from 'react';
+import { UseFormRegister, FieldError } from 'react-hook-form';
 
 type TextAreaProps = {
     name: string;
     label: string;
     placeholder: string;
-    value?: string;
-    onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     required?: boolean;
     disabled?: boolean;
-    error?: boolean;
-    errorMessage?: string;
+    register: UseFormRegister<any>;
+    error?: FieldError;
 };
 
 export default function TextArea({
     name,
     label,
     placeholder,
-    value,
-    onChange,
     required = false,
     disabled = false,
-    error = false,
-    errorMessage = "Toto pole je povinné.",
+    register,
+    error,
 }: TextAreaProps) {
     return (
         <div className="flex flex-col gap-2 max-w-[480px] h-[240px]">
@@ -31,16 +28,17 @@ export default function TextArea({
             </label>
             <textarea
                 id={name}
-                name={name}
-                className={`bg-cvut-black/5 rounded-2xl p-4 body-s flex-1 resize-none scroll-auto focus:outline-cvut-blue/40 ${error ? 'outline outline-cvut-red' : ''}`}
+                className={`bg-cvut-black/5 rounded-2xl p-4 body-s flex-1 resize-none scroll-auto focus:outline-cvut-blue/40 ${error ? 'outline outline-cvut-red focus:outline-cvut-red' : ''}`}
                 placeholder={placeholder}
-                value={value}
-                onChange={onChange as any}
                 required={required}
                 disabled={disabled}
+                {...register(name, { 
+                    required: required ? "Toto pole je povinné." : false, 
+                    maxLength: { value: 500, message: "Maximální délka je 500 znaků." }
+                }) }
             />
             <span className={`body-s text-cvut-red transition-opacity duration-200 ${error ? 'visible' : 'invisible'}`}>
-                {errorMessage}
+                {error?.message}
             </span>
         </div>
     );

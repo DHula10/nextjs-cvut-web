@@ -1,17 +1,16 @@
-
 import React from 'react';
+import { UseFormRegister, FieldError } from 'react-hook-form';
 
 type TextInputProps = {
     name: string;
     label: string;
     placeholder: string;
     type?: string;
-    value?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     required?: boolean;
-    regexPattern?: string;
     disabled?: boolean;
-    error?: boolean;
+    regexPattern?: string;
+    register: UseFormRegister<any>;
+    error?: FieldError;
     errorMessage?: string;
 };
 
@@ -20,34 +19,34 @@ export default function TextInput({
     label,
     placeholder,
     type = "text",
-    value,
-    onChange,
     required = false,
-    regexPattern,
     disabled = false,
-    error = false,
+    regexPattern,
+    register,
+    error,
     errorMessage = "Toto pole je povinné.",
 }: TextInputProps) {
     return (
-        <div className='flex flex-col gap-2 max-w-[480px]'>
-            <label htmlFor={name} className='heading6 text-cvut-black'>
+        <div className="flex flex-col gap-2 max-w-[480px]">
+            <label htmlFor={name} className="heading6 text-cvut-black">
                 {label}
                 {required && <span>*</span>}
             </label>
             <input
                 id={name}
-                name={name}
-                className={`bg-cvut-black/5 rounded-2xl p-4 body-s focus:outline-cvut-blue/40 ${error ? 'outline outline-cvut-red' : ''}`}
+                className={`bg-cvut-black/5 rounded-2xl p-4 body-s focus:outline-cvut-blue/40 ${error ? 'outline outline-cvut-red focus:outline-cvut-red' : ''}`}
                 type={type}
                 placeholder={placeholder}
-                value={value}
-                onChange={onChange}
-                required={required}
-                pattern={regexPattern}
                 disabled={disabled}
+                {...register(name, {
+                    required: required,
+                    pattern: regexPattern
+                        ? { value: new RegExp(regexPattern), message: errorMessage }
+                        : undefined,
+                })}
             />
             <span className={`body-s text-cvut-red transition-opacity duration-200 ${error ? 'visible' : 'invisible'}`}>
-                {errorMessage}
+                {error?.message}
             </span>
         </div>
     );
