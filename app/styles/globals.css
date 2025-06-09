@@ -60,6 +60,16 @@ h6 {
   line-height: 20px;
 }
 
+.heading5 {
+  /* H5 desktop */
+  font-family: "Technika";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+  width: fit-content;
+}
+
 .heading6 {
   /* H6 desktop */
   font-family: "Technika";
@@ -67,12 +77,14 @@ h6 {
   font-style: normal;
   font-weight: 700;
   line-height: 20px;
-  
+  width: fit-content;
+}
+
+.link{
   position: relative;
   display: inline-block;
   text-decoration: none;
   transition: color 0.3s ease;
-  width: fit-content;
 }
 
 .link:hover{
