@@ -21,7 +21,7 @@ export default function TextArea({
     error,
 }: TextAreaProps) {
     return (
-        <div className="flex flex-col gap-2 max-w-[480px] h-[240px]">
+        <div className="flex flex-col gap-2 max-w-[480px] min-h-[224px]">
             <label htmlFor={name} className="heading6 text-cvut-black">
                 {label}
                 {required && <span>*</span>}
@@ -37,7 +37,7 @@ export default function TextArea({
                     maxLength: { value: 500, message: "Maximální délka je 500 znaků." }
                 }) }
             />
-            <span className={`body-s text-cvut-red transition-opacity duration-200 ${error ? 'visible' : 'invisible'}`}>
+            <span className={`body-s min-h-[18px] text-cvut-red transition-opacity duration-200 ${error ? 'visible' : 'invisible'}`}>
                 {error?.message}
             </span>
         </div>

@@ -27,7 +27,7 @@ export default function TextInput({
     errorMessage = "Toto pole je povinné.",
 }: TextInputProps) {
     return (
-        <div className="flex flex-col gap-2 max-w-[480px]">
+        <div className="flex flex-col gap-2 max-w-[480px] min-h-[104px]">
             <label htmlFor={name} className="heading6 text-cvut-black">
                 {label}
                 {required && <span>*</span>}
@@ -38,6 +38,7 @@ export default function TextInput({
                 type={type}
                 placeholder={placeholder}
                 disabled={disabled}
+                maxLength={100}
                 {...register(name, {
                     required: required,
                     pattern: regexPattern
@@ -46,7 +47,7 @@ export default function TextInput({
                 })}
             />
             <span className={`body-s text-cvut-red transition-opacity duration-200 ${error ? 'visible' : 'invisible'}`}>
-                {error?.message}
+                {error?.message || errorMessage ? errorMessage : ''}
             </span>
         </div>
     );
