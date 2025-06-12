@@ -135,6 +135,21 @@ h6 {
   font-weight: 500;
   line-height: 28px;
 }
+@media (max-width: 768px) {
+
+  .body-m {
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .body-s {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .body-l {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
 
 /* 
 Asi taky bugnutý font a barva nevím, zda je ideální mít v té komponentě, 
