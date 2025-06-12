@@ -2,82 +2,59 @@
 @import "./variables.css";
 @import "./fonts.css";
 
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6,.heading5,.heading6 {
   width: fit-content;
+  font-style: normal;
 }
 
 h1 {
-  /* H1 desktop */
   font-family: "Technika Stencil";
   font-size: 80px;
-  font-style: normal;
   font-weight: 400;
   line-height: 88px;
 }
 
 h2 {
-  /* H2 desktop */
   font-family: "Technika Stencil";
   font-size: 56px;
-  font-style: normal;
   font-weight: 400;
   line-height: 60px;
 }
 
 h3 {
-  /* H3 desktop */
-  font-family: "Technika";
   font-size: 40px;
-  font-style: normal;
   font-weight: 700;
   line-height: 44px;
 }
 
 h4 {
-  /* H4 desktop */
-  font-family: "Technika";
   font-size: 32px;
-  font-style: normal;
   font-weight: 700;
   line-height: 36px;
 }
 
 h5 {
-  /* H5 desktop */
-  font-family: "Technika";
   font-size: 24px;
-  font-style: normal;
   font-weight: 700;
   line-height: 28px;
 }
 
 h6 {
-  /* H6 desktop */
-  font-family: "Technika";
   font-size: 18px;
-  font-style: normal;
   font-weight: 700;
   line-height: 20px;
 }
 
 .heading5 {
-  /* H5 desktop */
-  font-family: "Technika";
   font-size: 24px;
-  font-style: normal;
   font-weight: 700;
   line-height: 28px;
-  width: fit-content;
 }
 
 .heading6 {
-  /* H6 desktop */
-  font-family: "Technika";
   font-size: 18px;
-  font-style: normal;
   font-weight: 700;
   line-height: 20px;
-  width: fit-content;
 }
 
 .link{
@@ -111,7 +88,6 @@ h6 {
 
 .body-s {
   /* Body S desktop */
-  font-family: Technika;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -119,8 +95,6 @@ h6 {
 }
 
 .body-m {
-  /* Body M desktop */
-  font-family: Technika;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -128,26 +102,59 @@ h6 {
 }
 
 .body-l {
-  /* Body L desktop */
-  font-family: Technika;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
-  line-height: 28px;
+  line-height: 26px;
 }
 @media (max-width: 768px) {
 
-  .body-m {
+  h1 {
+    font-size: 48px;
+    line-height: 52px;
+  }
+  h2 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  h3 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  h4 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  h5 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  h6 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .heading5 {
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .heading6{
     font-size: 16px;
     line-height: 18px;
   }
+
   .body-s {
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .body-m {
     font-size: 14px;
     line-height: 16px;
   }
   .body-l {
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 18px;
   }
 }
 
