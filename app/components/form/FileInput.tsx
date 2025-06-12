@@ -70,19 +70,20 @@ const FileInput = ({ name, label, register, setValue, error, required }: FileInp
                     onChange={handleFileChange}
                 />
             </label>
+            <span className="text-sm text-cvut-gray">PDF, DOC, DOCX, TXT (MAX 5MB)</span>
             {files.length > 0 && (
                 <ul className="text-sm text-cvut-black space-y-1">
                     {files.map((file, i) => (
-                        <li key={i} className="flex items-center justify-between gap-2 border p-2 rounded bg-gray-100">
+                        <li key={i} className="flex items-center justify-between gap-2 py-2 px-4 hover:bg-cvut-black/5 rounded-2xl">
                             <span className="truncate">
                                 📄 {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
                             </span>
                             <button
                                 type="button"
-                                className="text-cvut-red hover:underline text-xs"
+                                className="text-cvut-red text-xs cursor-pointer rounded-2xl relative right-0 py-2 px-4 hover:bg-red-100"
                                 onClick={() => handleRemove(i)}
                             >
-                                Odebrat
+                                ❌
                             </button>
                         </li>
                     ))}
