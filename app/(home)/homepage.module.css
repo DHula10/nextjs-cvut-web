@@ -1,0 +1,8 @@
+
+.hero{
+    background-image: url('/images/HP-hand.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+

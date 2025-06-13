@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import "./styles/globals.css"
-import "./styles/variables.css";
+import "@/app/styles/globals.css";
+import "@/app/styles/variables.css";
 
-import DevNavigation from "./components/devHeader";
-import  Header  from "./components/header";
-import Footer from "./components/footer";
+import Header from "@/app/components/header";
+import Footer from "@/app/components/footer";
 
 export const metadata: Metadata = {
   title: "Transfer technologií ČVUT",
@@ -20,8 +19,7 @@ export default function RootLayout({
   return (
     <html lang="cs">
       <body>
-        <DevNavigation isHidden />
-        <Header />
+        <Header isBgTransparent={true} />
         {children}
         <Footer />
       </body>
