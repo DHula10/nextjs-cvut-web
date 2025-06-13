@@ -1,39 +1,39 @@
 const Footer = () => {
-
     return (
-        <footer style={styles.footer}>
-            <div style={styles.container}>
+        <footer className="bg-[radial-gradient(127.46%_109.43%_at_0%_100%,#0072BC_0%,#000_100%)] text-cvut-white flex justify-center w-full ">
+            <div className="my-20 flex flex-col justify-between gap-10 lg:flex-row lg:gap-10 xl:gap-20 w-full xl:w-fit mx-20 md:flex-row md:flex-wrap lg:flex-nowrap">
 
                 {/* SECTION: Navigace a logo */}
-                <section style={styles.column}>
-                    <nav style={styles.nav}>
+                <section className="flex flex-row gap-12 lg:flex-col lg:gap-6 xl:gap-12 md:justify-between md:w-full lg:w-fit">
+                    <nav className="flex flex-col gap-3">
                         <a href="" className="heading6 link">Vize</a>
                         <a href="" className="heading6 link">Co děláme</a>
                         <a href="" className="heading6 link">Realizace</a>
                         <a href="" className="heading6 link">Kontakt</a>
                         <a href="" className="heading6 link">Fakturační údaje</a>
                     </nav>
-                    <div style={styles.logoDiv}>
+                    <div>
                         <img
-                            style={styles.logo}
+                            className="h-[72px] w-auto"
                             src="logos/Logo.svg"
+                            alt="ČVUT logo"
                         />
-                        <p style={styles.copyright} className="footerText">
+                        <p className="footerText mt-4">
                             Copyright ČVUT s.r.o. <br /> 2024, all rights <br /> reserved
                         </p>
                     </div>
                 </section>
 
                 {/* SECTION: Adresa */}
-                <section style={styles.column}>
+                <section className="flex flex-col w-fit">
                     <h6>Adresa</h6>
-                    <div style={styles.address}>
-                        <p className="footerText" style={styles.glacier}>
-                            InQbay <br /> 
-                            Opletalova 929 / 22 <br /> 
+                    <div className="mt-2 flex flex-row gap-12 lg:flex-col">
+                        <p className="footerText text-[#7EB1C5]">
+                            InQbay <br />
+                            Opletalova 929 / 22 <br />
                             110 00 Praha 1
                         </p>
-                        <p className="footerText" style={styles.glacier}>
+                        <p className="footerText text-[#7EB1C5]">
                             Odbor pro transfer <br />
                             technologií a <br />
                             fundraisingu <br />
@@ -44,25 +44,26 @@ const Footer = () => {
                 </section>
 
                 {/* SECTION: Partneři */}
-                <section style={styles.gridColumn}>
-                    <div style={styles.partnerLogo}>
+                <section className="grid grid-cols-2 gap-2 h-fit justify-center items-center xl:gap-4 lg:grid-cols-2 lg:gap-2">
+                    <div className="border border-white rounded-full text-center flex items-center justify-center w-[80px] h-[80px] xl:w-[100px] xl:h-[100px]">
                         Logo <br /> Partner
                     </div>
-                    <div style={styles.partnerLogo}>
+                    <div className="border border-white rounded-full text-center flex items-center justify-center w-[80px] h-[80px] xl:w-[100px] xl:h-[100px]">
                         Logo <br /> Partner
                     </div>
-                    <div style={styles.partnerLogo}>
+                    <div className="border border-white rounded-full text-center flex items-center justify-center w-[80px] h-[80px] xl:w-[100px] xl:h-[100px]">
                         Logo <br /> Partner
                     </div>
-                    <div style={styles.partnerLogo}>
+                    <div className="border border-white rounded-full text-center flex items-center justify-center w-[80px] h-[80px] xl:w-[100px] xl:h-[100px]">
                         Logo <br /> Partner
                     </div>
+
                 </section>
 
                 {/* SECTION: Sociální sítě */}
-                <section style={styles.column}>
+                <section className="flex flex-col w-fit">
                     <h6>Sledujte nás</h6>
-                    <div style={styles.socials}>
+                    <div className="mt-2 flex flex-wrap">
                         <a href="">
                             <img src="logos/LinkedinLogo.svg" alt="Linkedin logo" />
                         </a>
@@ -74,77 +75,6 @@ const Footer = () => {
             </div>
         </footer>
     );
-
 };
 
 export default Footer;
-
-const styles: { [key: string]: React.CSSProperties } = {
-    footer: {
-        background: 'radial-gradient(127.46% 109.43% at 0% 100%, #0072BC 0%, #000 100%)',
-        color: 'white',
-        display: 'flex',
-        justifyContent: 'center',
-        height: '670px',
-        width: '100%',
-    },
-    container: {
-        width: 'fit-content',
-        height: 'auto',
-        margin: '160px auto',
-        display: 'flex',
-        justifyContent: 'space-between',
-        gap: '80px'
-    },
-    column: {
-        width: 'fit-content',
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    nav: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '12px',
-    },
-    logoDiv: {
-        marginTop: '50px'
-    },
-    logo: {
-        height: '70px',
-        width: 'auto',
-    },
-    copyright: {
-        marginTop: '16px'
-    },
-    gridColumn: {
-        height: 'fit-content',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '30px',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    partnerLogo: {
-        border: '1px solid white',
-        borderRadius: '50%',
-        textAlign: 'center',
-        alignContent: 'center',
-        width: '110px',
-        height: '110px'
-    },
-    address: {
-        marginTop: '8px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '24px'
-    },
-    /* Tady je ta třída, aby barva nebyla bílá - nevím momentálně, jak to udělat lépe*/
-    glacier: {
-        color: '#7EB1C5',
-    },
-    socials: {
-        marginTop: '8px',
-        display: 'flex',
-        flexWrap: 'wrap'
-    }
-};
