@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import EnvelopeIcon from '@/public/icons/EnvelopeIcon';
+import PhoneIcon from '@/public/icons/PhoneIcon';
 
 export const metadata: Metadata = {
     title: 'Invoice',
@@ -79,27 +81,27 @@ export default function Invoice() {
                         <img src="/images/ondrej2.svg" alt="Ondřej Durďák" className="w-28 h-28 lg:w-36 lg:h-36 object-cover rounded-full" />
                     </figure>
                     <ul className="flex flex-col gap-2.5">
-                        <li className="flex gap-2 items-center">
-                            <span>
-                                <img src="icons/Phone.svg" alt="Ikonka telefonu" />
-                            </span>
+                        <li className="flex gap-2 items-center text-cvut-black">
+                            <div className="w-6 h-6 lg:w-8 lg:h-8 flex items-center justify-center text-cvut-orange">
+                                <PhoneIcon />
+                            </div>
                             <a
                                 href="tel:+420732471162"
                                 className="relative inline-block no-underline transition-colors duration-300 w-fit heading6
-                                    after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[2px] after:bg-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                                    after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[2px] after:bg-cvut-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                                 style={{ color: "inherit" }}
                             >
                                 +420 732 471 162
                             </a>
                         </li>
                         <li className="flex gap-2 items-center">
-                            <span>
-                                <img src="icons/EnvelopeSimple.svg" alt="Ikonka obálky" />
-                            </span>
+                            <div className="w-6 h-6 lg:w-8 lg:h-8 flex items-center justify-center text-cvut-orange">
+                                <EnvelopeIcon />
+                            </div>
                             <a
                                 href="mailto:ondrej.durkac@cvut.cz"
                                 className="relative inline-block no-underline transition-colors duration-300 w-fit heading6
-                                    after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[2px] after:bg-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                                    after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[2px] after:bg-cvut-black after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                                 style={{ color: "inherit" }}
                             >
                                 ondrej.durkac@cvut.cz

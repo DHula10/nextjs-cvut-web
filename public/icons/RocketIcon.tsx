@@ -1,6 +1,6 @@
 const RocketIcon = () => {
     return (
-        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg  viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15.6255 45.3241L10.6758 40.3744" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M43.9641 10.4799C38.6731 9.89549 19.4435 9.47339 13.1507 32.9497L23.0502 42.8492C46.3374 36.3884 46.0562 17.3053 45.5109 12.0367C45.4699 11.6395 45.2941 11.2683 45.0126 10.985C44.7311 10.7017 44.3611 10.5235 43.9641 10.4799V10.4799Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M22.2005 17.0528L11.5322 18.0226C11.2657 18.0469 11.0083 18.1319 10.7799 18.2711C10.5514 18.4104 10.3579 18.6002 10.2142 18.8259L3.52119 29.3435C3.36165 29.5942 3.26857 29.8815 3.25075 30.1781C3.23293 30.4747 3.29094 30.771 3.41932 31.039C3.5477 31.3071 3.74222 31.538 3.98453 31.71C4.22685 31.882 4.50899 31.9895 4.80435 32.0224L13.1507 32.9497" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
