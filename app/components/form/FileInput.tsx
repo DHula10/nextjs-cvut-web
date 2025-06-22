@@ -18,13 +18,24 @@ const FileInput = ({ name, label, register, setValue, error, required }: FileInp
     const [files, setFiles] = useState<File[]>([]);
     const inputRef = useRef<HTMLInputElement | null>(null);
 
+    const MAX_FILE_SIZE_MB = 5;
+
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFiles = event.target.files;
         if (selectedFiles) {
             const selectedArray = Array.from(selectedFiles);
 
+            // Filter out files over 5MB
+            const validFiles = selectedArray.filter(file => file.size <= MAX_FILE_SIZE_MB * 1024 * 1024);
+            const invalidFiles = selectedArray.filter(file => file.size > MAX_FILE_SIZE_MB * 1024 * 1024);
+
+            if (invalidFiles.length > 0) {
+                // Optionally, show an error message or alert
+                alert(`Některé soubory přesahují limit ${MAX_FILE_SIZE_MB} MB a nebyly přidány.`);
+            }
+
             const existingNames = new Set(files.map(f => f.name));
-            const newUniqueFiles = selectedArray.filter(file => !existingNames.has(file.name));
+            const newUniqueFiles = validFiles.filter(file => !existingNames.has(file.name));
 
             const updatedFiles = [...files, ...newUniqueFiles];
             setFiles(updatedFiles);
@@ -61,7 +72,7 @@ const FileInput = ({ name, label, register, setValue, error, required }: FileInp
                     id={name}
                     type="file"
                     multiple
-                    accept=".pdf,.doc,.docx,.txt,.heic"
+                    accept=".pdf,.doc,.docx,.txt"
                     className="hidden"
                     {...register(name, {
                         required: required ? "Toto pole je povinné." : false,
@@ -70,7 +81,7 @@ const FileInput = ({ name, label, register, setValue, error, required }: FileInp
                     onChange={handleFileChange}
                 />
             </label>
-            <span className="text-sm text-cvut-gray">PDF, DOC, DOCX, TXT (MAX 5MB)</span>
+            <span className="text-sm text-cvut-gray">PDF, DOC, DOCX, TXT (MAX {MAX_FILE_SIZE_MB}MB)</span>
             {files.length > 0 && (
                 <ul className="text-sm text-cvut-black space-y-1">
                     {files.map((file, i) => (
