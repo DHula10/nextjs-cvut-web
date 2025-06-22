@@ -1,4 +1,4 @@
-
+import FileInput from "@/app/components/form/FileInput";
 
 export default function Home() {
 
