@@ -13,7 +13,19 @@ export async function POST(req: Request) {
   const projectSummary = formData.get('projectSummary') as string;
   const note = formData.get('note') as string;
 
+
+  const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024;
+
   const files = formData.getAll('files') as File[];
+
+  // Backend file size validation
+  const oversizedFiles = files.filter(file => file.size > MAX_FILE_SIZE_BYTES);
+  if (oversizedFiles.length > 0) {
+    return new Response(
+      JSON.stringify({ error: `Některé soubory přesahují limit 5 MB a nebyly přidány.` }),
+      { status: 400 }
+    );
+  }
 
   const attachments = await Promise.all(
     files.map(async (file) => ({
