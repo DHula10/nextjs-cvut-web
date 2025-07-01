@@ -7,7 +7,7 @@ type ArticleProps = {
     category: string;
 };
 
-export default function ArticleTile({ title, contentText, imgHref, category }: ArticleProps) {
+export default function ArticleTile({ title, contentText, imgHref, category }: ArticleProps){
     return (
         <article className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
             <div className="relative">

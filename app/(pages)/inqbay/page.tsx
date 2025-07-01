@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import styles from './inqbay.module.css';
+import ArticleList from '@/app/components/articles/articleList';
 
 
 export const metadata: Metadata = {
@@ -7,10 +8,13 @@ export const metadata: Metadata = {
     description: 'Lorem Ipsum',
 }
 
-export default function InqbayPage(){
+export default async function InqbayPage(){
+
+    const articles = await getArticles();
+
     return (
         <main>
-            
+            <ArticleList articles={articles} />
         </main>
     );
 }
