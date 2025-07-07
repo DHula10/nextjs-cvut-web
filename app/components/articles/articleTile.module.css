@@ -1,0 +1,11 @@
+.article{
+    border-radius: 20px;
+}
+
+.category{
+    border-radius: 25px;
+}
+
+.hoverBtn{
+    cursor: pointer;
+}

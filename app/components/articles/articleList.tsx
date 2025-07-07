@@ -1,4 +1,5 @@
 import ArticleTile from "./articleTile";
+import styles from './articleList.module.css'
 
 type Article = {
     id: number;
@@ -14,9 +15,9 @@ type Props = {
 
 export default function ArticleList({ articles }: Props){
     return (
-        <section className="p-8">
+        <section className={`${styles.articleList} mt-40`}>
             <h4>Články</h4>
-            <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8 mt-5">
                 {articles.map(article => (
                     <ArticleTile key={article.id} {...article} />
                 ))}
