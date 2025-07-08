@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => {
     return (
         <footer className="bg-[radial-gradient(127.46%_109.43%_at_0%_100%,#0072BC_0%,#000_100%)] text-cvut-white flex justify-center w-full ">
@@ -6,11 +8,10 @@ const Footer = () => {
                 {/* SECTION: Navigace a logo */}
                 <section className="flex flex-row gap-12 lg:flex-col lg:gap-6 xl:gap-12 md:justify-between md:w-full lg:w-fit">
                     <nav className="flex flex-col gap-3">
-                        <a href="" className="heading6 link">Vize</a>
-                        <a href="" className="heading6 link">Co děláme</a>
-                        <a href="" className="heading6 link">Realizace</a>
-                        <a href="" className="heading6 link">Kontakt</a>
-                        <a href="" className="heading6 link">Fakturační údaje</a>
+                        <Link href="/ingine" className="heading6 link">Ingine</Link>
+                        <Link href="/transfer" className="heading6 link">Transfer</Link>
+                        <Link href="/inqbay" className="heading6 link">Inqbay</Link>
+                        <Link href="" className="heading6 link">Fakturační údaje</Link>
                     </nav>
                     <div>
                         <img
