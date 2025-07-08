@@ -1,5 +1,12 @@
 .article{
     border-radius: 20px;
+    transform: 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.article:hover{
+    transform: scale(1.05);
 }
 
 .category{
