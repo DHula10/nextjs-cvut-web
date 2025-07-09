@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import styles from './inqbay.module.css';
 import ArticleList from '@/app/components/articles/articleList';
+import PodcastList from '@/app/components/podcasts/podcastList';
 
 
 export const metadata: Metadata = {
@@ -39,13 +40,33 @@ const testArticles = [
   },
 ];
 
+const testPodcasts = [
+    {
+        title: 'Přes 85 % nápadů, které by mohly zlepšit svět skončí v šuplíku',
+        speaker: 'Ing. Ondřej Durďák, Scrum Master ČVUT',
+        link: '#',
+    },
+    {
+        title: 'Jak najít investora pro svůj projekt',
+        speaker: 'Mgr. Jana Nováková, Angel Investor',
+        link: '#',
+    },
+    {
+        title: 'Úspěšné příběhy z ČVUT',
+        speaker: 'Ing. Petr Svoboda',
+        link: '#',
+    },
+];
+
 export default async function InqbayPage(){
 
     //const articles = await getArticles();
+    //const podcasts = await getPodcasts();
 
     return (
         <main>
             <ArticleList articles={testArticles} />
+            <PodcastList podcasts={testPodcasts} />
         </main>
     );
 }
