@@ -11,7 +11,7 @@ const Footer = () => {
                         <Link href="/ingine" className="heading6 link">Ingine</Link>
                         <Link href="/transfer" className="heading6 link">Transfer</Link>
                         <Link href="/inqbay" className="heading6 link">Inqbay</Link>
-                        <Link href="" className="heading6 link">Fakturační údaje</Link>
+                        <Link href="/invoice" className="heading6 link">Fakturační údaje</Link>
                     </nav>
                     <div>
                         <img
