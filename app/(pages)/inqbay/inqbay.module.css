@@ -46,3 +46,26 @@
 .storeButton:hover{
     cursor: pointer;
 }
+
+.realisation{
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.realisationArticle{
+    width: 55%;
+    text-align: center;
+}
+
+@media (max-width:1024px){
+    .realisation{
+        height: 70vh;
+    }
+
+    .realisationArticle{
+        width: fit-content;
+        max-width: 80%;
+    }
+}

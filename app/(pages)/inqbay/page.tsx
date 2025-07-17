@@ -100,7 +100,7 @@ export default async function InqbayPage() {
           <h6 className='text-cvut-green'>#TRANSFER</h6>
           <h2 className='text-4xl font-bold md:max-w-3/4 lg:max-w-5/6 xl:max-w-3/4'>OPŘETE SE O DŮVERYHODNÉ ZDROJE JEŠTĚ PŘED REALIZACÍ</h2>
           <p className='body-l w-[75%]'>Připravili jsme pro vás bezplatnou digitální databázi se stovkami článků, přednášek, podcastů a nástrojů, které vám pomůžou začít smysluplně.</p>
-          <Button isLink label="PROZKOUMAT KNIHOVNU ↓" bgColor="g" href="" inverse/>
+          <Button isLink label="PROZKOUMAT KNIHOVNU ↓" bgColor="g" href="" inverse />
         </div>
       </section>
       <ArticleList articles={testArticles} />
@@ -117,6 +117,24 @@ export default async function InqbayPage() {
             <a href="" className={styles.storeButton}><img src="/imgs/googlePlay.png" alt="Google Play" /></a>
           </div>
         </div>
+      </section>
+      <section className="flex flex-col justify-center items-center py-20">
+        <article className={`${styles.realisationArticle} flex flex-col gap-5 items-center`}>
+          <h3 className={`text-center min-w-full`}>
+            Chcete probrat realizaci
+            <br />
+            vašeho nápadu s odborníkem?
+          </h3>
+          <p className={`body-l mb-10`}>
+            Domluvme si online konzultaci, během které se seznámíme
+            s vaším projektem a probereme potenciální postup.
+          </p>
+          
+          {/* 
+          nevím, jak na tom jsme s těmi komponentami, co je valid teďka
+          <Calendly />
+          */}
+        </article>
       </section>
     </main>
   );
