@@ -6,8 +6,8 @@ import LectureList from '@/app/components/lectures/lectureList';
 
 
 export const metadata: Metadata = {
-    title: 'Inqbay',
-    description: 'Lorem Ipsum',
+  title: 'Inqbay',
+  description: 'Lorem Ipsum',
 }
 
 const testArticles = [
@@ -42,21 +42,21 @@ const testArticles = [
 ];
 
 const testPodcasts = [
-    {
-        title: 'Přes 85 % nápadů, které by mohly zlepšit svět skončí v šuplíku',
-        speaker: 'Ing. Ondřej Durkáč, Scrum Master ČVUT',
-        link: '#',
-    },
-    {
-        title: 'Jak najít investora pro svůj projekt',
-        speaker: 'Mgr. Jana Nováková, Angel Investor',
-        link: '#',
-    },
-    {
-        title: 'Úspěšné příběhy z ČVUT',
-        speaker: 'Ing. Petr Svoboda',
-        link: '#',
-    },
+  {
+    title: 'Přes 85 % nápadů, které by mohly zlepšit svět skončí v šuplíku',
+    speaker: 'Ing. Ondřej Durkáč, Scrum Master ČVUT',
+    link: '#',
+  },
+  {
+    title: 'Jak najít investora pro svůj projekt',
+    speaker: 'Mgr. Jana Nováková, Angel Investor',
+    link: '#',
+  },
+  {
+    title: 'Úspěšné příběhy z ČVUT',
+    speaker: 'Ing. Petr Svoboda',
+    link: '#',
+  },
 ];
 
 const testLectures = [
@@ -86,17 +86,29 @@ const testLectures = [
   },
 ]
 
-export default async function InqbayPage(){
+export default async function InqbayPage() {
 
-    //const articles = await getArticles();
-    //const podcasts = await getPodcasts();
-    //const lectures = await getLectures();
+  //const articles = await getArticles();
+  //const podcasts = await getPodcasts();
+  //const lectures = await getLectures();
 
-    return (
-        <main>
-            <ArticleList articles={testArticles} />
-            <PodcastList podcasts={testPodcasts} />
-            <LectureList lectures={testLectures} />
-        </main>
-    );
+  return (
+    <main>
+      <ArticleList articles={testArticles} />
+      <PodcastList podcasts={testPodcasts} />
+      <LectureList lectures={testLectures} />
+      <section className={`${styles.uniLion} mt-10 mb-20`}>
+        <div className='ml-[11%]'>
+          <h4>Zjednodušte si život s UniLion</h4>
+          <p className='body-l mt-5 w-[40%]'>
+            Organizujte své studium, sledujte termíny a udržujte přehled o všem důležitém na jednom místě.
+          </p>
+          <div className={`${styles.storeButtons} mt-10`}>
+            <a href="" className={styles.storeButton}><img src="/imgs/appStore.svg" alt="App Store" /></a>
+            <a href="" className={styles.storeButton}><img src="/imgs/googlePlay.png" alt="Google Play" /></a>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }
