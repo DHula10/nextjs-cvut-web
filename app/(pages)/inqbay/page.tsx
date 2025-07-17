@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import styles from './inqbay.module.css';
 import ArticleList from '@/app/components/articles/articleList';
 import PodcastList from '@/app/components/podcasts/podcastList';
+import LectureList from '@/app/components/lectures/lectureList';
 
 
 export const metadata: Metadata = {
@@ -18,21 +19,21 @@ const testArticles = [
     category: 'Startup',
   },
   {
-    id: 1,
+    id: 2,
     title: 'Jak se připravit na prezentaci s inversory',
     contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
     imgHref: '/imgs/testArticle.jpg',
     category: 'Prezentace',
   },
   {
-    id: 1,
+    id: 3,
     title: 'Jak se připravit na prezentaci s inversory',
     contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
     imgHref: '/imgs/testArticle.jpg',
     category: 'Validace',
   },
   {
-    id: 1,
+    id: 4,
     title: 'Jak se připravit na prezentaci s inversory',
     contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
     imgHref: '/imgs/testArticle.jpg',
@@ -43,7 +44,7 @@ const testArticles = [
 const testPodcasts = [
     {
         title: 'Přes 85 % nápadů, které by mohly zlepšit svět skončí v šuplíku',
-        speaker: 'Ing. Ondřej Durďák, Scrum Master ČVUT',
+        speaker: 'Ing. Ondřej Durkáč, Scrum Master ČVUT',
         link: '#',
     },
     {
@@ -58,15 +59,44 @@ const testPodcasts = [
     },
 ];
 
+const testLectures = [
+  {
+    id: 1,
+    title: 'Případová studie zakladatele Magu',
+    contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
+    imgHref: '/imgs/testLecture.jpg',
+  },
+  {
+    id: 2,
+    title: 'Případová studie zakladatele Magu',
+    contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
+    imgHref: '/imgs/testLecture.jpg',
+  },
+  {
+    id: 3,
+    title: 'Případová studie zakladatele Magu',
+    contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
+    imgHref: '/imgs/testLecture.jpg',
+  },
+  {
+    id: 4,
+    title: 'Případová studie zakladatele Magu',
+    contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
+    imgHref: '/imgs/testLecture.jpg',
+  },
+]
+
 export default async function InqbayPage(){
 
     //const articles = await getArticles();
     //const podcasts = await getPodcasts();
+    //const lectures = await getLectures();
 
     return (
         <main>
             <ArticleList articles={testArticles} />
             <PodcastList podcasts={testPodcasts} />
+            <LectureList lectures={testLectures} />
         </main>
     );
 }
