@@ -1,15 +1,11 @@
-import type { Metadata } from 'next';
+'use client';
+
 import styles from './inqbay.module.css';
 import ArticleList from '@/app/components/articles/articleList';
 import PodcastList from '@/app/components/podcasts/podcastList';
 import LectureList from '@/app/components/lectures/lectureList';
 import Button from '@/app/components/button';
-
-
-export const metadata: Metadata = {
-  title: 'Inqbay',
-  description: 'Lorem Ipsum',
-}
+import { useState } from 'react';
 
 const testArticles = [
   {
@@ -87,11 +83,18 @@ const testLectures = [
   },
 ]
 
-export default async function InqbayPage() {
+export default function InqbayPage() {
 
   //const articles = await getArticles();
   //const podcasts = await getPodcasts();
   //const lectures = await getLectures();
+
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const filteredArticles = selectedCategory ? testArticles
+                                              .filter((article) => article.category === selectedCategory) : testArticles;
+
+  const uniqueCategories = Array.from(new Set(testArticles.map((article) => article.category)));
 
   return (
     <main>
@@ -103,7 +106,30 @@ export default async function InqbayPage() {
           <Button isLink label="PROZKOUMAT KNIHOVNU ↓" bgColor="g" href="" inverse />
         </div>
       </section>
-      <ArticleList articles={testArticles} />
+
+      {/*KATEGORIE FILTR*/}
+      <section className='flex flex-col items-center py-14'>
+        <h3>Zvolte téma</h3>
+        <div className='mt-8 flex flex-wrap justify-center gap-3'>
+          <button
+            onClick={()=> setSelectedCategory(null)}
+            className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${
+              selectedCategory === null ? 'bg-cvut-green' : ''}`}>
+            VŠECHNY KATEGORIE
+          </button>
+          {uniqueCategories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${
+                selectedCategory === category ? 'bg-cvut-green' : ''}`}>
+              {category.toUpperCase()}
+            </button>
+          ))}        
+        </div>
+      </section>
+
+      <ArticleList articles={filteredArticles} />
       <PodcastList podcasts={testPodcasts} />
       <LectureList lectures={testLectures} />
       <section className={`${styles.uniLion} mt-10 mb-20`}>
