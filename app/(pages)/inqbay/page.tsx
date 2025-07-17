@@ -10,28 +10,28 @@ import { useState } from 'react';
 const testArticles = [
   {
     id: 1,
-    title: 'Jak se připravit na prezentaci s inversory',
+    title: 'Jak se připravit na prezentaci s inverstory',
     contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
     imgHref: '/imgs/testArticle.jpg',
     category: 'Startup',
   },
   {
     id: 2,
-    title: 'Jak se připravit na prezentaci s inversory',
+    title: 'Jak se připravit na prezentaci s inverstory',
     contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
     imgHref: '/imgs/testArticle.jpg',
     category: 'Prezentace',
   },
   {
     id: 3,
-    title: 'Jak se připravit na prezentaci s inversory',
+    title: 'Jak se připravit na prezentaci s inverstory',
     contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
     imgHref: '/imgs/testArticle.jpg',
     category: 'Validace',
   },
   {
     id: 4,
-    title: 'Jak se připravit na prezentaci s inversory',
+    title: 'Jak se připravit na prezentaci s inverstory',
     contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
     imgHref: '/imgs/testArticle.jpg',
     category: 'Podnikání',
