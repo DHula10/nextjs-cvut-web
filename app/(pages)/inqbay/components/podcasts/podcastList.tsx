@@ -6,7 +6,7 @@ import styles from './podcastList.module.css'
 
 type Podcast = {
     title: string;
-    speaker: string;
+    author: string;
     link: string;
 };
 

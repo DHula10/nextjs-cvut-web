@@ -1,15 +1,18 @@
 'use client';
-
 import styles from './inqbay.module.css';
 import ArticleList from '@/app/(pages)/inqbay/components/articles/articleList';
 import PodcastList from '@/app/(pages)/inqbay/components/podcasts/podcastList';
 import LectureList from '@/app/(pages)/inqbay/components/lectures/lectureList';
 import Button from '@/app/components/button';
 import { useState, useEffect } from 'react';
+import { getCategories } from '@/app/lib/apiRequests';
 import { getArticles } from '@/app/lib/apiRequests';
 import { getPodcasts } from '@/app/lib/apiRequests';
 import { getLectures } from '@/app/lib/apiRequests';
-import { getReferences } from '@/app/lib/apiRequests';
+
+type Category = {
+  name: string;
+}
 
 type Article = {
   id: number;
@@ -21,12 +24,11 @@ type Article = {
 
 type Podcast = {
   title: string;
-  speaker: string;
+  author: string;
   link: string;
 }
 
 type Lecture = {
-  id: number;
   title: string;
   contentText: string;
   imgHref: string;
@@ -80,42 +82,42 @@ const testArticles = [
 const testPodcasts = [
   {
     title: 'Přes 85 % nápadů, které by mohly zlepšit svět skončí v šuplíku',
-    speaker: 'Ing. Ondřej Durkáč, Scrum Master ČVUT',
+    author: 'Ing. Ondřej Durkáč, Scrum Master ČVUT',
     link: '#',
   },
   {
     title: 'Jak najít investora pro svůj projekt',
-    speaker: 'Mgr. Jana Nováková, Angel Investor',
+    author: 'Mgr. Jana Nováková, Angel Investor',
     link: '#',
   },
   {
     title: 'Úspěšné příběhy z ČVUT',
-    speaker: 'Ing. Petr Svoboda',
+    author: 'Ing. Petr Svoboda',
     link: '#',
   },
   {
     title: 'Úspěšné příběhy z ČVUT',
-    speaker: 'Ing. Petr Svoboda',
+    author: 'Ing. Petr Svoboda',
     link: '#',
   },
   {
     title: 'Úspěšné příběhy z ČVUT',
-    speaker: 'Ing. Petr Svoboda',
+    author: 'Ing. Petr Svoboda',
     link: '#',
   },
   {
     title: 'Úspěšné příběhy z ČVUT',
-    speaker: 'Ing. Petr Svoboda',
+    author: 'Ing. Petr Svoboda',
     link: '#',
   },
   {
     title: 'Úspěšné příběhy z ČVUT',
-    speaker: 'Ing. Petr Svoboda',
+    author: 'Ing. Petr Svoboda',
     link: '#',
   },
   {
     title: 'Úspěšné příběhy z ČVUT',
-    speaker: 'Ing. Petr Svoboda',
+    author: 'Ing. Petr Svoboda',
     link: '#',
   },
 ];
@@ -161,45 +163,36 @@ const testLectures = [
 
 export default function InqbayPage() {
 
-  console.log(getReferences());
-
+  const [categories, setCategories] = useState<Category[]>([]);
   const [articles, setArticles] = useState<Article[]>([]);
+  const [podcasts, setPodcasts] = useState<Podcast[]>([]);
+  const [lectures, setLectures] = useState<Lecture[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchArticles = async () => {
+    const fetchData = async () => {
       try {
-        const data = await getArticles();
-        setArticles(data);
+        const [categoriesRes, articlesRes, podcastsRes, lecturesRes] = await Promise.all([
+          getCategories(),
+          getArticles(),
+          getPodcasts(),
+          getLectures(),
+        ]);
+        setCategories(categoriesRes);
+        setArticles(articlesRes);
+        setPodcasts(podcastsRes);
+        setLectures(lecturesRes);
       } catch (error) {
-        console.error('Chyba při načítání článků:', error);
+        console.error('Chyba při načítání dat:', error);
       }
     };
-
-    fetchArticles();
+    fetchData();
   }, []);
-
-  /*
-    API
 
   const filteredArticles = selectedCategory
     ? articles.filter((article) => article.category === selectedCategory)
     : articles;
-
-  */
-
-   const filteredArticles = selectedCategory
-    ? testArticles.filter((article) => article.category === selectedCategory)
-    : testArticles;
-
-  /*
-    API
-
-  const uniqueCategories = Array.from(new Set(articles.map((a) => a.category)));
-
-  */
-
-  const uniqueCategories = Array.from(new Set(testArticles.map((a) => a.category)));
+  
 
   return (
     <main>
@@ -213,7 +206,7 @@ export default function InqbayPage() {
       </section>
 
       {/*KATEGORIE FILTR*/}
-      <section id='category' className='flex flex-col items-center py-14'>
+       <section id='category' className='flex flex-col items-center py-14'>
         <h3>Zvolte téma</h3>
         <div className='mt-8 flex flex-wrap justify-center gap-3'>
           <button
@@ -221,20 +214,20 @@ export default function InqbayPage() {
             className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${styles.categoryButton} ${selectedCategory === null ? 'bg-cvut-green' : ''}`}>
             VŠECHNY KATEGORIE
           </button>
-          {uniqueCategories.map((category) => (
+          {categories.map((cat) => (
             <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${styles.categoryButton} ${selectedCategory === category ? 'bg-cvut-green' : ''}`}>
-              {category.toUpperCase()}
+              key={cat.name}
+              onClick={() => setSelectedCategory(cat.name)}
+              className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${styles.categoryButton} ${selectedCategory === cat.name ? 'bg-cvut-green' : ''}`}>
+              {cat.name.toUpperCase()}
             </button>
           ))}
         </div>
       </section>
 
       <ArticleList articles={filteredArticles} />
-      <PodcastList podcasts={testPodcasts} />
-      <LectureList lectures={testLectures} />
+      <PodcastList podcasts={podcasts} />
+      <LectureList lectures={lectures} />
       <section className={`${styles.uniLion} mt-10 mb-20`}>
         <div className='ml-[11%]'>
           <h4>Zjednodušte si život s UniLion</h4>
