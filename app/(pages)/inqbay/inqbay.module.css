@@ -18,6 +18,11 @@
     pointer-events: none;
 }
 
+.categoryButton:hover{
+    cursor: pointer;
+    background: #A0B102;
+}
+
 .uniLion {
     display: flex;
     flex-direction: column;

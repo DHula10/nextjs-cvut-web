@@ -113,7 +113,7 @@ export default function InqbayPage() {
         <div className='mt-8 flex flex-wrap justify-center gap-3'>
           <button
             onClick={()=> setSelectedCategory(null)}
-            className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${
+            className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${styles.categoryButton} ${
               selectedCategory === null ? 'bg-cvut-green' : ''}`}>
             VŠECHNY KATEGORIE
           </button>
@@ -121,7 +121,7 @@ export default function InqbayPage() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${
+              className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${styles.categoryButton} ${
                 selectedCategory === category ? 'bg-cvut-green' : ''}`}>
               {category.toUpperCase()}
             </button>
