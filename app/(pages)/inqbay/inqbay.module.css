@@ -1,10 +1,30 @@
+.hero {
+    background-image: url('/imgs/inqbay-hero.png');
+    background-size: cover;
+    background-position: calc(50% + 150px) center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden; 
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(to right, white 0%, white 20%, transparent 100%),
+                linear-gradient(to top, white 0%, transparent 50%);
+    backdrop-filter: blur(2px); 
+    pointer-events: none;
+}
+
 .uniLion {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 10px;
 
-    height: 500px;
+    height: 60vh;
 
     width: 100%;
 
@@ -21,4 +41,8 @@
     img{
         height: 40px;
     }
+}
+
+.storeButton:hover{
+    cursor: pointer;
 }

@@ -3,6 +3,7 @@ import styles from './inqbay.module.css';
 import ArticleList from '@/app/components/articles/articleList';
 import PodcastList from '@/app/components/podcasts/podcastList';
 import LectureList from '@/app/components/lectures/lectureList';
+import Button from '@/app/components/button';
 
 
 export const metadata: Metadata = {
@@ -94,6 +95,14 @@ export default async function InqbayPage() {
 
   return (
     <main>
+      <section className={`${styles.hero} flex flex-col h-svh justify-center pl-20 lg:pl-32 md:pt-10`}>
+        <div className='relative flex flex-col gap-8 z-50'>
+          <h6 className='text-cvut-green'>#TRANSFER</h6>
+          <h2 className='text-4xl font-bold md:max-w-3/4 lg:max-w-5/6 xl:max-w-3/4'>OPŘETE SE O DŮVERYHODNÉ ZDROJE JEŠTĚ PŘED REALIZACÍ</h2>
+          <p className='body-l w-[75%]'>Připravili jsme pro vás bezplatnou digitální databázi se stovkami článků, přednášek, podcastů a nástrojů, které vám pomůžou začít smysluplně.</p>
+          <Button isLink label="PROZKOUMAT KNIHOVNU ↓" bgColor="g" href="" inverse/>
+        </div>
+      </section>
       <ArticleList articles={testArticles} />
       <PodcastList podcasts={testPodcasts} />
       <LectureList lectures={testLectures} />
