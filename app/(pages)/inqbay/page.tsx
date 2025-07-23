@@ -5,7 +5,16 @@ import ArticleList from '@/app/components/articles/articleList';
 import PodcastList from '@/app/components/podcasts/podcastList';
 import LectureList from '@/app/components/lectures/lectureList';
 import Button from '@/app/components/button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { directus } from '@/app/lib/directus';
+
+type Article = {
+  id: number;
+  title: string;
+  contentText: string;
+  imgHref: string;
+  category: string;
+}
 
 const testArticles = [
   {
@@ -89,12 +98,31 @@ export default function InqbayPage() {
   //const podcasts = await getPodcasts();
   //const lectures = await getLectures();
 
+  const [articles, setArticles] = useState<Article[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  const filteredArticles = selectedCategory ? testArticles
-                                              .filter((article) => article.category === selectedCategory) : testArticles;
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const response = await directus.items('articles').readByQuery({
+          fields: ['id', 'title', 'contentText', 'imgHref', 'category'],
+          limit: 100,
+        });
 
-  const uniqueCategories = Array.from(new Set(testArticles.map((article) => article.category)));
+        setArticles(response.data ?? []);
+      } catch (error) {
+        console.error('Chyba při načítání článků:', error);
+      }
+    };
+
+    fetchArticles();
+  }, []);
+
+  const filteredArticles = selectedCategory
+    ? articles.filter((article) => article.category === selectedCategory)
+    : articles;
+
+  const uniqueCategories = Array.from(new Set(articles.map((a) => a.category)));
 
   return (
     <main>
@@ -112,20 +140,18 @@ export default function InqbayPage() {
         <h3>Zvolte téma</h3>
         <div className='mt-8 flex flex-wrap justify-center gap-3'>
           <button
-            onClick={()=> setSelectedCategory(null)}
-            className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${styles.categoryButton} ${
-              selectedCategory === null ? 'bg-cvut-green' : ''}`}>
+            onClick={() => setSelectedCategory(null)}
+            className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${styles.categoryButton} ${selectedCategory === null ? 'bg-cvut-green' : ''}`}>
             VŠECHNY KATEGORIE
           </button>
           {uniqueCategories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${styles.categoryButton} ${
-                selectedCategory === category ? 'bg-cvut-green' : ''}`}>
+              className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${styles.categoryButton} ${selectedCategory === category ? 'bg-cvut-green' : ''}`}>
               {category.toUpperCase()}
             </button>
-          ))}        
+          ))}
         </div>
       </section>
 
@@ -155,7 +181,7 @@ export default function InqbayPage() {
             Domluvme si online konzultaci, během které se seznámíme
             s vaším projektem a probereme potenciální postup.
           </p>
-          
+
           {/* 
           nevím, jak na tom jsme s těmi komponentami, co je valid teďka
           <Calendly />
