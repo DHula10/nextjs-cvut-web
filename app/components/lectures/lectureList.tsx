@@ -15,8 +15,8 @@ type Props = {
 export default function LectureList({ lectures }: Props){
     return (
         <section className={`${styles.lectureList} p-16`}>
-            <h4>Přednášky</h4>
-            <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8 mt-5">
+            <h4 className='absolute'>Přednášky</h4>
+            <div className="mt-15 flex gap-8">
                 {lectures.map(lecture => (
                     <LectureTile key={lecture.id} {...lecture} />
                 ))}

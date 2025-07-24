@@ -17,8 +17,8 @@ type Props = {
 export default function PodcastList({ podcasts }: Props) {
     return(
         <section className={`${styles.podcastList} p-16`}>
-            <h4>Podcasty</h4>
-            <div className="mt-5 flex gap-8">
+            <h4 className="absolute">Podcasty</h4>
+            <div className="mt-15 flex gap-8">
                 {podcasts.map((podcast, index) => (
                     <PodcastTile key={index} {...podcast} />
                 ))}

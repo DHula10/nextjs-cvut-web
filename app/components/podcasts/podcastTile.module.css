@@ -1,5 +1,6 @@
 .podcastTile {
     flex: 1;
+    min-width: fit-content;
     padding: 40px 60px;
     align-items: flex-start;
     border-radius: 20px;

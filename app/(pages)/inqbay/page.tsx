@@ -63,6 +63,16 @@ const testPodcasts = [
     speaker: 'Ing. Petr Svoboda',
     link: '#',
   },
+  {
+    title: 'Úspěšné příběhy z ČVUT',
+    speaker: 'Ing. Petr Svoboda',
+    link: '#',
+  },
+  {
+    title: 'Úspěšné příběhy z ČVUT',
+    speaker: 'Ing. Petr Svoboda',
+    link: '#',
+  },
 ];
 
 const testLectures = [
@@ -114,11 +124,27 @@ export default function InqbayPage() {
     fetchArticles();
   }, []);
 
+  /*
+    API
+
   const filteredArticles = selectedCategory
     ? articles.filter((article) => article.category === selectedCategory)
     : articles;
 
+  */
+
+   const filteredArticles = selectedCategory
+    ? testArticles.filter((article) => article.category === selectedCategory)
+    : testArticles;
+
+  /*
+    API
+
   const uniqueCategories = Array.from(new Set(articles.map((a) => a.category)));
+
+  */
+
+  const uniqueCategories = Array.from(new Set(testArticles.map((a) => a.category)));
 
   return (
     <main>
