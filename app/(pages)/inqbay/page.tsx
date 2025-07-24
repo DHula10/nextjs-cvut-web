@@ -6,7 +6,7 @@ import PodcastList from '@/app/components/podcasts/podcastList';
 import LectureList from '@/app/components/lectures/lectureList';
 import Button from '@/app/components/button';
 import { useState, useEffect } from 'react';
-import { directus } from '@/app/lib/directus';
+import { getArticles } from '@/app/lib/apiRequests';
 
 type Article = {
   id: number;
@@ -104,12 +104,8 @@ export default function InqbayPage() {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await directus.items('articles').readByQuery({
-          fields: ['id', 'title', 'contentText', 'imgHref', 'category'],
-          limit: 100,
-        });
-
-        setArticles(response.data ?? []);
+        const data = await getArticles();
+        setArticles(data);
       } catch (error) {
         console.error('Chyba při načítání článků:', error);
       }
@@ -131,12 +127,12 @@ export default function InqbayPage() {
           <h6 className='text-cvut-green'>#TRANSFER</h6>
           <h2 className='text-4xl font-bold md:max-w-3/4 lg:max-w-5/6 xl:max-w-3/4'>OPŘETE SE O DŮVERYHODNÉ ZDROJE JEŠTĚ PŘED REALIZACÍ</h2>
           <p className='body-l w-[75%]'>Připravili jsme pro vás bezplatnou digitální databázi se stovkami článků, přednášek, podcastů a nástrojů, které vám pomůžou začít smysluplně.</p>
-          <Button isLink label="PROZKOUMAT KNIHOVNU ↓" bgColor="g" href="" inverse />
+          <Button isLink label="PROZKOUMAT KNIHOVNU" bgColor="g" href="#category" inverse />
         </div>
       </section>
 
       {/*KATEGORIE FILTR*/}
-      <section className='flex flex-col items-center py-14'>
+      <section id='category' className='flex flex-col items-center py-14'>
         <h3>Zvolte téma</h3>
         <div className='mt-8 flex flex-wrap justify-center gap-3'>
           <button
