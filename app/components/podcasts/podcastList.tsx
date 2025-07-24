@@ -16,7 +16,7 @@ type Props = {
 
 export default function PodcastList({ podcasts }: Props) {
     return(
-        <section className={`${styles.podcastList} p-16`}>
+        <section className={`${styles.podcastList} pl-16 pr-16 pb-16`}>
             <h4 className="absolute">Podcasty</h4>
             <div className="mt-15 flex gap-8">
                 {podcasts.map((podcast, index) => (

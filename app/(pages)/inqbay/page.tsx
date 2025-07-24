@@ -103,6 +103,21 @@ const testPodcasts = [
     speaker: 'Ing. Petr Svoboda',
     link: '#',
   },
+  {
+    title: 'Úspěšné příběhy z ČVUT',
+    speaker: 'Ing. Petr Svoboda',
+    link: '#',
+  },
+  {
+    title: 'Úspěšné příběhy z ČVUT',
+    speaker: 'Ing. Petr Svoboda',
+    link: '#',
+  },
+  {
+    title: 'Úspěšné příběhy z ČVUT',
+    speaker: 'Ing. Petr Svoboda',
+    link: '#',
+  },
 ];
 
 const testLectures = [
@@ -126,6 +141,18 @@ const testLectures = [
   },
   {
     id: 4,
+    title: 'Případová studie zakladatele Magu',
+    contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
+    imgHref: '/imgs/testLecture.jpg',
+  },
+  {
+    id: 5,
+    title: 'Případová studie zakladatele Magu',
+    contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
+    imgHref: '/imgs/testLecture.jpg',
+  },
+  {
+    id: 6,
     title: 'Případová studie zakladatele Magu',
     contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
     imgHref: '/imgs/testLecture.jpg',

@@ -11,7 +11,7 @@ type ArticleProps = {
 
 export default function ArticleTile({ title, contentText, imgHref, category }: ArticleProps) {
     return (
-        <article className={`${styles.article} bg-white shadow-md overflow-hidden flex flex-col`}>
+        <article className={`${styles.article} bg-white shadow-md overflow-hidden flex-col min-w-[90%] md:min-w-[50%] lg:min-w-[40%] xl:min-w-[30%] 2xl:min-w-[20%]`}>
             <img src={imgHref} alt={title} className="w-full object-cover"/>
             <div className="p-4 flex flex-col gap-2 flex-1">
                 <span className={`${styles.category} bg-black text-white text-xs font-semibold px-3 py-1 w-fit`}>
