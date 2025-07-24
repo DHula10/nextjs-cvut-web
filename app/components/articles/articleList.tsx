@@ -17,7 +17,7 @@ export default function ArticleList({ articles }: Props){
     return (
         <section className={`${styles.articleList}`}>
             <h4 className="absolute">Články</h4>
-            <div className="mt-15 grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div className="mt-15 flex gap-8">
                 {articles.map(article => (
                     <ArticleTile key={article.id} {...article} />
                 ))}

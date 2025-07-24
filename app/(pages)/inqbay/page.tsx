@@ -7,6 +7,9 @@ import LectureList from '@/app/components/lectures/lectureList';
 import Button from '@/app/components/button';
 import { useState, useEffect } from 'react';
 import { getArticles } from '@/app/lib/apiRequests';
+import { getPodcasts } from '@/app/lib/apiRequests';
+import { getLectures } from '@/app/lib/apiRequests';
+import { getReferences } from '@/app/lib/apiRequests';
 
 type Article = {
   id: number;
@@ -14,6 +17,19 @@ type Article = {
   contentText: string;
   imgHref: string;
   category: string;
+}
+
+type Podcast = {
+  title: string;
+  speaker: string;
+  link: string;
+}
+
+type Lecture = {
+  id: number;
+  title: string;
+  contentText: string;
+  imgHref: string;
 }
 
 const testArticles = [
@@ -40,6 +56,20 @@ const testArticles = [
   },
   {
     id: 4,
+    title: 'Jak se připravit na prezentaci s inverstory',
+    contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
+    imgHref: '/imgs/testArticle.jpg',
+    category: 'Podnikání',
+  },
+  {
+    id: 5,
+    title: 'Jak se připravit na prezentaci s inverstory',
+    contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
+    imgHref: '/imgs/testArticle.jpg',
+    category: 'Podnikání',
+  },
+  {
+    id: 6,
     title: 'Jak se připravit na prezentaci s inverstory',
     contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
     imgHref: '/imgs/testArticle.jpg',
@@ -103,6 +133,8 @@ const testLectures = [
 ]
 
 export default function InqbayPage() {
+
+  console.log(getReferences());
 
   const [articles, setArticles] = useState<Article[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
