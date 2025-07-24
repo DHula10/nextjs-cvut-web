@@ -10,7 +10,9 @@ type LectureProps = {
 
 export default function LectureTile({ title, contentText, imgHref }: LectureProps) {
     return (
-        <article className={`${styles.lecture} bg-white shadow-md overflow-hidden flex flex-col min-w-[90%] md:min-w-[50%] lg:min-w-[40%] xl:min-w-[30%] 2xl:min-w-[20%]`}>
+        <article className={`${styles.lecture} bg-white shadow-md overflow-hidden flex flex-col 
+                                                min-w-[90%] md:min-w-[50%] lg:min-w-[40%] xl:min-w-[30%] 2xl:min-w-[20%]`}>
+                                                    
             <img src={imgHref} alt={title} className="w-full object-cover" />
             <div className="p-4 flex flex-col gap-2 flex-1 justify-between">
                 <div>
