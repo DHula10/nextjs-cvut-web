@@ -104,10 +104,6 @@ const testLectures = [
 
 export default function InqbayPage() {
 
-  //const articles = await getArticles();
-  //const podcasts = await getPodcasts();
-  //const lectures = await getLectures();
-
   const [articles, setArticles] = useState<Article[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
