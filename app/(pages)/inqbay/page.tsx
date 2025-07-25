@@ -10,6 +10,7 @@ import { getArticles } from '@/app/lib/apiRequests';
 import { getPodcasts } from '@/app/lib/apiRequests';
 import { getLectures } from '@/app/lib/apiRequests';
 
+
 type Category = {
   name: string;
 }
@@ -19,7 +20,7 @@ type Article = {
   slug: string;
   content: string;
   img: string;
-  category: string;
+  categoryId?: { name: string } | null;
 }
 
 type Podcast = {
@@ -191,7 +192,7 @@ export default function InqbayPage() {
   }, []);
 
   const filteredArticles = selectedCategory
-    ? articles.filter((article) => article.category === selectedCategory)
+    ? articles.filter((article) => article.categoryId?.name === selectedCategory)
     : articles;
   
 

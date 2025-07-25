@@ -10,11 +10,22 @@ export async function getCategories() {
   }));
   return response;
 }
+/*
 
 export async function getArticles() {
   const client = createDirectus<articleSchema>(BACKEND_URL).with(rest());
   const response = await client.request(readItems('articles', {
     limit: 10
+  }));
+  return response;
+}
+  */
+
+export async function getArticles() {
+  const client = createDirectus<articleSchema>(BACKEND_URL).with(rest());
+  const response = await client.request(readItems('articles', {
+    fields: ['title', 'slug', 'content', 'img', 'categoryId.name'],
+    limit: 10,
   }));
   return response;
 }

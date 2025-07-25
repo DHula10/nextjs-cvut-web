@@ -11,7 +11,7 @@ export interface Articles {
   slug: string;
   content: string;
   img: string;
-  category: string;
+  categoryId: { name: string };
 }
 
 export interface articleSchema {

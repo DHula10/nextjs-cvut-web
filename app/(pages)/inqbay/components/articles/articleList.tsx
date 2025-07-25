@@ -6,7 +6,7 @@ type Article = {
     slug: string;
     content: string;
     img: string;
-    category: string;
+    categoryId?: { name: string } | null;
 };
 
 type Props = {
