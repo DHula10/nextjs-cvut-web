@@ -18,10 +18,10 @@ const Header = ({ isBgTransparent = false }: HeaderProps) => {
         </Link>
 
         <nav className="flex gap-8">
-          <Link href="#ambice" className="heading6 link">Ambice</Link>
-          <Link href="#co-delame" className="heading6 link">Co děláme</Link>
-          <Link href="#realizace" className="heading6 link">Realizace</Link>
-          <Link href="#kontakt" className="heading6 link">Kontakt</Link>
+          <Link href="/ingine" className="heading6 link">Ingine</Link>
+          <Link href="/transfer" className="heading6 link">Transfer</Link>
+          <Link href="/inqbay" className="heading6 link">Inqbay</Link>
+          <Link href="/#Konzultace" className="heading6 link">Kontakt</Link>
         </nav>
       </div>
     </header>
