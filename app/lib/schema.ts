@@ -7,10 +7,10 @@ export interface categorySchema {
 }
 
 export interface Articles {
-  id: number;
   title: string;
-  contentText: string;
-  imgHref: string;
+  slug: string;
+  content: string;
+  img: string;
   category: string;
 }
 
@@ -30,8 +30,9 @@ export interface podcastSchema {
 
 export interface Lectures {
   title: string;
-  contentText: string;
-  imgHref: string;
+  content: string;
+  img: string;
+  slug: string;
 }
 
 export interface lectureSchema {

@@ -15,10 +15,10 @@ type Category = {
 }
 
 type Article = {
-  id: number;
   title: string;
-  contentText: string;
-  imgHref: string;
+  slug: string;
+  content: string;
+  img: string;
   category: string;
 }
 
@@ -30,8 +30,9 @@ type Podcast = {
 
 type Lecture = {
   title: string;
-  contentText: string;
-  imgHref: string;
+  content: string;
+  img: string;
+  slug: string;
 }
 
 const testArticles = [

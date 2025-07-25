@@ -3,15 +3,16 @@ import styles from './lectureList.module.css'
 
 type Lecture = {
     title: string;
-    contentText: string;
-    imgHref: string;
+    content: string;
+    img: string;
+    slug: string;
 };
 
 type Props = {
     lectures: Lecture[];
 };
 
-export default function LectureList({ lectures }: Props){
+export default function LectureList({ lectures }: Props) {
     return (
         <section className={`${styles.lectureList} p-16`}>
             <h4 className='absolute'>Přednášky</h4>
