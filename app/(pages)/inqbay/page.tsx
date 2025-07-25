@@ -1,9 +1,9 @@
 'use client';
 
 import styles from './inqbay.module.css';
-import ArticleList from '@/app/components/articles/articleList';
-import PodcastList from '@/app/components/podcasts/podcastList';
-import LectureList from '@/app/components/lectures/lectureList';
+import ArticleList from '@/app/(pages)/inqbay/components/articles/articleList';
+import PodcastList from '@/app/(pages)/inqbay/components/podcasts/podcastList';
+import LectureList from '@/app/(pages)/inqbay/components/lectures/lectureList';
 import Button from '@/app/components/button';
 import { useState, useEffect } from 'react';
 import { getArticles } from '@/app/lib/apiRequests';
