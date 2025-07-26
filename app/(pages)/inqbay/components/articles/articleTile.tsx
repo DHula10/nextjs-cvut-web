@@ -21,8 +21,8 @@ export default function ArticleTile({ title, slug, content, img, categoryId }: A
                                                 xl:min-w-[30%] xl:max-w-[30%]
                                                 2xl:min-w-[20%] 2xl:max-w-[20%]`}>
             <article>
-                <img src={`http://localhost:8055/assets/${img}`} alt={title} className='h-[56%] w-full' />
-                <div className='p-4 flex flex-col gap-2 justify-between min-h-fit'>
+                <img src={`http://localhost:8055/assets/${img}`} alt={title} className='object-cover w-full h-[300px]'/>
+                <div className='p-4 flex flex-col gap-2 justify-between'>
                     <span className={`${styles.category} bg-black text-white text-xs font-semibold px-3 py-1 w-fit`}>
                         {categoryId?.name || 'Nezařazeno'}
                     </span>
