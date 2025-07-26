@@ -5,223 +5,118 @@ import PodcastList from '@/app/(pages)/inqbay/components/podcasts/podcastList';
 import LectureList from '@/app/(pages)/inqbay/components/lectures/lectureList';
 import Button from '@/app/components/button';
 import { useState, useEffect } from 'react';
-import { getCategories } from '@/app/lib/apiRequests';
-import { getArticles } from '@/app/lib/apiRequests';
-import { getPodcasts } from '@/app/lib/apiRequests';
-import { getLectures } from '@/app/lib/apiRequests';
 
-
-type Category = {
-  name: string;
-}
-
-type Article = {
-  title: string;
-  slug: string;
-  content: string;
-  img: string;
-  categoryId?: { name: string } | null;
-}
-
-type Podcast = {
-  title: string;
-  author: string;
-  link: string;
-}
-
-type Lecture = {
-  title: string;
-  content: string;
-  img: string;
-  slug: string;
-}
-
-const testArticles = [
-  {
-    id: 1,
-    title: 'Jak se připravit na prezentaci s inverstory',
-    contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
-    imgHref: '/imgs/testArticle.jpg',
-    category: 'Startup',
-  },
-  {
-    id: 2,
-    title: 'Jak se připravit na prezentaci s inverstory',
-    contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
-    imgHref: '/imgs/testArticle.jpg',
-    category: 'Prezentace',
-  },
-  {
-    id: 3,
-    title: 'Jak se připravit na prezentaci s inverstory',
-    contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
-    imgHref: '/imgs/testArticle.jpg',
-    category: 'Validace',
-  },
-  {
-    id: 4,
-    title: 'Jak se připravit na prezentaci s inverstory',
-    contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
-    imgHref: '/imgs/testArticle.jpg',
-    category: 'Podnikání',
-  },
-  {
-    id: 5,
-    title: 'Jak se připravit na prezentaci s inverstory',
-    contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
-    imgHref: '/imgs/testArticle.jpg',
-    category: 'Podnikání',
-  },
-  {
-    id: 6,
-    title: 'Jak se připravit na prezentaci s inverstory',
-    contentText: 'Zjistěte, co jsou základní body pro získání financování, jak investory oslovit a co připravit na první schůzku.',
-    imgHref: '/imgs/testArticle.jpg',
-    category: 'Podnikání',
-  },
-];
-
-const testPodcasts = [
-  {
-    title: 'Přes 85 % nápadů, které by mohly zlepšit svět skončí v šuplíku',
-    author: 'Ing. Ondřej Durkáč, Scrum Master ČVUT',
-    link: '#',
-  },
-  {
-    title: 'Jak najít investora pro svůj projekt',
-    author: 'Mgr. Jana Nováková, Angel Investor',
-    link: '#',
-  },
-  {
-    title: 'Úspěšné příběhy z ČVUT',
-    author: 'Ing. Petr Svoboda',
-    link: '#',
-  },
-  {
-    title: 'Úspěšné příběhy z ČVUT',
-    author: 'Ing. Petr Svoboda',
-    link: '#',
-  },
-  {
-    title: 'Úspěšné příběhy z ČVUT',
-    author: 'Ing. Petr Svoboda',
-    link: '#',
-  },
-  {
-    title: 'Úspěšné příběhy z ČVUT',
-    author: 'Ing. Petr Svoboda',
-    link: '#',
-  },
-  {
-    title: 'Úspěšné příběhy z ČVUT',
-    author: 'Ing. Petr Svoboda',
-    link: '#',
-  },
-  {
-    title: 'Úspěšné příběhy z ČVUT',
-    author: 'Ing. Petr Svoboda',
-    link: '#',
-  },
-];
-
-const testLectures = [
-  {
-    id: 1,
-    title: 'Případová studie zakladatele Magu',
-    contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
-    imgHref: '/imgs/testLecture.jpg',
-  },
-  {
-    id: 2,
-    title: 'Případová studie zakladatele Magu',
-    contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
-    imgHref: '/imgs/testLecture.jpg',
-  },
-  {
-    id: 3,
-    title: 'Případová studie zakladatele Magu',
-    contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
-    imgHref: '/imgs/testLecture.jpg',
-  },
-  {
-    id: 4,
-    title: 'Případová studie zakladatele Magu',
-    contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
-    imgHref: '/imgs/testLecture.jpg',
-  },
-  {
-    id: 5,
-    title: 'Případová studie zakladatele Magu',
-    contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
-    imgHref: '/imgs/testLecture.jpg',
-  },
-  {
-    id: 6,
-    title: 'Případová studie zakladatele Magu',
-    contentText: 'Jaké překážky jsme museli překonat a kolik času nám to zabralo.',
-    imgHref: '/imgs/testLecture.jpg',
-  },
-]
+import { getArticles, getCategories, getLectures, getPodcasts } from '@/app/lib/apiRequests';
+import type { Categories, Articles, Podcasts, Lectures } from '@/app/lib/schema';
 
 export default function InqbayPage() {
 
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [podcasts, setPodcasts] = useState<Podcast[]>([]);
-  const [lectures, setLectures] = useState<Lecture[]>([]);
+  const [categories, setCategories] = useState<Categories[]>([]);
+  const [articles, setArticles] = useState<Articles[]>([]);
+  const [podcasts, setPodcasts] = useState<Podcasts[]>([]);
+  const [lectures, setLectures] = useState<Lectures[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [categoriesRes, articlesRes, podcastsRes, lecturesRes] = await Promise.all([
+        setLoading(true);
+        
+        // Fetch all data in parallel
+        const [categoriesResponse, articlesResponse, podcastsResponse, lecturesResponse] = await Promise.all([
           getCategories(),
           getArticles(),
           getPodcasts(),
-          getLectures(),
+          getLectures()
         ]);
-        setCategories(categoriesRes);
-        setArticles(articlesRes);
-        setPodcasts(podcastsRes);
-        setLectures(lecturesRes);
-      } catch (error) {
-        console.error('Chyba při načítání dat:', error);
+
+        // Handle categories
+        if (categoriesResponse.error) {
+          console.error('Error fetching categories:', categoriesResponse.error);
+        } else {
+          setCategories(categoriesResponse.data as Categories[]);
+        }
+
+        // Handle articles
+        if (articlesResponse.error) {
+          console.error('Error fetching articles:', articlesResponse.error);
+        } else {
+          setArticles(articlesResponse.data as Articles[]);
+        }
+
+        // Handle podcasts
+        if (podcastsResponse.error) {
+          console.error('Error fetching podcasts:', podcastsResponse.error);
+        } else {
+          setPodcasts(podcastsResponse.data as Podcasts[]);
+        }
+
+        // Handle lectures
+        if (lecturesResponse.error) {
+          console.error('Error fetching lectures:', lecturesResponse.error);
+        } else {
+          setLectures(lecturesResponse.data as Lectures[]);
+        }
+
+      } catch (err) {
+        console.error('Error fetching data:', err);
+        setError('Failed to load data');
+      } finally {
+        setLoading(false);
       }
     };
+
     fetchData();
   }, []);
 
   const filteredArticles = selectedCategory
     ? articles.filter((article) => article.categoryId?.name === selectedCategory)
     : articles;
-  
+
+  if (loading) {
+    return (
+      <main className="flex justify-center items-center h-screen">
+        <div>Loading...</div>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="flex justify-center items-center h-screen">
+        <div>Error: {error}</div>
+      </main>
+    );
+  }
 
   return (
     <main>
       <section className={`${styles.hero} flex flex-col h-svh justify-center pl-20 lg:pl-32 md:pt-10`}>
         <div className='relative flex flex-col gap-8 z-50'>
-          <h6 className='text-cvut-green'>#TRANSFER</h6>
-          <h2 className='text-4xl font-bold md:max-w-3/4 lg:max-w-5/6 xl:max-w-3/4'>OPŘETE SE O DŮVERYHODNÉ ZDROJE JEŠTĚ PŘED REALIZACÍ</h2>
+          <h6 className='text-cvut-green uppercase'>#transfer</h6>
+          <h2 className='text-4xl font-bold md:max-w-3/4 uppercase lg:max-w-5/6 xl:max-w-3/4'>Opřete se o důvěryhodné zdroje ještě před realizací</h2>
           <p className='body-l w-[75%]'>Připravili jsme pro vás bezplatnou digitální databázi se stovkami článků, přednášek, podcastů a nástrojů, které vám pomůžou začít smysluplně.</p>
           <Button isLink label="PROZKOUMAT KNIHOVNU" bgColor="g" href="#category" inverse />
         </div>
       </section>
 
       {/*KATEGORIE FILTR*/}
-       <section id='category' className='flex flex-col items-center py-14'>
+      <section id='category' className='flex flex-col items-center py-14'>
         <h3>Zvolte téma</h3>
         <div className='mt-8 flex flex-wrap justify-center gap-3'>
           <button
             onClick={() => setSelectedCategory(null)}
-            className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${styles.categoryButton} ${selectedCategory === null ? 'bg-cvut-green' : ''}`}>
-            VŠECHNY KATEGORIE
+            className={`bg-[#A0B10266] px-5 py-2 rounded-xl uppercase font-bold ${styles.categoryButton} ${selectedCategory === null ? 'bg-cvut-green' : ''}`}>
+            všechny kategorie
           </button>
           {categories.map((cat) => (
             <button
               key={cat.name}
               onClick={() => setSelectedCategory(cat.name)}
-              className={`bg-[#A0B10266] px-5 py-2 rounded-xl font-bold ${styles.categoryButton} ${selectedCategory === cat.name ? 'bg-cvut-green' : ''}`}>
-              {cat.name.toUpperCase()}
+              className={`bg-[#A0B10266] px-5 py-2 uppercase rounded-xl font-bold ${styles.categoryButton} ${selectedCategory === cat.name ? 'bg-cvut-green' : ''}`}>
+              {cat.name}
             </button>
           ))}
         </div>
@@ -251,13 +146,10 @@ export default function InqbayPage() {
           </h3>
           <p className={`body-l mb-10`}>
             Domluvme si online konzultaci, během které se seznámíme
-            s vaším projektem a probereme potenciální postup.
+            s vaším projektem a probereme potentiální postup.
           </p>
 
-          {/* 
-          nevím, jak na tom jsme s těmi komponentami, co je valid teďka
-          <Calendly />
-          */}
+          <Button isLink label="Domluvit konzultaci" bgColor="g" href="https://outlook.office365.com/book/TransferVUT@campuscvut.onmicrosoft.com/?ismsaljsauthenabled=true" target="_blank" inverse />
         </article>
       </section>
     </main>
