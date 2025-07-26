@@ -1,47 +1,49 @@
-import { createDirectus, rest, readItems } from '@directus/sdk';
-import type { categorySchema, articleSchema, podcastSchema, lectureSchema } from './schema';
+import { rest, readItems } from '@directus/sdk';
+import directus from '@/app/lib/directus';
+
 
 const BACKEND_URL = "http://localhost:8055/";
 
-export async function getCategories() {
-  const client = createDirectus<categorySchema>(BACKEND_URL).with(rest());
-  const response = await client.request(readItems('categories', {
-    limit: 10
-  }));
-  return response;
-}
-/*
+export const getArticles = async () => {
+  const articlesResponse = await directus.request(
+    readItems('articles',
+      {
+        fields: ['id', 'title', 'slug', 'content', 'img', 
+          // @ts-ignore
+          'categoryId.*'
+        ],
+        sort: ['-id'],
+        limit: 10
+      }));
+  return articlesResponse;
+};
 
-export async function getArticles() {
-  const client = createDirectus<articleSchema>(BACKEND_URL).with(rest());
-  const response = await client.request(readItems('articles', {
-    limit: 10
-  }));
-  return response;
-}
-  */
+export const getCategories = async () => {
+  const categoriesResponse = await directus.request(
+    readItems('categories',
+      {
+        fields: ['id', 'name'],
+        sort: ['-id'],
+      }));
+  return categoriesResponse;
+};
 
-export async function getArticles() {
-  const client = createDirectus<articleSchema>(BACKEND_URL).with(rest());
-  const response = await client.request(readItems('articles', {
-    fields: ['title', 'slug', 'content', 'img', 'categoryId.name'],
-    limit: 10,
-  }));
-  return response;
-}
+export const getPodcasts = async () => {
+  const podcastsResponse = await directus.request(
+    readItems('podcasts',
+      {
+        fields: ['id', 'title', 'author', 'link'],
+        limit: 10
+      }));
+  return podcastsResponse;
+};
 
-export async function getPodcasts() {
-  const client = createDirectus<podcastSchema>(BACKEND_URL).with(rest());
-  const response = await client.request(readItems('podcasts', {
-    limit: 10
-  }));
-  return response;
-}
-
-export async function getLectures() {
-  const client = createDirectus<lectureSchema>(BACKEND_URL).with(rest());
-  const response = await client.request(readItems('lectures', {
-    limit: 10
-  }));
-  return response;
-}
+export const getLectures = async () => {
+  const lecturesResponse = await directus.request(
+    readItems('lectures',
+      {
+        fields: ['id', 'title', 'content', 'img', 'slug'],
+        limit: 10
+      }));
+  return lecturesResponse;
+};
