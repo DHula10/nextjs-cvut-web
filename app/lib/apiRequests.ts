@@ -1,47 +1,46 @@
-import { createDirectus, rest, readItems } from '@directus/sdk';
-import type { categorySchema, articleSchema, podcastSchema, lectureSchema } from './schema';
+import { rest, readItems } from '@directus/sdk';
+import directus from '@/app/lib/directus';
+import { Schema, Articles, Categories, Podcasts, Lectures } from './schema';
 
-const BACKEND_URL = "http://localhost:8055/";
+const apiRequest = async <T extends keyof Schema>(
+  collection: T, 
+  options: any
+): Promise<{ data: Schema[T] | [], error: any }> => {
+  try {
+    const response = await directus.request(readItems(collection, options));
+    return { data: response as Schema[T], error: null };
+  } catch (error) {
+    console.error(`Error fetching ${collection}:`, error);
+    return { data: [], error: error };
+  }
+};
 
-export async function getCategories() {
-  const client = createDirectus<categorySchema>(BACKEND_URL).with(rest());
-  const response = await client.request(readItems('categories', {
+
+
+export const getArticles = (): Promise<{ data: Articles[] | [], error: any }> => 
+  apiRequest('articles', {
+    fields: ['id', 'title', 'slug', 'content', 'img', 
+      // @ts-ignore
+      'categoryId.*'
+    ],
+    sort: ['-id'],
     limit: 10
-  }));
-  return response;
-}
-/*
+  });
 
-export async function getArticles() {
-  const client = createDirectus<articleSchema>(BACKEND_URL).with(rest());
-  const response = await client.request(readItems('articles', {
+export const getCategories = (): Promise<{ data: Categories[] | [], error: any }> => 
+  apiRequest('categories', {
+    fields: ['id', 'name'],
+    sort: ['-id']
+  });
+
+export const getPodcasts = (): Promise<{ data: Podcasts[] | [], error: any }> => 
+  apiRequest('podcasts', {
+    fields: ['id', 'title', 'author', 'link'],
     limit: 10
-  }));
-  return response;
-}
-  */
+  });
 
-export async function getArticles() {
-  const client = createDirectus<articleSchema>(BACKEND_URL).with(rest());
-  const response = await client.request(readItems('articles', {
-    fields: ['title', 'slug', 'content', 'img', 'categoryId.name'],
-    limit: 10,
-  }));
-  return response;
-}
-
-export async function getPodcasts() {
-  const client = createDirectus<podcastSchema>(BACKEND_URL).with(rest());
-  const response = await client.request(readItems('podcasts', {
+export const getLectures = (): Promise<{ data: Lectures[] | [], error: any }> => 
+  apiRequest('lectures', {
+    fields: ['id', 'title', 'content', 'img', 'slug'],
     limit: 10
-  }));
-  return response;
-}
-
-export async function getLectures() {
-  const client = createDirectus<lectureSchema>(BACKEND_URL).with(rest());
-  const response = await client.request(readItems('lectures', {
-    limit: 10
-  }));
-  return response;
-}
+  });

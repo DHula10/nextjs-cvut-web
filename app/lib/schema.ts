@@ -1,12 +1,9 @@
 export interface Categories {
+  id: number;
   name: string;
 }
-
-export interface categorySchema {
-  categories: Categories[];
-}
-
 export interface Articles {
+  id: number;
   title: string;
   slug: string;
   content: string;
@@ -14,27 +11,31 @@ export interface Articles {
   categoryId: { name: string };
 }
 
-export interface articleSchema {
-  articles: Articles[];
-}
-
 export interface Podcasts {
+  id: number;
   title: string;
   author: string;
   link: string;
 }
 
-export interface podcastSchema {
-  podcasts: Podcasts[];
-}
-
 export interface Lectures {
+  id: number;
   title: string;
   content: string;
   img: string;
   slug: string;
 }
 
-export interface lectureSchema {
+export interface References {
+  id: number;
+  Company_Name: string;
+  Reference_Message: string;
+}
+
+export interface Schema {
+  references: References[];
+  categories: Categories[];
+  articles: Articles[];
+  podcasts: Podcasts[];
   lectures: Lectures[];
 }
