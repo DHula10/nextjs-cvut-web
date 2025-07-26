@@ -1,12 +1,11 @@
-import { getArticles } from "@/app/lib/apiRequests";
+import { getArticleBySlug } from "@/app/lib/apiRequests";
 import WysiwygContent from "../components/wysiwygContent";
 import { Metadata } from "next";
 
-type Props = { params: {slug: string} };
+type Props = { params: { slug: string } };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata>{
-    const { data: articles } = await getArticles();
-    const article = articles.find((a) => a.slug === params.slug);
+    const { data: article } = await getArticleBySlug(params.slug);
 
     if(!article){
         return{
@@ -24,16 +23,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata>{
     };
 }
 
-export async function generateStaticParams() {
-    const { data: articles } = await getArticles();
-    return articles.map((article) => ({ slug: article.slug }));
-}
-
 export default async function ArticleDetailPage({ params }: Props) {
-    const { data: articles } = await getArticles();
-    const article = articles.find((a) => a.slug === params.slug);
+    const { data: article, error } = await getArticleBySlug(params.slug);
 
-    if(!article){
+
+    if(!article || error){
         return(
             <main>
                 <h1>Článek nenalezen</h1>

@@ -27,14 +27,14 @@ export const getArticles = (): Promise<{ data: Articles[] | [], error: any }> =>
     limit: 10
   });
 
-export const getArticleById = (
-  id: number | string
+export const getArticleBySlug = (
+  slug: string
 ): Promise<{ data: Articles | null; error: any }> => {
   return apiRequest('articles', {
     fields: ['id', 'title', 'slug', 'content', 'img', 'categoryId.*'],
     filter: {
-      id: {
-        _eq: id,
+      slug: {
+        _eq: slug,
       },
     },
     limit: 1,
