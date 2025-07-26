@@ -2,9 +2,6 @@ import { rest, readItems } from '@directus/sdk';
 import directus from '@/app/lib/directus';
 import { Schema, Articles, Categories, Podcasts, Lectures } from './schema';
 
-const BACKEND_URL = "http://localhost:8055/";
-
-// Generic API wrapper with proper typing
 const apiRequest = async <T extends keyof Schema>(
   collection: T, 
   options: any
@@ -17,6 +14,8 @@ const apiRequest = async <T extends keyof Schema>(
     return { data: [], error: error };
   }
 };
+
+
 
 export const getArticles = (): Promise<{ data: Articles[] | [], error: any }> => 
   apiRequest('articles', {

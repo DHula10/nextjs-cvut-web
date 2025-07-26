@@ -14,7 +14,6 @@ export default function WysiwygContent({
 }: Props) {
     
     if (asPlainText) {
-        // Use DOMPurify's RETURN_DOM to get a DOM node, then extract textContent
         const cleanDOM = DOMPurify.sanitize(html, { RETURN_DOM: true });
         let plainText = cleanDOM.textContent || '';
         
@@ -25,7 +24,6 @@ export default function WysiwygContent({
         return <div className="prose">{plainText}</div>;
     }
 
-    // Return sanitized HTML for full content
     const cleanHTML = DOMPurify.sanitize(html);
     
     return (
