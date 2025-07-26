@@ -1,34 +1,48 @@
-import DOMPurify from 'dompurify';
+'use client';
+
+import { useEffect, useState } from 'react';
+import createDOMPurify from 'dompurify';
 
 type Props = {
     html: string;
     asPlainText?: boolean;
     maxLength?: number;
-    wordLimit?: number;
 };
 
 export default function WysiwygContent({ 
     html, 
     asPlainText = false, 
-    maxLength,  
+    maxLength 
 }: Props) {
-    
-    if (asPlainText) {
-        const cleanDOM = DOMPurify.sanitize(html, { RETURN_DOM: true });
-        let plainText = cleanDOM.textContent || '';
-        
-        if (maxLength && plainText.length > maxLength) {
-            plainText = plainText.substring(0, maxLength).trim() + '...';
+    const [sanitizedContent, setSanitizedContent] = useState('');
+
+    useEffect(() => {
+        // Použijeme DOMPurify jen na klientovi
+        const DOMPurify = createDOMPurify(window);
+
+        if (asPlainText) {
+            const cleanDOM = DOMPurify.sanitize(html, { RETURN_DOM: true }) as unknown as HTMLElement;
+            let plainText = cleanDOM.textContent || '';
+
+            if (maxLength && plainText.length > maxLength) {
+                plainText = plainText.substring(0, maxLength).trim() + '...';
+            }
+
+            setSanitizedContent(plainText);
+        } else {
+            const clean = DOMPurify.sanitize(html);
+            setSanitizedContent(clean);
         }
-        
-        return <div className="prose">{plainText}</div>;
+    }, [html, asPlainText, maxLength]);
+
+    if (asPlainText) {
+        return <div className="prose">{sanitizedContent}</div>;
     }
 
-    const cleanHTML = DOMPurify.sanitize(html);
-    
     return (
-        <div className='prose'
-             dangerouslySetInnerHTML={{ __html: cleanHTML }}
+        <div
+            className="prose"
+            dangerouslySetInnerHTML={{ __html: sanitizedContent }}
         />
     );
 }

@@ -2,6 +2,7 @@ import ArticleTile from "./articleTile";
 import styles from './articleList.module.css'
 
 type Article = {
+    id: number;
     title: string;
     slug: string;
     content: string;
@@ -18,8 +19,8 @@ export default function ArticleList({ articles }: Props) {
         <section className={`${styles.articleList}`}>
             <h4 className="absolute">Články</h4>
             <div className="mt-15 flex gap-8">
-                {articles.map((article, index) => (
-                    <ArticleTile key={index} {...article} />
+                {articles.map(article => (
+                    <ArticleTile key={article.id} {...article} />
                 ))}
             </div>
         </section>
