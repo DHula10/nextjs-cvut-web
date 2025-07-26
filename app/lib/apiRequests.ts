@@ -27,6 +27,26 @@ export const getArticles = (): Promise<{ data: Articles[] | [], error: any }> =>
     limit: 10
   });
 
+export const getArticleById = (
+  id: number | string
+): Promise<{ data: Articles | null; error: any }> => {
+  return apiRequest('articles', {
+    fields: ['id', 'title', 'slug', 'content', 'img', 'categoryId.*'],
+    filter: {
+      id: {
+        _eq: id,
+      },
+    },
+    limit: 1,
+  }).then(({ data, error }) => {
+    return {
+      data: Array.isArray(data) && data.length > 0 ? data[0] : null,
+      error,
+    };
+  });
+};
+
+
 export const getCategories = (): Promise<{ data: Categories[] | [], error: any }> => 
   apiRequest('categories', {
     fields: ['id', 'name'],
