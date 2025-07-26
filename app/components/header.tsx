@@ -20,7 +20,7 @@ const Header = ({ isBgTransparent = false }: HeaderProps) => {
         <Link href="/">
           <img
             className="h-10 lg:h-16 w-auto"
-            src="logos/Logo.svg"
+            src="/logos/Logo.svg"
             alt="ČVUT logo"
           />
         </Link>
