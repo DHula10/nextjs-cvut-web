@@ -26,7 +26,7 @@ export default function ArticleTile({ title, content, img, categoryId }: Article
                     {categoryId?.name || 'Nezařazeno'}
                 </span>
                 <h6>{title}</h6>
-                <WysiwygContent html={content}></WysiwygContent>
+                <WysiwygContent html={content} asPlainText maxLength={100}></WysiwygContent>
                 <span className={`${styles.hoverBtn} text-[16px] leading-[16px] font-bold uppercase text-cvut-green mt-8`}>ČÍST ČLÁNEK →</span>
             </div>
         </article>
