@@ -15,7 +15,7 @@ const Header = ({ isBgTransparent = false }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 ${isBgTransparent ? 'bg-transparent' : 'bg-[radial-gradient(127.46%_109.43%_at_0%_100%,#0072BC_0%,#000_100%)]'} py-5 lg:py-5 px-10  text-cvut-white`}>
+    <header className={`fixed top-0 left-0 w-full z-999 ${isBgTransparent ? 'bg-transparent' : 'bg-[radial-gradient(127.46%_109.43%_at_0%_100%,#0072BC_0%,#000_100%)]'} py-5 lg:py-5 px-10  text-cvut-white`}>
       <div className="flex items-center justify-between">
         <Link href="/">
           <img
