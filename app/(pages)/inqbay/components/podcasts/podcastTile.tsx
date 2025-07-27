@@ -4,6 +4,7 @@ import styles from './podcastTile.module.css'
 
 type PodcastProps = {
     title: string;
+    slug: string;
     author: string;
     link: string;
 };

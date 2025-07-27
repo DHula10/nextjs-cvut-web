@@ -14,6 +14,7 @@ export interface Articles {
 export interface Podcasts {
   id: number;
   title: string;
+  slug:string;
   author: string;
   link: string;
 }

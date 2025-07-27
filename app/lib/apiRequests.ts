@@ -55,7 +55,7 @@ export const getCategories = (): Promise<{ data: Categories[] | [], error: any }
 
 export const getPodcasts = (): Promise<{ data: Podcasts[] | [], error: any }> => 
   apiRequest('podcasts', {
-    fields: ['id', 'title', 'author', 'link'],
+    fields: ['id', 'title', 'slug', 'author', 'link'],
     limit: 10
   });
 

@@ -5,7 +5,9 @@ import styles from './podcastList.module.css'
 
 
 type Podcast = {
+    id: number;
     title: string;
+    slug: string;
     author: string;
     link: string;
 };
@@ -19,8 +21,8 @@ export default function PodcastList({ podcasts }: Props) {
         <section className={`${styles.podcastList} pl-16 pr-16 pb-16`}>
             <h4 className="absolute">Podcasty</h4>
             <div className="mt-15 flex gap-8">
-                {podcasts.map((podcast, index) => (
-                    <PodcastTile key={index} {...podcast} />
+                {podcasts.map(podcast => (
+                    <PodcastTile key={podcast.id} {...podcast} />
                 ))}
             </div>
         </section>
