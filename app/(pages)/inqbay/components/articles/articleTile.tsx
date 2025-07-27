@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './articleTile.module.css';
-import WysiwygContent from '../wysiwygContent';
+import WysiwygContent from '@/app/(pages)/inqbay/components/wysiwygContent';
 import Link from 'next/link';
 
 type ArticleProps = {
@@ -14,7 +14,7 @@ type ArticleProps = {
 
 export default function ArticleTile({ title, slug, content, img, categoryId }: ArticleProps) {
     return (
-        <Link href={`/inqbay/${slug}`} className={`${styles.article} bg-white shadow-md overflow-hidden flex flex-col
+        <Link href={`/inqbay/article/${slug}`} className={`${styles.article} bg-white shadow-md overflow-hidden flex flex-col
                                                 min-w-[90%] max-w-[90%] 
                                                 md:min-w-[50%] md:max-w-[50%] 
                                                 lg:min-w-[40%] lg:max-w-[40%]

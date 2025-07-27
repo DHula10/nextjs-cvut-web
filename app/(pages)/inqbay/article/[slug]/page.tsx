@@ -1,5 +1,5 @@
 import { getArticleBySlug } from "@/app/lib/apiRequests";
-import WysiwygContent from "../components/wysiwygContent";
+import WysiwygContent from '@/app/(pages)/inqbay/components/wysiwygContent';
 import { Metadata } from "next";
 
 type Props = { params: { slug: string } };
