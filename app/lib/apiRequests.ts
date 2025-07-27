@@ -1,6 +1,7 @@
 import { rest, readItems } from '@directus/sdk';
 import directus from '@/app/lib/directus';
 import { Schema, Articles, Categories, Podcasts, Lectures } from './schema';
+import { error } from 'console';
 
 const apiRequest = async <T extends keyof Schema>(
   collection: T, 
@@ -58,6 +59,25 @@ export const getPodcasts = (): Promise<{ data: Podcasts[] | [], error: any }> =>
     fields: ['id', 'title', 'slug', 'author', 'link'],
     limit: 10
   });
+
+export const getPodcastBySlug = (
+  slug: string
+): Promise<{ data: Podcasts | null; error: any }> => {
+  return apiRequest('podcasts', {
+    fields: ['id', 'title', 'slug', 'author', 'link'],
+    filter: {
+      slug: {
+        _eq: slug,
+      },
+    },
+    limit: 1,
+  }).then(({ data, error }) => {
+    return {
+      data: Array.isArray(data) && data.length > 0 ? data[0] : null,
+      error,
+    };
+  });
+};
 
 export const getLectures = (): Promise<{ data: Lectures[] | [], error: any }> => 
   apiRequest('lectures', {
