@@ -15,9 +15,9 @@ type Props = {
 
 export default function LectureList({ lectures }: Props) {
     return (
-        <section className={`${styles.lectureList} p-16`}>
+        <section className={`${styles.lectureList} min-w-[100%]`}>
             <h4 className='absolute'>Přednášky</h4>
-            <div className="mt-15 flex gap-8">
+            <div className="mt-15 flex gap-8 min-w-[100%]">
                 {lectures.map((lecture, index) => (
                     <LectureTile key={index} {...lecture} />
                 ))}
