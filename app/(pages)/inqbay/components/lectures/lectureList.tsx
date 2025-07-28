@@ -6,6 +6,7 @@ type Lecture = {
     content: string;
     img: string;
     slug: string;
+    link: string;
 };
 
 type Props = {

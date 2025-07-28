@@ -81,7 +81,7 @@ export const getPodcastBySlug = (
 
 export const getLectures = (): Promise<{ data: Lectures[] | [], error: any }> => 
   apiRequest('lectures', {
-    fields: ['id', 'title', 'content', 'img', 'slug'],
+    fields: ['id', 'title', 'content', 'img', 'slug', 'link'],
     limit: 10
   });
 
@@ -89,7 +89,7 @@ export const getLecturesBySlug = (
   slug: string
 ): Promise<{ data: Lectures | null; error: any }> => {
   return apiRequest('lectures', {
-    fields: ['id', 'title', 'content', 'img', 'slug'],
+    fields: ['id', 'title', 'content', 'img', 'slug', 'link'],
     fitler: {
       slug: {
         _eq: slug,

@@ -59,5 +59,5 @@ export default async function PodcastDetailPage({ params }: Props) {
                 </iframe>
             </div>
         </main>
-    )
+    );
 }

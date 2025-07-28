@@ -25,6 +25,7 @@ export interface Lectures {
   content: string;
   img: string;
   slug: string;
+  link: string;
 }
 
 export interface References {
