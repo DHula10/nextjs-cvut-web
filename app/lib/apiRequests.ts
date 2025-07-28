@@ -84,3 +84,22 @@ export const getLectures = (): Promise<{ data: Lectures[] | [], error: any }> =>
     fields: ['id', 'title', 'content', 'img', 'slug'],
     limit: 10
   });
+
+export const getLecturesBySlug = (
+  slug: string
+): Promise<{ data: Lectures | null; error: any }> => {
+  return apiRequest('lectures', {
+    fields: ['id', 'title', 'content', 'img', 'slug'],
+    fitler: {
+      slug: {
+        _eq: slug,
+      },
+    },
+    limit: 1,
+  }).then(({ data, error }) => {
+    return {
+      data: Array.isArray(data) && data.length > 0 ? data[0] : null,
+      error,
+    };
+  });
+};
