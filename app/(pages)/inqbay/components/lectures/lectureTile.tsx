@@ -24,7 +24,7 @@ export default function LectureTile({ title, content, img, slug }: LectureProps)
                 <img src={`http://localhost:8055/assets/${img}`} alt={title} className="object-cover w-full h-[25vh]" />
                 <div className="p-4 flex flex-col gap-2 justify-between">
                     <div>
-                        <h6>{title}</h6>
+                        <h6 className='mb-1'>{title}</h6>
                         <WysiwygContent html={content} asPlainText maxLength={75}></WysiwygContent>
                     </div>
                     <span className={`${styles.hoverBtn} text-[16px] leading-[16px] font-bold uppercase text-cvut-green mt-8`}>PUSTIT VIDEO →</span>
