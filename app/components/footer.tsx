@@ -3,10 +3,10 @@ import Link from "next/link";
 const Footer = () => {
     return (
         <footer className="bg-[radial-gradient(127.46%_109.43%_at_0%_100%,#0072BC_0%,#000_100%)] text-cvut-white flex justify-center w-full ">
-            <div className="my-20 flex flex-col justify-between gap-10 lg:flex-row lg:gap-10 xl:gap-20 w-full xl:w-fit mx-20 md:flex-row md:flex-wrap lg:flex-nowrap">
+            <div className="my-20 flex flex-col items-center justify-between gap-10 lg:flex-row lg:gap-10 xl:gap-20 w-full xl:w-fit mx-20 md:flex-row md:flex-wrap lg:flex-nowrap">
 
                 {/* SECTION: Navigace a logo */}
-                <section className="flex flex-row gap-12 lg:flex-col lg:gap-6 xl:gap-12 md:justify-between md:w-full lg:w-fit">
+                <section className="flex flex-row gap-12 justify-center lg:flex-col lg:gap-6 xl:gap-12 md:justify-between md:w-full lg:w-fit">
                     <nav className="flex flex-col gap-3">
                         <Link href="/ingine" className="heading6 link">Ingine</Link>
                         <Link href="/transfer" className="heading6 link">Transfer</Link>
