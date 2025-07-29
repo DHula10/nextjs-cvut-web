@@ -20,7 +20,7 @@ export default function PodcastList({ podcasts }: Props) {
     return(
         <section className={`${styles.podcastList}`}>
             <h4 className="absolute">Podcasty</h4>
-            <div className="mt-15 flex gap-8 h-[20vh]">
+            <div className="mt-15 flex gap-8 h-[fit]">
                 {podcasts.map(podcast => (
                     <PodcastTile key={podcast.id} {...podcast} />
                 ))}
