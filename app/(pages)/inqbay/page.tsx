@@ -15,6 +15,7 @@ export default function InqbayPage() {
   const [articles, setArticles] = useState<Articles[]>([]);
   const [podcasts, setPodcasts] = useState<Podcasts[]>([]);
   const [lectures, setLectures] = useState<Lectures[]>([]);
+  const [lectureOffset, setLectureOffset] = useState(10);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -71,6 +72,16 @@ export default function InqbayPage() {
     fetchData();
   }, []);
 
+  const handleLoadMoreLectures = async () => {
+    const response = await getLectures(lectureOffset);
+    if(!response.error && Array.isArray(response.data)) {
+      setLectures(prev => [...prev, ...response.data]);
+      setLectureOffset(prev => prev + 10);
+    } else {
+      console.error("Chyba při načítání dalších přednášek:", response.error);
+    }
+  };
+
   const filteredArticles = selectedCategory
     ? articles.filter((article) => article.categoryId?.name === selectedCategory)
     : articles;
@@ -124,8 +135,8 @@ export default function InqbayPage() {
 
       <ArticleList articles={filteredArticles} />
       <PodcastList podcasts={podcasts} />
-      <LectureList lectures={lectures} />
-      <section className={`${styles.uniLion} mt-10 mb-20`}>
+      <LectureList lectures={lectures} onLoadMore={handleLoadMoreLectures}/>
+      <section className={`${styles.uniLion} mt-30 mb-20`}>
         <div className='ml-[11%]'>
           <h4>Zjednodušte si život s UniLion</h4>
           <p className='body-l mt-5 w-[40%]'>

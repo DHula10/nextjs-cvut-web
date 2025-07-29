@@ -79,10 +79,11 @@ export const getPodcastBySlug = (
   });
 };
 
-export const getLectures = (): Promise<{ data: Lectures[] | [], error: any }> => 
+export const getLectures = (offset = 0): Promise<{ data: Lectures[] | [], error: any }> => 
   apiRequest('lectures', {
     fields: ['id', 'title', 'content', 'img', 'slug', 'link'],
-    limit: 10
+    limit: 10,
+    offset
   });
 
 export const getLecturesBySlug = (
