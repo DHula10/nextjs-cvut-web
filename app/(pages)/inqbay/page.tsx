@@ -14,6 +14,7 @@ export default function InqbayPage() {
   const [categories, setCategories] = useState<Categories[]>([]);
   const [articles, setArticles] = useState<Articles[]>([]);
   const [podcasts, setPodcasts] = useState<Podcasts[]>([]);
+  const [podcastOffset, setPodcastOffset] = useState(10);
   const [lectures, setLectures] = useState<Lectures[]>([]);
   const [lectureOffset, setLectureOffset] = useState(10);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -82,6 +83,16 @@ export default function InqbayPage() {
     }
   };
 
+  const handleLoadMorePodcasts = async () => {
+    const response = await getPodcasts(podcastOffset);
+    if(!response.error && Array.isArray(response.data)) {
+      setPodcasts(prev => [...prev, ...response.data]);
+      setPodcastOffset(prev => prev + 10);
+    } else {
+      console.error("Chyba při načítání dalších podcastů:", response.error);
+    }
+  };
+
   const filteredArticles = selectedCategory
     ? articles.filter((article) => article.categoryId?.name === selectedCategory)
     : articles;
@@ -134,7 +145,7 @@ export default function InqbayPage() {
       </section>
 
       <ArticleList articles={filteredArticles} />
-      <PodcastList podcasts={podcasts} />
+      <PodcastList podcasts={podcasts} onLoadMore={handleLoadMorePodcasts}/>
       <LectureList lectures={lectures} onLoadMore={handleLoadMoreLectures}/>
       <section className={`${styles.uniLion} mt-30 mb-20`}>
         <div className='ml-[11%]'>
