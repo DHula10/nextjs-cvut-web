@@ -19,7 +19,7 @@ type Props = {
 
 export default function PodcastList({ podcasts, onLoadMore }: Props) {
     return(
-        <section className={`${styles.podcastList}`}>
+        <section className={`${styles.podcastList} mt-10`}>
             <h4 className="absolute">Podcasty</h4>
             <div className="mt-15 flex gap-8 h-[fit]">
                 {podcasts.map(podcast => (

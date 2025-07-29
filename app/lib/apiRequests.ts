@@ -18,14 +18,15 @@ const apiRequest = async <T extends keyof Schema>(
 
 
 
-export const getArticles = (): Promise<{ data: Articles[] | [], error: any }> => 
+export const getArticles = (offset = 0): Promise<{ data: Articles[] | [], error: any }> => 
   apiRequest('articles', {
     fields: ['id', 'title', 'slug', 'content', 'img', 
       // @ts-ignore
       'categoryId.*'
     ],
     sort: ['-id'],
-    limit: 10
+    limit: 10,
+    offset
   });
 
 export const getArticleBySlug = (

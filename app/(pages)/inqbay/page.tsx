@@ -13,6 +13,7 @@ export default function InqbayPage() {
 
   const [categories, setCategories] = useState<Categories[]>([]);
   const [articles, setArticles] = useState<Articles[]>([]);
+  const [articleOffset, setArticleOffset] = useState(10);
   const [podcasts, setPodcasts] = useState<Podcasts[]>([]);
   const [podcastOffset, setPodcastOffset] = useState(10);
   const [lectures, setLectures] = useState<Lectures[]>([]);
@@ -73,13 +74,12 @@ export default function InqbayPage() {
     fetchData();
   }, []);
 
-  const handleLoadMoreLectures = async () => {
-    const response = await getLectures(lectureOffset);
+  const handleLoadMoreArticles = async () => {
+    const response = await getArticles(articleOffset);
     if(!response.error && Array.isArray(response.data)) {
-      setLectures(prev => [...prev, ...response.data]);
-      setLectureOffset(prev => prev + 10);
+      setArticles(prev => [...prev, ...response.data]);
     } else {
-      console.error("Chyba při načítání dalších přednášek:", response.error);
+      console.log("Chyba při načítání dalších článků:", response.error);
     }
   };
 
@@ -90,6 +90,16 @@ export default function InqbayPage() {
       setPodcastOffset(prev => prev + 10);
     } else {
       console.error("Chyba při načítání dalších podcastů:", response.error);
+    }
+  };
+
+  const handleLoadMoreLectures = async () => {
+    const response = await getLectures(lectureOffset);
+    if(!response.error && Array.isArray(response.data)) {
+      setLectures(prev => [...prev, ...response.data]);
+      setLectureOffset(prev => prev + 10);
+    } else {
+      console.error("Chyba při načítání dalších přednášek:", response.error);
     }
   };
 
@@ -144,7 +154,7 @@ export default function InqbayPage() {
         </div>
       </section>
 
-      <ArticleList articles={filteredArticles} />
+      <ArticleList articles={filteredArticles} onLoadMore={handleLoadMoreArticles}/>
       <PodcastList podcasts={podcasts} onLoadMore={handleLoadMorePodcasts}/>
       <LectureList lectures={lectures} onLoadMore={handleLoadMoreLectures}/>
       <section className={`${styles.uniLion} mt-30 mb-20`}>
