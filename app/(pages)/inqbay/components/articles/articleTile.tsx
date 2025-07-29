@@ -20,13 +20,13 @@ export default function ArticleTile({ title, slug, content, img, categoryId }: A
                                                 lg:min-w-[40%] lg:max-w-[40%]
                                                 xl:min-w-[30%] xl:max-w-[30%]
                                                 2xl:min-w-[20%] 2xl:max-w-[20%]`}>
-            <article className='h-full flex-col'>
-                <img src={`http://localhost:8055/assets/${img}`} alt={title} className='object-cover w-full h-[20vh]' />
-                <div className='p-4 flex flex-col gap-2 h-[100%]'>
+            <article className='flex flex-col h-[100%]'>
+                <img src={`http://localhost:8055/assets/${img}`} alt={title} className='object-cover w-full h-[50%] 2xl:h-[60%]' />
+                <div className='p-4 flex flex-col gap-2 h-[50%] 2xl:h-[40%]'>
                     <span className={`${styles.category} bg-black text-white text-xs font-semibold px-3 py-1 w-fit`}>
                         {categoryId?.name || 'Nezařazeno'}
                     </span>
-                    <div className='justify-between'>
+                    <div className='flex flex-col justify-between h-[100%]'>
                         <div>
                             <h6>{title}</h6>
                             <WysiwygContent html={content} asPlainText maxLength={75}></WysiwygContent>
