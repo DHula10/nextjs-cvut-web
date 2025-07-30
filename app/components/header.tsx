@@ -43,7 +43,7 @@ const Header = ({ isBgTransparent = false }: HeaderProps) => {
           <Link href="/">
             <img
               className="h-12 lg:h-16 w-auto"
-              src="logos/Logo.svg"
+              src="/logos/Logo.svg"
               alt="ČVUT logo"
             />
           </Link>
@@ -79,7 +79,7 @@ const Header = ({ isBgTransparent = false }: HeaderProps) => {
           <div className="flex justify-between items-center p-6 border-b border-cvut-gray/20">
             <img
               className="h-12 w-auto"
-              src="logos/Logo.svg"
+              src="/logos/Logo.svg"
               alt="ČVUT logo"
             />
             <button onClick={() => setIsMenuOpen(false)}>

@@ -16,7 +16,7 @@ const Footer = () => {
                     <div>
                         <img
                             className="h-[72px] w-auto"
-                            src="logos/Logo.svg"
+                            src="/logos/Logo.svg"
                             alt="ČVUT logo"
                         />
                         <p className="footerText mt-4">
@@ -66,10 +66,10 @@ const Footer = () => {
                     <h6>Sledujte nás</h6>
                     <div className="mt-2 flex flex-wrap">
                         <a href="">
-                            <img src="logos/LinkedinLogo.svg" alt="Linkedin logo" />
+                            <img src="/logos/LinkedinLogo.svg" alt="Linkedin logo" />
                         </a>
                         <a href="">
-                            <img src="logos/FacebookLogo.svg" alt="Facebook logo" />
+                            <img src="/logos/FacebookLogo.svg" alt="Facebook logo" />
                         </a>
                     </div>
                 </section>
