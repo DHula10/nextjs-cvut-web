@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import BarsIcon from "@/public/icons/BarsIcon";
 import XMarkIcon from "@/public/icons/X-markIcon";
@@ -13,25 +13,47 @@ type HeaderProps = {
 const Header = ({ isBgTransparent = false }: HeaderProps) => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const shouldBeScrolled = scrollTop > 50; // Change this threshold as needed
+      setIsScrolled(shouldBeScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
-      <header className={`fixed top-0 left-0 w-full z-999 ${isBgTransparent ? 'bg-transparent' : 'bg-[radial-gradient(127.46%_109.43%_at_0%_100%,#0072BC_0%,#000_100%)]'} py-5 lg:py-5 px-10  text-cvut-white`}>
+      <header className={`fixed top-0 left-0 z-999 text-cvut-white will-change-transform transition-all ${
+        // Default header styling (when not scrolled or transparent)
+        isBgTransparent && !isScrolled 
+          ? 'bg-transparent w-full py-5 px-10 duration-300 ease-in-out' 
+          : isScrolled 
+            ? 'bg-cvut-black/30 backdrop-blur-xl shadow-lg w-full rounded-b-xl md:w-3/4 md:rounded-4xl md:overflow-clip md:mt-4 md:mx-auto md:left-1/2 md:-ml-[37.5%] py-5 md:py-2 px-10 transition-all duration-300 ease-in-out' // 🎨 SCROLLED HEADER STYLING - Customize this class!
+            : 'bg-[radial-gradient(127.46%_109.43%_at_0%_100%,#0072BC_0%,#000_100%)] w-full py-5 lg:py-5 px-10 transition-all duration-300 ease-in-out' // Default background
+      }`}>
         <div className="flex items-center justify-between">
           <Link href="/">
             <img
-              className="h-10 lg:h-16 w-auto"
-              src="/logos/Logo.svg"
+              className="h-12 lg:h-16 w-auto"
+              src="logos/Logo.svg"
               alt="ČVUT logo"
             />
           </Link>
 
-          <button className={`${isMenuOpen ? 'hidden' : 'block'} sm:hidden`} onClick={() => setIsMenuOpen(true)}>
+          <button className={`${isMenuOpen ? 'hidden' : 'block'} md:hidden`} onClick={() => setIsMenuOpen(true)}>
             <BarsIcon />
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden sm:flex sm:flex-row gap-8">
+          <nav className="hidden md:flex md:flex-row gap-8">
             <Link href="/ingine" className="heading6 link">Ingine</Link>
             <Link href="/transfer" className="heading6 link">Transfer</Link>
             <Link href="/inqbay" className="heading6 link">Inqbay</Link>
