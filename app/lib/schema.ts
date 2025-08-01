@@ -1,4 +1,32 @@
-// lib/schema.ts
+export interface Categories {
+  id: number;
+  name: string;
+}
+export interface Articles {
+  id: number;
+  title: string;
+  slug: string;
+  content: string;
+  img: string;
+  categoryId: { name: string };
+}
+
+export interface Podcasts {
+  id: number;
+  title: string;
+  slug:string;
+  author: string;
+  link: string;
+}
+
+export interface Lectures {
+  id: number;
+  title: string;
+  content: string;
+  img: string;
+  slug: string;
+  link: string;
+}
 
 export interface References {
   id: number;
@@ -11,4 +39,8 @@ export interface References {
 
 export interface Schema {
   references: References[];
+  categories: Categories[];
+  articles: Articles[];
+  podcasts: Podcasts[];
+  lectures: Lectures[];
 }

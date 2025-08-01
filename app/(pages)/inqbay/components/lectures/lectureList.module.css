@@ -1,0 +1,5 @@
+.lectureList{
+    height: fit-content;
+    padding: 5%;
+    overflow-x: scroll;
+}
