@@ -22,10 +22,14 @@ export default function InqbayPage() {
 
   const [podcasts, setPodcasts] = useState<Podcasts[]>([]);
   const [podcastOffset, setPodcastOffset] = useState(10);
+  const [podcastTotal, setPodcastTotal] = useState(0);
+  const [isFetchingPodcasts, setIsFetchingPodcasts] = useState(false);
 
 
   const [lectures, setLectures] = useState<Lectures[]>([]);
   const [lectureOffset, setLectureOffset] = useState(10);
+  const [lectureTotal, setLectureTotal] = useState(0);
+  const [isFetchingLectures, setIsFetchingLectures] = useState(false);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -64,6 +68,8 @@ export default function InqbayPage() {
           console.error('Error fetching podcasts:', podcastsResponse.error);
         } else {
           setPodcasts(podcastsResponse.data as Podcasts[]);
+          setPodcastTotal(podcastsResponse.total);
+          setPodcastOffset(podcastsResponse.data.length);
         }
 
         // Handle lectures
@@ -71,6 +77,8 @@ export default function InqbayPage() {
           console.error('Error fetching lectures:', lecturesResponse.error);
         } else {
           setLectures(lecturesResponse.data as Lectures[]);
+          setLectureTotal(lecturesResponse.total);
+          setLectureOffset(lecturesResponse.data.length);
         }
 
       } catch (err) {
@@ -104,23 +112,39 @@ export default function InqbayPage() {
 
 
   const handleLoadMorePodcasts = async () => {
+    if(isFetchingPodcasts) return;
+
+    setIsFetchingPodcasts(true);
     const response = await getPodcasts(podcastOffset);
-    if (!response.error && Array.isArray(response.data)) {
-      setPodcasts(prev => [...prev, ...response.data]);
+    if(!response.error && Array.isArray(response.data)) {
+      setPodcasts(prev => {
+        const existingIds = new Set(prev.map(p => p.id));
+        const newUnique = response.data.filter(p => !existingIds.has(p.id));
+        return [...prev, ...newUnique];
+      });
       setPodcastOffset(prev => prev + 10);
     } else {
-      console.error("Chyba při načítání dalších podcastů:", response.error);
+      console.log('Chyba při načítání dalších podcastů:', response.error);
     }
+    setIsFetchingPodcasts(false);
   };
 
   const handleLoadMoreLectures = async () => {
+    if(isFetchingLectures) return;
+
+    setIsFetchingLectures(true);
     const response = await getLectures(lectureOffset);
-    if (!response.error && Array.isArray(response.data)) {
-      setLectures(prev => [...prev, ...response.data]);
+    if(!response.error && Array.isArray(response.data)) {
+      setLectures(prev => {
+        const existingIds = new Set(prev.map(l => l.id));
+        const newUnique = response.data.filter(l => !existingIds.has(l.id));
+        return [...prev, ...newUnique];
+      });
       setLectureOffset(prev => prev + 10);
     } else {
-      console.error("Chyba při načítání dalších přednášek:", response.error);
+      console.log('Chyba při načítání dalších přednášek:', response.error);
     }
+    setIsFetchingLectures(false);
   };
 
   const filteredArticles = selectedCategory
@@ -158,7 +182,7 @@ export default function InqbayPage() {
       </section>
 
       {/*KATEGORIE FILTR*/}
-      <section id='category' className='flex flex-col items-center py-14'>
+      <section id='category' className='flex flex-col items-center mt-14'>
         <h3>Zvolte téma</h3>
         <div className='mt-8 flex flex-wrap justify-center gap-3'>
           <button
@@ -191,8 +215,24 @@ export default function InqbayPage() {
         <ArticleList articles={filteredArticles} />
       </TileSectionWrapper>
 
-      <PodcastList podcasts={podcasts} onLoadMore={handleLoadMorePodcasts} />
-      <LectureList lectures={lectures} onLoadMore={handleLoadMoreLectures} />
+      <TileSectionWrapper
+        title='Podcasty'
+        hasMore={podcasts.length < podcastTotal}
+        onLoadMore={handleLoadMorePodcasts}
+      >
+        <PodcastList podcasts={podcasts} />
+      </TileSectionWrapper>
+
+      <TileSectionWrapper
+        title='Přednášky'
+        hasMore={lectures.length < lectureTotal}
+        onLoadMore={handleLoadMoreLectures}
+      >
+          <LectureList lectures={lectures}/>
+      </TileSectionWrapper>
+
+      
+      
       <section className={`${styles.uniLion} mt-30 mb-20`}>
         <div className='ml-[11%]'>
           <h4>Zjednodušte si život s UniLion</h4>

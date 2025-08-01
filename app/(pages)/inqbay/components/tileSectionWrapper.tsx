@@ -74,9 +74,8 @@ const handleScrollLeft = () => {
 };
 
     return (
-        <section className="relative min-w-full max-w-full py-10">
+        <section className="flex flex-col min-h-fit min-w-full max-w-full mt-15">
             <h4 className="mb-4 ml-[5%]">{title}</h4>
-
             <div className="relative">
                 {scrollPageNumber > 0 && (
                     <button
@@ -93,7 +92,7 @@ const handleScrollLeft = () => {
 
                 <div
                     ref={containerRef}
-                    className="overflow-x-auto scrollbar-none flex gap-8 min-w-full px-[5%]"
+                    className="overflow-x-auto scrollbar-none"
                 >
                     {children}
                 </div>

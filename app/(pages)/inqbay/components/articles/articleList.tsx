@@ -17,9 +17,9 @@ type Props = {
 export default function ArticleList({ articles, }: Props) {
     return (
 
-        <div className={`flex gap-8 min-w-[100%]`}>
+        <div className={`flex gap-8 min-w-[100%] min-h-fit pl-[5%] pb-5 pt-5`}>
             {articles.map(article => (
-                <ArticleTile key={`${article.id}-${article.slug}`} {...article} />
+                <ArticleTile key={`${article.id}`} {...article} />
             ))}
         </div>
     );

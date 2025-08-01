@@ -19,7 +19,7 @@ export default function ArticleTile({ title, slug, content, img, categoryId }: A
                                                 md:min-w-[50%] md:max-w-[50%] 
                                                 lg:min-w-[40%] lg:max-w-[40%]
                                                 xl:min-w-[30%] xl:max-w-[30%]
-                                                2xl:min-w-[20%] 2xl:max-w-[20%]`}>
+                                                2xl:min-w-[20%] 2xl:max-w-[20%] min-h-fit`}>
             <article className='flex flex-col h-[100%]'>
                 <img src={`http://localhost:8055/assets/${img}`} alt={title} className='object-cover w-full h-[50%] 2xl:h-[60%]' />
                 <div className='p-4 flex flex-col gap-2 h-[50%] 2xl:h-[40%]'>

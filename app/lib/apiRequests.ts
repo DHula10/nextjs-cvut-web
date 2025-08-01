@@ -28,19 +28,6 @@ const getCount = async (collection: keyof Schema): Promise<number> => {
   }
 }
 
-/*
-export const getArticles = (offset = 0): Promise<{ data: Articles[] | [], error: any }> => 
-  apiRequest('articles', {
-    fields: ['id', 'title', 'slug', 'content', 'img', 
-      // @ts-ignore
-      'categoryId.*'
-    ],
-    sort: ['-id'],
-    limit: 10,
-    offset
-  });
-  */
-
 export const getArticles = async (offset = 0): Promise<{
   data: Articles[] | [];
   total: number;
@@ -82,12 +69,20 @@ export const getCategories = (): Promise<{ data: Categories[] | [], error: any }
     sort: ['-id']
   });
 
-export const getPodcasts = (offset = 0): Promise<{ data: Podcasts[] | [], error: any }> => 
-  apiRequest('podcasts', {
+export const getPodcasts = async (offset = 0): Promise<{ 
+  data: Podcasts[] | []; 
+  total: number;
+  error: any;
+}> => {
+  const { data, error } = await apiRequest('podcasts', {
     fields: ['id', 'title', 'slug', 'author', 'link'],
     limit: 10,
     offset
   });
+  const total = await getCount('podcasts');
+  return { data, error, total };
+}
+  
 
 export const getPodcastBySlug = (
   slug: string
@@ -108,12 +103,19 @@ export const getPodcastBySlug = (
   });
 };
 
-export const getLectures = (offset = 0): Promise<{ data: Lectures[] | [], error: any }> => 
-  apiRequest('lectures', {
+export const getLectures = async (offset = 0): Promise<{
+  data: Lectures[] | [];
+  total: number;
+  error: any;
+}> => {
+  const { data, error } = await apiRequest('lectures', {
     fields: ['id', 'title', 'content', 'img', 'slug', 'link'],
     limit: 10,
     offset
   });
+  const total = await getCount('lectures');
+  return { data, error, total };
+}
 
 export const getLecturesBySlug = (
   slug: string
