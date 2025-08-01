@@ -19,7 +19,7 @@ export default function ArticleList({ articles, }: Props) {
 
         <div className={`flex gap-8 min-w-[100%]`}>
             {articles.map(article => (
-                <ArticleTile key={article.id} {...article} />
+                <ArticleTile key={`${article.id}-${article.slug}`} {...article} />
             ))}
         </div>
     );

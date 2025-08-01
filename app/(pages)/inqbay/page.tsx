@@ -18,6 +18,7 @@ export default function InqbayPage() {
   const [articles, setArticles] = useState<Articles[]>([]);
   const [articleOffset, setArticleOffset] = useState(10);
   const [articleTotal, setArticleTotal] = useState(0);
+  const [isFetchingArticles, setIsFetchingArticles] = useState(false);
 
   const [podcasts, setPodcasts] = useState<Podcasts[]>([]);
   const [podcastOffset, setPodcastOffset] = useState(10);
@@ -25,7 +26,7 @@ export default function InqbayPage() {
 
   const [lectures, setLectures] = useState<Lectures[]>([]);
   const [lectureOffset, setLectureOffset] = useState(10);
-  
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,7 +34,7 @@ export default function InqbayPage() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        
+
         // Fetch all data in parallel
         const [categoriesResponse, articlesResponse, podcastsResponse, lecturesResponse] = await Promise.all([
           getCategories(),
@@ -84,18 +85,27 @@ export default function InqbayPage() {
   }, []);
 
   const handleLoadMoreArticles = async () => {
+    if (isFetchingArticles) return;
+
+    setIsFetchingArticles(true);
     const response = await getArticles(articleOffset);
-    if(!response.error && Array.isArray(response.data)) {
-      setArticles(prev => [...prev, ...response.data]);
-      setArticleOffset(prev => prev + response.data.length);
+    if (!response.error && Array.isArray(response.data)) {
+      setArticles(prev => {
+        const existingIds = new Set(prev.map(a => a.id));
+        const newUnique = response.data.filter(a => !existingIds.has(a.id));
+        return [...prev, ...newUnique];
+      });
+      setArticleOffset(prev => prev + 10);
     } else {
       console.log("Chyba při načítání dalších článků:", response.error);
     }
+    setIsFetchingArticles(false);
   };
+
 
   const handleLoadMorePodcasts = async () => {
     const response = await getPodcasts(podcastOffset);
-    if(!response.error && Array.isArray(response.data)) {
+    if (!response.error && Array.isArray(response.data)) {
       setPodcasts(prev => [...prev, ...response.data]);
       setPodcastOffset(prev => prev + 10);
     } else {
@@ -105,7 +115,7 @@ export default function InqbayPage() {
 
   const handleLoadMoreLectures = async () => {
     const response = await getLectures(lectureOffset);
-    if(!response.error && Array.isArray(response.data)) {
+    if (!response.error && Array.isArray(response.data)) {
       setLectures(prev => [...prev, ...response.data]);
       setLectureOffset(prev => prev + 10);
     } else {
@@ -154,8 +164,8 @@ export default function InqbayPage() {
           <button
             onClick={() => setSelectedCategory(null)}
             className={`bg-[#A0B10266] px-5 py-2 rounded-xl uppercase font-bold 
-                      ${styles.categoryButton} ${selectedCategory === null ? 
-                      'bg-cvut-green' : ''}`}
+                      ${styles.categoryButton} ${selectedCategory === null ?
+                'bg-cvut-green' : ''}`}
           >
             všechny kategorie
           </button>
@@ -164,8 +174,8 @@ export default function InqbayPage() {
               key={cat.name}
               onClick={() => setSelectedCategory(cat.name)}
               className={`bg-[#A0B10266] px-5 py-2 uppercase rounded-xl font-bold 
-                        ${styles.categoryButton} ${selectedCategory === cat.name ? 
-                        'bg-cvut-green' : ''}`}
+                        ${styles.categoryButton} ${selectedCategory === cat.name ?
+                  'bg-cvut-green' : ''}`}
             >
               {cat.name}
             </button>
@@ -177,12 +187,12 @@ export default function InqbayPage() {
         title='Články'
         hasMore={filteredArticles.length < filteredTotal}
         onLoadMore={handleLoadMoreArticles}
-        >
-          <ArticleList articles={filteredArticles}/>
+      >
+        <ArticleList articles={filteredArticles} />
       </TileSectionWrapper>
-      
-      <PodcastList podcasts={podcasts} onLoadMore={handleLoadMorePodcasts}/>
-      <LectureList lectures={lectures} onLoadMore={handleLoadMoreLectures}/>
+
+      <PodcastList podcasts={podcasts} onLoadMore={handleLoadMorePodcasts} />
+      <LectureList lectures={lectures} onLoadMore={handleLoadMoreLectures} />
       <section className={`${styles.uniLion} mt-30 mb-20`}>
         <div className='ml-[11%]'>
           <h4>Zjednodušte si život s UniLion</h4>
