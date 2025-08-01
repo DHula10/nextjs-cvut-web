@@ -21,7 +21,7 @@ export default function TextArea({
     error,
 }: TextAreaProps) {
     return (
-        <div className="flex flex-col gap-2 max-w-[480px] min-h-[224px]">
+        <div className="flex flex-col gap-2 w-full min-h-[224px]">
             <label htmlFor={name} className="heading6 text-cvut-black">
                 {label}
                 {required && <span>*</span>}

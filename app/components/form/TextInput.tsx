@@ -27,7 +27,7 @@ export default function TextInput({
     errorMessage = "Toto pole je povinné.",
 }: TextInputProps) {
     return (
-        <div className="flex flex-col gap-2 max-w-[480px] min-h-[104px]">
+        <div className="flex flex-col gap-2 w-full min-h-[104px]">
             <label htmlFor={name} className="heading6 text-cvut-black">
                 {label}
                 {required && <span>*</span>}

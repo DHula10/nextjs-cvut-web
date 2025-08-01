@@ -1,0 +1,12 @@
+.embla {
+  overflow: hidden;
+  padding: 0 1rem; /* Add padding to the outer container */
+}
+.embla__container {
+  display: flex;
+  gap: 2rem;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
