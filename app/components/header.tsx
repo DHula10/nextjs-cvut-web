@@ -36,7 +36,7 @@ const Header = ({ isBgTransparent = false }: HeaderProps) => {
         isBgTransparent && !isScrolled 
           ? 'bg-transparent w-full py-5 px-10 duration-300 ease-in-out' 
           : isScrolled 
-            ? 'bg-cvut-black/30 backdrop-blur-xl shadow-lg w-full rounded-b-xl md:w-3/4 md:rounded-4xl md:overflow-clip md:mt-4 md:mx-auto md:left-1/2 md:-ml-[37.5%] py-5 md:py-2 px-10 transition-all duration-300 ease-in-out' // 🎨 SCROLLED HEADER STYLING - Customize this class!
+            ? 'bg-cvut-black/50 backdrop-blur-xl shadow-lg w-full rounded-b-xl md:w-3/4 md:rounded-4xl md:overflow-clip md:mt-4 md:mx-auto md:left-1/2 md:-ml-[37.5%] py-5 md:py-3 px-10 transition-all duration-300 ease-in-out' // 🎨 SCROLLED HEADER STYLING - Customize this class!
             : 'bg-[radial-gradient(127.46%_109.43%_at_0%_100%,#0072BC_0%,#000_100%)] w-full py-5 lg:py-5 px-10 transition-all duration-300 ease-in-out' // Default background
       }`}>
         <div className="flex items-center justify-between">
