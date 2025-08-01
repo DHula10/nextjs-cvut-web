@@ -1,7 +1,6 @@
 import { rest, readItems } from '@directus/sdk';
 import directus from '@/app/lib/directus';
 import { Schema, Articles, Categories, Podcasts, Lectures } from './schema';
-import { error } from 'console';
 
 const apiRequest = async <T extends keyof Schema>(
   collection: T, 
@@ -9,6 +8,7 @@ const apiRequest = async <T extends keyof Schema>(
 ): Promise<{ data: Schema[T] | [], error: any }> => {
   try {
     const response = await directus.request(readItems(collection, options));
+    console.log(`Načítám: ${collection}`);
     return { data: response as Schema[T], error: null };
   } catch (error) {
     console.error(`Error fetching ${collection}:`, error);
@@ -16,8 +16,19 @@ const apiRequest = async <T extends keyof Schema>(
   }
 };
 
+const getCount = async (collection: keyof Schema): Promise<number> => {
+  try {
+    const res = await fetch(`http://localhost:8055/items/${collection}?meta=total_count`);
+    const json = await res.json();
+    console.log(`Celkový počet položek ${collection}:`, json.meta.total_count);
+    return json.meta.total_count ?? 0;
+  } catch(error) {
+    console.error(`Error counting ${collection}:`, error);
+    return 0;
+  }
+}
 
-
+/*
 export const getArticles = (offset = 0): Promise<{ data: Articles[] | [], error: any }> => 
   apiRequest('articles', {
     fields: ['id', 'title', 'slug', 'content', 'img', 
@@ -28,6 +39,22 @@ export const getArticles = (offset = 0): Promise<{ data: Articles[] | [], error:
     limit: 10,
     offset
   });
+  */
+
+export const getArticles = async (offset = 0): Promise<{
+  data: Articles[] | [];
+  total: number;
+  error: any;
+}> => {
+  const { data, error } = await apiRequest('articles', {
+    fields: ['id', 'title', 'slug', 'content', 'img', 'categoryId.*'],
+    sort: ['-id'],
+    limit: 10,
+    offset
+  });
+  const total = await getCount('articles');
+  return { data, error, total };
+}
 
 export const getArticleBySlug = (
   slug: string

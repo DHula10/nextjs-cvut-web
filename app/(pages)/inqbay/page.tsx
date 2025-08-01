@@ -8,17 +8,24 @@ import { useState, useEffect } from 'react';
 
 import { getArticles, getCategories, getLectures, getPodcasts } from '@/app/lib/apiRequests';
 import type { Categories, Articles, Podcasts, Lectures } from '@/app/lib/schema';
+import TileSectionWrapper from './components/tileSectionWrapper';
 
 export default function InqbayPage() {
 
   const [categories, setCategories] = useState<Categories[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
   const [articles, setArticles] = useState<Articles[]>([]);
   const [articleOffset, setArticleOffset] = useState(10);
+  const [articleTotal, setArticleTotal] = useState(0);
+
   const [podcasts, setPodcasts] = useState<Podcasts[]>([]);
   const [podcastOffset, setPodcastOffset] = useState(10);
+
+
   const [lectures, setLectures] = useState<Lectures[]>([]);
   const [lectureOffset, setLectureOffset] = useState(10);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -30,9 +37,9 @@ export default function InqbayPage() {
         // Fetch all data in parallel
         const [categoriesResponse, articlesResponse, podcastsResponse, lecturesResponse] = await Promise.all([
           getCategories(),
-          getArticles(),
-          getPodcasts(),
-          getLectures()
+          getArticles(0),
+          getPodcasts(0),
+          getLectures(0)
         ]);
 
         // Handle categories
@@ -47,6 +54,8 @@ export default function InqbayPage() {
           console.error('Error fetching articles:', articlesResponse.error);
         } else {
           setArticles(articlesResponse.data as Articles[]);
+          setArticleTotal(articlesResponse.total);
+          setArticleOffset(articlesResponse.data.length);
         }
 
         // Handle podcasts
@@ -78,6 +87,7 @@ export default function InqbayPage() {
     const response = await getArticles(articleOffset);
     if(!response.error && Array.isArray(response.data)) {
       setArticles(prev => [...prev, ...response.data]);
+      setArticleOffset(prev => prev + response.data.length);
     } else {
       console.log("Chyba při načítání dalších článků:", response.error);
     }
@@ -107,10 +117,13 @@ export default function InqbayPage() {
     ? articles.filter((article) => article.categoryId?.name === selectedCategory)
     : articles;
 
+  const filteredTotal = selectedCategory
+    ? articles.filter((a) => a.categoryId?.name === selectedCategory).length : articleTotal;
+
   if (loading) {
     return (
       <main className="flex justify-center items-center h-screen">
-        <div>Loading...</div>
+        <div>Načítám...</div>
       </main>
     );
   }
@@ -140,21 +153,34 @@ export default function InqbayPage() {
         <div className='mt-8 flex flex-wrap justify-center gap-3'>
           <button
             onClick={() => setSelectedCategory(null)}
-            className={`bg-[#A0B10266] px-5 py-2 rounded-xl uppercase font-bold ${styles.categoryButton} ${selectedCategory === null ? 'bg-cvut-green' : ''}`}>
+            className={`bg-[#A0B10266] px-5 py-2 rounded-xl uppercase font-bold 
+                      ${styles.categoryButton} ${selectedCategory === null ? 
+                      'bg-cvut-green' : ''}`}
+          >
             všechny kategorie
           </button>
           {categories.map((cat) => (
             <button
               key={cat.name}
               onClick={() => setSelectedCategory(cat.name)}
-              className={`bg-[#A0B10266] px-5 py-2 uppercase rounded-xl font-bold ${styles.categoryButton} ${selectedCategory === cat.name ? 'bg-cvut-green' : ''}`}>
+              className={`bg-[#A0B10266] px-5 py-2 uppercase rounded-xl font-bold 
+                        ${styles.categoryButton} ${selectedCategory === cat.name ? 
+                        'bg-cvut-green' : ''}`}
+            >
               {cat.name}
             </button>
           ))}
         </div>
       </section>
 
-      <ArticleList articles={filteredArticles} onLoadMore={handleLoadMoreArticles}/>
+      <TileSectionWrapper
+        title='Články'
+        hasMore={filteredArticles.length < filteredTotal}
+        onLoadMore={handleLoadMoreArticles}
+        >
+          <ArticleList articles={filteredArticles}/>
+      </TileSectionWrapper>
+      
       <PodcastList podcasts={podcasts} onLoadMore={handleLoadMorePodcasts}/>
       <LectureList lectures={lectures} onLoadMore={handleLoadMoreLectures}/>
       <section className={`${styles.uniLion} mt-30 mb-20`}>
