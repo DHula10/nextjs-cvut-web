@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { useEffect, useRef, useState } from "react";
 
 type TileSectionWrapperProps = {
@@ -79,13 +80,13 @@ const handleScrollLeft = () => {
             <div className="relative">
                 {scrollPageNumber > 0 && (
                     <button
-                        className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r 
-                                from-cvut-white/90 to-transparent z-10 flex items-center 
+                        className="absolute left-0 top-0 h-full w-48 bg-gradient-to-r 
+                                from-cvut-white/90 via-cvut-white/80 to-transparent z-10 flex items-center 
                                 justify-center cursor-pointer"
                         onClick={handleScrollLeft}
                     >
-                        <div className="rounded-full bg-cvut-green w-12 h-12 flex items-center justify-center">
-                            <span className="text-white text-lg">‹</span>
+                        <div className="rounded-full bg-cvut-green w-16 h-16 flex items-center justify-center shadow-2xl shadow-black text-cvut-white">
+                            <Image src="/icons/chevron-left.svg" alt="Chevron left" width={32} height={32} /> 
                         </div>
                     </button>
                 )}
@@ -99,13 +100,13 @@ const handleScrollLeft = () => {
 
                 {(hasMore || canScrollRight) && (
                     <button
-                        className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l 
-                                from-cvut-white/90 to-transparent z-10 flex items-center 
+                        className="absolute right-0 top-0 h-full w-48 bg-gradient-to-l 
+                                from-cvut-white/100 via-cvut-white/80 to-transparent z-10 flex items-center 
                                 justify-center cursor-pointer"
                         onClick={handleScrollRight}
                     >
-                        <div className="rounded-full bg-cvut-green w-12 h-12 flex items-center justify-center">
-                            <span className="text-white text-lg">›</span>
+                        <div className="rounded-full bg-cvut-green w-16 h-16 flex items-center justify-center shadow-2xl shadow-black text-cvut-white">
+                            <Image src="/icons/chevron-right.svg" alt="Chevron right" width={32} height={32} /> 
                         </div>
                     </button>
                 )}

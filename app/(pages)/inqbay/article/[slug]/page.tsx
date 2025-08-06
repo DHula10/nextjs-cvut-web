@@ -37,13 +37,13 @@ export default async function ArticleDetailPage({ params }: Props) {
     };
 
     return(
-        <main className="mt-28 pl-7 pr-7 mb-30">
+        <main className="mt-40 mb-20 mx-auto max-w-7xl px-4">
             <h3 className='mb-3'>{article.title}</h3>
             <span className={` bg-black text-white text-[15px] font-semibold px-3 py-1 w-fit rounded-[25px]`}>
                 {article.categoryId?.name || 'Nezařazeno'}
             </span>
             <img src={`http://localhost:8055/assets/${article.img}`} alt={article.title}
-                 className='mt-5 h-[500px] mb-5'/>
+                 className='mx-auto my-10 h-[500px]'/>
             <WysiwygContent html={article.content}/>
         </main>
     )

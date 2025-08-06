@@ -46,7 +46,7 @@ export default async function PodcastDetailPage({ params }: Props) {
 
 
     return (
-        <main className="mt-28 pl-7 pr-7 mb-30">
+        <main className="mt-40 mb-20 mx-auto max-w-7xl px-4">
             <h3 className='mb-3'>{podcast.title}</h3>
             <span className={` bg-black text-white text-[15px] font-semibold px-3 py-1 w-fit rounded-[25px]`}>
                {podcast.author}
@@ -55,7 +55,7 @@ export default async function PodcastDetailPage({ params }: Props) {
                 <iframe src={getEmbedUrl(podcast.link)}
                         title={podcast.title}
                         allowFullScreen
-                        className="h-[80%] w-full">
+                        className="h-[100%] w-full">
                 </iframe>
             </div>
         </main>
