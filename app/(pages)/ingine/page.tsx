@@ -10,8 +10,8 @@ import RocketIcon from '@/public/icons/RocketIcon';
 import UserCircleGearIcon from '@/public/icons/UserCircleGearIcon';
 
 export const metadata: Metadata = {
-  title: 'Ingine',
-  description: 'Lorem Ipsum',
+    title: 'Ingine | Odbor transferu technologií a fundraisingu ČVUT',
+    description: 'Lorem Ipsum',
 }
 
 export default function InginePage() {
