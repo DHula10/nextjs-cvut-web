@@ -15,7 +15,7 @@ export default function InqbayPage() {
 
   return (
     <main>
-      <section className={`${styles.hero} flex flex-col h-svh justify-center pl-20 lg:pl-32 md:pt-10`}>
+      <section id='hero' className={`${styles.hero} flex flex-col h-svh justify-center pl-20 lg:pl-32 md:pt-10`}>
         <div className='relative flex flex-col gap-8 z-50'>
           <h6 className='text-cvut-green uppercase'>#transfer</h6>
           <h2 className='text-4xl font-bold md:max-w-3/4 uppercase lg:max-w-5/6 xl:max-w-3/4'>Opřete se o důvěryhodné zdroje ještě před realizací</h2>
@@ -26,7 +26,7 @@ export default function InqbayPage() {
 
       <InqbayClient />
 
-      <section className={`${styles.uniLion} mt-30 mb-20`}>
+      <section id='uniLion' className={`${styles.uniLion} mt-30 mb-20`}>
         <div className='ml-[11%]'>
           <h4>Zjednodušte si život s UniLion</h4>
           <p className='body-l mt-5 w-[40%]'>
@@ -38,7 +38,7 @@ export default function InqbayPage() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col justify-center items-center py-20">
+      <section id='contact' className="flex flex-col justify-center items-center py-20">
         <article className={`${styles.realisationArticle} flex flex-col gap-5 items-center`}>
           <h3 className={`text-center min-w-full`}>
             Chcete probrat realizaci

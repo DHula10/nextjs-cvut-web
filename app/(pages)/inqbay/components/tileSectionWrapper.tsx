@@ -75,7 +75,7 @@ const handleScrollLeft = () => {
 };
 
     return (
-        <section className="flex flex-col min-h-fit min-w-full max-w-full mt-15">
+        <section id={title} className="flex flex-col min-h-fit min-w-full max-w-full mt-15">
             <h4 className="mb-4 ml-[5%]">{title}</h4>
             <div className="relative">
                 {scrollPageNumber > 0 && (
