@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Button from '@/app/components/button';
 import styles from './transfer.module.css';
-import Calendly from '@/app/components/calendly/calendly';
 
 export const metadata: Metadata = {
     title: 'Transfer | Odbor transferu technologií a fundraisingu ČVUT',
@@ -111,7 +110,9 @@ export default function TransferPage() {
                         Domluvme si online konzultaci, během které se seznámíme
                         s vaším projektem a probereme potenciální postup.
                     </p>
-                    <Calendly />
+
+                    <Button isLink label="naplánujte si schůzku" target='_blank' inverse bgColor="y" href="https://outlook.office365.com/book/TransferVUT@campuscvut.onmicrosoft.com/?ismsaljsauthenabled=true" />
+
                 </article>    
             </section>
         </main>

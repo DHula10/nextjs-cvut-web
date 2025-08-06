@@ -54,10 +54,10 @@ const Header = ({ isBgTransparent = false }: HeaderProps) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex md:flex-row gap-8">
-            <Link href="/ingine" className="heading6 link">Ingine</Link>
-            <Link href="/transfer" className="heading6 link">Transfer</Link>
             <Link href="/inqbay" className="heading6 link">Inqbay</Link>
-            <Link href="/#Konzultace" className="heading6 link">Kontakt</Link>
+            <Link href="/transfer" className="heading6 link">Transfer</Link>
+            <Link href="/ingine" className="heading6 link hover:text-red-700">Ingine</Link>
+            <Link href="/#contact" className="heading6 link">Kontakt</Link>
           </nav>
         </div>
       </header>

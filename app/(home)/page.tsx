@@ -16,7 +16,7 @@ export default function Home() {
           <h1 className="text-cvut-white">Transferu technologií</h1>
           <p className="body-l text-cvut-blue-light">Místě, kde posouváme hranice vědy <br /> a oživujeme inovace.</p>
         </div>
-        <Button isLink label="chci konzultaci" bgColor="y" href="#konzultace" />
+        <Button isLink label="chci konzultaci" bgColor="y" href="#contact" />
       </section>
 
       <section id="Reference" className="flex flex-col gap-8 items-center py-8 xl:py-24">
@@ -27,7 +27,7 @@ export default function Home() {
 
       </section>
 
-      <section id="Proces" className=" hidden md:flex mb-32 mx-8 md:mx-16 lg:mx-32 flex-col gap-20 items-center">
+      <section id="process" className=" hidden md:flex mb-32 mx-8 md:mx-16 lg:mx-32 flex-col gap-20 items-center">
         <h2>Jak začít s péčí o nápad</h2>
         <div className="w-full flex flex-col gap-20">
           <div className="w-full h-0 flex flex-row">
@@ -111,7 +111,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="mise" className="flex flex-col items-center py-16">
+      <section id="mission" className="flex flex-col items-center py-16">
 
         <div className="w-[95%] lg:w-[70%] bg-cvut-blue-lighter p-2 md:p-8 lg:p-12 rounded-[40px] flex flex-col md:flex-row md:gap-10 lg:justify-between items-center">
 
@@ -128,7 +128,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="Konzultace" className="flex flex-col gap-10 mx-2 md:mx-16 xl:mx-32 pt-8 mb-16 md:mb-32 items-center justify-center">
+      <section id="contact" className="flex flex-col gap-10 mx-2 md:mx-16 xl:mx-32 pt-8 mb-16 md:mb-32 items-center justify-center">
         <h2 className="w-fit">Ozvěte se nám</h2>
         <p className="text-center body-l">Nechte nám zprávu a info kam a kdy se máme ozvat. Nebo rovnou zavolejte Ondrovi.</p>
 
