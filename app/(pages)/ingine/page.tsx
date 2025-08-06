@@ -34,21 +34,21 @@ export default function InginePage() {
         <div className="flex flex-col gap-10 z-50">
           <h3 className="ml-20 lg:ml-32">Jak vás v této fázi podpoříme</h3>
 
-          <div className="flex flex-row gap-4 bg-red-100 py-5 px-6 md:px-16 lg:px-32 rounded-r-full w-full md:w-9/12 lg:w-9/12 xl:w-7/12 items-center">
+          <div className="flex flex-row gap-4 bg-cvut-red/20 backdrop-blur-md py-5 px-6 md:px-16 lg:px-32 rounded-r-full w-full md:w-9/12 lg:w-9/12 xl:w-7/12 items-center">
             <div className="min-w-14 h-14 text-cvut-red"><RocketIcon /></div>
             <span className="body-l whitespace-normal max-w-full">
               Poskytneme nástroje a podporu, <br /> které akcelerují růst vašeho projektu.
             </span>
           </div>
 
-          <div className="flex flex-row gap-4 bg-red-100 py-5 px-6 md:px-16 lg:px-32 rounded-r-full w-full md:w-10/12 lg:w-10/12 xl:w-8/12 items-center text-xl">
+          <div className="flex flex-row gap-4 bg-cvut-red/20 backdrop-blur-md py-5 px-6 md:px-16 lg:px-32 rounded-r-full w-full md:w-10/12 lg:w-10/12 xl:w-8/12 items-center text-xl">
             <div className="min-w-14 h-14 text-cvut-red"><CircleWavyCheckIcon /></div>
             <span className="body-l whitespace-normal max-w-full">
               Nabídneme expertní analýzu a strategické poradenství <br /> k efektivní komercializaci.
             </span>
           </div>
 
-          <div className="flex flex-row gap-4 bg-red-100 py-5 px-6 md:px-16 lg:px-32 rounded-r-full w-full md:w-11/12 lg:w-11/12 xl:w-9/12 items-center">
+          <div className="flex flex-row gap-4 bg-cvut-red/20 backdrop-blur-md py-5 px-6 md:px-16 lg:px-32 rounded-r-full w-full md:w-11/12 lg:w-11/12 xl:w-9/12 items-center">
             <div className="min-w-14 h-14 text-cvut-red"><UserCircleGearIcon /></div>
             <span className="body-l whitespace-normal max-w-full">
               Zhodnotíme připravenost vašeho projektu na úspěšnou <br /> prezentaci před investory.
@@ -57,7 +57,7 @@ export default function InginePage() {
         </div>
       </section>
 
-      <section className="flex flex-col gap-10 mx-32 mt-8 mb-32">
+      <section id='request-investment' className="flex flex-col gap-10 mx-32 mt-8 mb-32">
         <h3 className='text-cvut-black'>Požádejte o investici</h3>
         <p className='body-m'>Vyplňte krátký formulář a my vám zašleme potvrzení spolu s dalším postupem.</p>
         <ContactForm />

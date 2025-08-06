@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function TransferPage() {
     return (
         <main className='w-full'>
-            <section className={`${styles.hero} flex flex-col h-svh justify-center pl-20 lg:pl-32 md:pt-10`}>
+            <section id='hero' className={`${styles.hero} flex flex-col h-svh justify-center pl-20 lg:pl-32 md:pt-10`}>
                 <div className='relative flex flex-col gap-8 z-50'>
                     <h6 className='text-cvut-yellow'>#TRANSFER</h6>
                     <h2 className='text-4xl font-bold md:max-w-3/4 lg:max-w-5/6 xl:max-w-3/4'>Ověřte, zda je váš nápad připravený změnit svět</h2>
@@ -18,7 +18,7 @@ export default function TransferPage() {
                     <Button isLink label="KDE ZAČÍT" bgColor="y" href="#validace" inverse />
                 </div>
             </section>
-            <section id='validace' className={`md:ml-24 md:mr-24 ml-32 mr-32 mt-5 flex flex-col`}>
+            <section id='validation' className={`md:ml-24 md:mr-24 ml-32 mr-32 mt-5 flex flex-col`}>
                 <h3>Jak probíhá validace nápadu</h3>
                 <div className={'md:grid-cols-2 md:gap-8 grid lg:grid-cols-4 lg:gap-6 mt-10 pb-20'}>
                     <article className={`${styles.article} ${styles.consultation}`}>
@@ -62,7 +62,7 @@ export default function TransferPage() {
                     </article>
                 </div>
             </section>
-            <section className={`${styles.support} flex flex-col justify-center py-16`}>
+            <section id='support' className={`${styles.support} flex flex-col justify-center py-16`}>
                 <h3 className={`relative z-50 ml-28`}>Jak vás v této fázi podpoříme</h3>
 
                 <div className={`relative z-50 mt-15 flex flex-col gap-5`}>
@@ -99,7 +99,7 @@ export default function TransferPage() {
                     </article>
                 </div>
             </section>
-            <section className="flex flex-col justify-center items-center py-20">
+            <section id='contact' className="flex flex-col justify-center items-center py-20">
                 <article className={`${styles.realisationArticle} flex flex-col gap-5 items-center`}>
                     <h3 className={`text-center min-w-full`}>
                         Chcete probrat realizaci
