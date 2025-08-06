@@ -2,6 +2,11 @@
 @import "./variables.css";
 @import "./fonts.css";
 
+/* Add smooth scrolling globally */
+html {
+  scroll-behavior: smooth;
+}
+
 h1,
 h2,
 h3,
