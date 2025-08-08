@@ -27,7 +27,7 @@ export default function Home() {
 
       </section>
 
-      <section id="process" className=" hidden md:flex mb-32 mx-8 md:mx-16 lg:mx-32 flex-col gap-20 items-center">
+      <section id="process" className=" hidden md:flex mb-32 mx-8 md:mx-16 lg:mx-32 2xl:mx-64 flex-col gap-20 items-center">
         <h2>Jak začít s péčí o nápad</h2>
         <div className="w-full flex flex-col gap-20">
           <div className="w-full h-0 flex flex-row">
@@ -76,7 +76,7 @@ export default function Home() {
             </defs>
           </svg>
 
-          <div className="flex flex-row gap-12 lg:gap-32">
+          <div className="flex flex-row gap-12 justify-between">
             <div className="w-1/3 flex flex-col gap-4">
               <h6 className="text-cvut-green">#INQBAY</h6>
               <h3 className="text-cvut-black">Připravujte</h3>
