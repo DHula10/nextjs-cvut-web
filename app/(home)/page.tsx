@@ -27,10 +27,72 @@ export default function Home() {
 
       </section>
 
-      <section id="process" className=" hidden md:flex mb-32 mx-8 md:mx-16 lg:mx-32 2xl:mx-64 flex-col gap-20 items-center">
+      <section id="process" className="flex mb-0 md:mb-32 mx-4 sm:mx-8 md:mx-16 lg:mx-32 2xl:mx-64 flex-col gap-20 items-center">
         <h2>Jak začít s péčí o nápad</h2>
-        <div className="w-full flex flex-col gap-20">
-          <div className="w-full h-0 flex flex-row">
+
+        {/* Mobile */}
+        <div className="w-full flex flex-row md:hidden not-sm:gap-2 gap-10">
+          <div className="relative">
+            <svg
+              className="h-[1000px] w-[48px]"
+              viewBox="0 0 24 1112"
+              preserveAspectRatio="none"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.0012 1111.5L0.454215 1091.5H23.5482L12.0012 1111.5ZM12.0012 0.5H14.0012V1093.5H12.0012H10.0012V0.5H12.0012Z"
+                fill="url(#paint0_linear_vertical)"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_vertical"
+                  x1="0.5"
+                  y1="0"
+                  x2="0.5"
+                  y2="1"
+                  gradientUnits="objectBoundingBox"
+                >
+                  <stop stopColor="#A0B102" />
+                  <stop offset="0.5" stopColor="#F9B002" />
+                  <stop offset="1" stopColor="#D70929" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            {/* Position spans along the SVG line */}
+            <span className="absolute top-[0%] left-1/2 -translate-x-1/2 rounded-full z-50 bg-cvut-green w-10 h-10"></span>
+            <span className="absolute top-[33%] left-1/2 -translate-x-1/2 rounded-full z-50 bg-cvut-yellow w-10 h-10"></span>
+            <span className="absolute top-[66%] left-1/2 -translate-x-1/2 rounded-full z-50 bg-cvut-red w-10 h-10"></span>
+          </div>
+
+          {/* Tablet + Desktop */}
+          <div className="flex flex-col">
+            <div className="flex flex-col gap-4 h-[320px] justify-center">
+              <h6 className="text-cvut-green">#INQBAY</h6>
+              <h3 className="text-cvut-black">Připravujte</h3>
+              <p className="text-cvut-black body-m">Získejte přístup do free online knihovny, která vám poskytne všechny potřebné podklady, díky kterým budete vědět, jak nápad připravit na další kroky. Navíc máte kdykoliv k dispozici odborníky, kteří vám rádi poradí a poskytnou zpětnou vazbu na vaše projekty.</p>
+              <Button isLink label="více info" bgColor="g" inverse href="/inqbay" />
+            </div>
+            <div className="flex flex-col gap-4 h-[320px] justify-center">
+              <h6 className="text-cvut-yellow">#TRANSFER </h6>
+              <h3 className="text-cvut-black">Validujte</h3>
+              <p className="text-cvut-black body-m">Nechte si poradit, jak transformovat nápad do funkční formy a pomoct s právními náležitostmi, jako je ochrana duševního vlastnictví, registrace ochranné známky nebo smluvní zajištění s partnery.</p>
+              <Button isLink label="více info" bgColor="y" inverse href="/transfer" />
+            </div>
+            <div className="flex flex-col gap-4 h-[320px] justify-center">
+              <h6 className="text-cvut-red">#INGINE</h6>
+              <h3 className="text-cvut-black">Vydělávejte</h3>
+              <p className="text-cvut-black body-m">Získejte vstupní investici 25 000 EUR, mentory a poradce, kteří vám ukážou, jak projekt otestovat a získat první zákazníky. Taky vás připraví na další kola financování s napojením na investory.</p>
+              <Button isLink label="více info" bgColor="r" inverse href="/ingine" />
+            </div>
+          </div>
+
+        </div>
+
+
+        <div className="w-full flex flex-col not-md:hidden gap-20">
+          <div className="w-full h-0 flex flex-row not:md:flex-col">
             <div className="w-1/4 h-full">
               <h6 className="absolute text-cvut-black">Mám nápad!</h6>
               <span className="absolute translate-y-[152px] rounded-full z-50 bg-cvut-green w-10 h-10"></span>
@@ -50,7 +112,7 @@ export default function Home() {
           </div>
 
           <svg
-            className="w-full h-[24px] mt-20"
+            className="w-full not-md:hidden h-[24px] mt-20"
             viewBox="0 0 1112 24"
             preserveAspectRatio="none"
             fill="none"
@@ -76,6 +138,9 @@ export default function Home() {
             </defs>
           </svg>
 
+
+
+
           <div className="flex flex-row gap-12 justify-between">
             <div className="w-1/3 flex flex-col gap-4">
               <h6 className="text-cvut-green">#INQBAY</h6>
@@ -92,7 +157,6 @@ export default function Home() {
               <h3 className="text-cvut-black">Vydělávejte</h3>
               <p className="text-cvut-black body-m">Získejte vstupní investici 25 000 EUR, mentory a poradce, kteří vám ukážou, jak projekt otestovat a získat první zákazníky. Taky vás připraví na další kola financování s napojením na investory.</p>
             </div>
-
           </div>
 
           <div className="flex flex-row gap-12 lg:gap-32">
@@ -124,7 +188,7 @@ export default function Home() {
             <p className="body-m">Chceme, aby dobré nápady nekončily na papíře. Máte něco, co by mohlo změnit svět, nebo potřebujete pomoci s vaší vizí? Stavte se, rádi si popovídáme.</p>
           </div>
 
-            <img className="hidden lg:block md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] rounded-[40px] object-cover" src="images/mise.jpg" alt="alt text" />
+          <img className="hidden lg:block md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] rounded-[40px] object-cover" src="images/mise.jpg" alt="alt text" />
         </div>
       </section>
 
