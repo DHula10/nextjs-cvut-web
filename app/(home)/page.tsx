@@ -27,9 +27,9 @@ export default function Home() {
 
       <ProcessSection />
 
-      <section id="mission" className="flex flex-col items-center not-xl:mx-4 py-16">
+      <section id="mission" className="flex flex-col items-center not-xl:mx-4 my-8 md:my-16">
         <div className="w-[100%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%] bg-cvut-blue-lighter p-2 md:p-8 lg:p-12 rounded-[40px] flex flex-col md:flex-row md:gap-10 lg:justify-between items-center">
-          <div className="flex flex-col gap-10 p-4 w-full lg:w-[50%]">
+          <div className="flex flex-col gap-4 md:gap-10 p-4 w-full lg:w-[50%]">
             <img className="w-full object-cover lg:hidden rounded-[40px]" src="images/mise.jpg" alt="alt text" />
             <h2>Mise</h2>
             <p className="body-m">Naší misí je přinášet nápadům život. Transfer technologií na ČVUT je tu pro to, aby spojoval akademický svět s byznysem, inspiroval spolupráci a otevíral dveře inovacím.</p>
