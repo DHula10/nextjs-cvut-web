@@ -49,9 +49,9 @@ export default async function LectureDetailPage({ params }: Props) {
     };
 
     return(
-        <main className="mt-28 pl-7 pr-7 mb-30">
+        <main className="mt-40 mb-20 mx-auto max-w-7xl px-4">
             <h3 className='mb-3'>{lecture.title}</h3>
-            <div className="aspect-video overflow-hidden mt-5 mb-5 flex w-[60%]">
+            <div className="aspect-video overflow-hidden mt-5 mb-5 flex w-[100%]">
                 <iframe src={getEmbededUrl(lecture.link)}
                         title={lecture.title}
                         allowFullScreen

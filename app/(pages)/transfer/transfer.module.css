@@ -68,7 +68,8 @@
 }
 
 .supportArticle{
-    background: #FEEFCC;
+    background: rgba(249, 176, 2, 0.25);
+    backdrop-filter: blur(12px);
     padding: 20px 40px 20px 112px;
     display: flex;
     align-items: center;
