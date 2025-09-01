@@ -70,25 +70,9 @@
 .supportArticle{
     background: rgba(249, 176, 2, 0.25);
     backdrop-filter: blur(12px);
-    padding: 20px 40px 20px 112px;
     display: flex;
     align-items: center;
     height: 100px;
     gap: 12px;
     border-radius: 0 50px 50px 0;
-}
-
-
-
-.realisationArticle{
-    width: 55%;
-    text-align: center;
-}
-
-@media (max-width:1024px){
-
-    .realisationArticle{
-        width: fit-content;
-        max-width: 80%;
-    }
 }
