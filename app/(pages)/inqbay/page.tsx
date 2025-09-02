@@ -15,7 +15,8 @@ export default function InqbayPage() {
 
   return (
     <main>
-      <section id='hero' className={`${styles.hero} flex flex-col h-svh justify-center pl-20 lg:pl-32 md:pt-10`}>
+      <section id='hero' className={`${styles.hero} flex flex-col h-svh justify-center md:pt-10
+                                                    pl-8 sm:pl-14 md:pl-20 lg:pl-32`}>
         <div className='relative flex flex-col gap-8 z-50'>
           <h6 className='text-cvut-green uppercase'>#transfer</h6>
           <h2 className='text-4xl font-bold md:max-w-3/4 uppercase lg:max-w-5/6 xl:max-w-3/4'>Opřete se o důvěryhodné zdroje ještě před realizací</h2>

@@ -15,14 +15,16 @@ type ArticleProps = {
 export default function ArticleTile({ title, slug, content, img, categoryId }: ArticleProps) {
     return (
         <Link href={`/inqbay/article/${slug}`} className={`${styles.article} bg-white shadow-md overflow-hidden flex flex-col
-                                                min-w-[90%] max-w-[90%] 
+                                                min-w-[60%] max-w-[60%] 
                                                 md:min-w-[50%] md:max-w-[50%] 
                                                 lg:min-w-[40%] lg:max-w-[40%]
                                                 xl:min-w-[30%] xl:max-w-[30%]
                                                 2xl:min-w-[20%] 2xl:max-w-[20%] min-h-fit`}>
             <article className='flex flex-col h-[100%]'>
-                <img src={`http://localhost:8055/assets/${img}`} alt={title} className='object-cover w-full h-[50%] 2xl:h-[60%]' />
-                <div className='p-4 flex flex-col gap-2 h-[50%] 2xl:h-[40%]'>
+                <img src={`http://localhost:8055/assets/${img}`} alt={title} className='object-cover w-full 
+                                                                                        h-[50%] md:h-[55%] lg:h-[55%] xl:h-[55%] 2xl:h-[50%]' />
+                <div className='p-4 flex flex-col gap-2 
+                                h-[50%] md:h-[45%] lg:h-[45%] xl:h-[45%] 2xl:h-[50%]'>
                     <span className={`${styles.category} bg-black text-white text-xs font-semibold px-3 py-1 w-fit`}>
                         {categoryId?.name || 'Nezařazeno'}
                     </span>
