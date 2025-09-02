@@ -46,7 +46,7 @@ export default async function PodcastDetailPage({ params }: Props) {
 
 
     return (
-        <main className="mt-40 mb-20 mx-auto max-w-7xl px-4">
+        <main className="mt-30 mb-20 mx-auto max-w-7xl px-4">
             <h3 className='mb-3'>{podcast.title}</h3>
             <span className={` bg-black text-white text-[15px] font-semibold px-3 py-1 w-fit rounded-[25px]`}>
                {podcast.author}
