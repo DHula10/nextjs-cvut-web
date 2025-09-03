@@ -42,7 +42,8 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section id="process" className="flex mb-0 md:mb-32 mx-4 sm:mx-8 md:mx-16 lg:mx-32 2xl:mx-64 flex-col gap-5 md:gap-20 items-center">
+    <section id="process" className="flex mb-0 md:mb-32 flex-col gap-5 md:gap-20 items-center
+                                     px-8 sm:px-14 md:px-20 lg:px-32">
       <h2>Jak začít s péčí o nápad</h2>
 
       {/* Mobile Layout */}

@@ -11,7 +11,8 @@ import Button from "@/app/components/button";
 export default function Home() {
   return (
     <main className="w-full">
-      <section id="vitejte" className={`${styles.hero} flex flex-col gap-20 pl-4 md:pl-20 h-[100svh] justify-center md:gap-10 lg:pl-32 md:pt-10`}>
+      <section id="vitejte" className={`${styles.hero} flex flex-col gap-20 h-[100svh] justify-center md:gap-10 md:pt-10
+                                                       px-8 sm:px-14 md:px-20 lg:px-32`}>
         <div className="flex flex-col gap-8 md:gap-2">
           <p className="body-l text-cvut-blue-light">Vítejte v centru</p>
           <h1 className="text-cvut-white">Transferu technologií</h1>
@@ -20,14 +21,16 @@ export default function Home() {
         <Button isLink label="chci konzultaci" bgColor="y" href="#contact" />
       </section>
 
-      <section id="Reference" className="flex flex-col gap-8 items-center py-8 xl:py-24">
+      <section id="Reference" className="flex flex-col gap-8 items-center py-8 xl:py-24
+                                         px-4 sm:px-10 md:px-16 lg:px-28">
         <h2>Úspěšné realizace</h2>
         <Carousel />
       </section>
 
       <ProcessSection />
 
-      <section id="mission" className="flex flex-col items-center not-xl:mx-4 my-8 md:my-16">
+      <section id="mission" className="flex flex-col items-center my-8 md:my-16
+                                       px-8 sm:px-14 md:px-20 lg:px-32">
         <div className="w-[100%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%] bg-cvut-blue-lighter p-2 md:p-8 lg:p-12 rounded-[40px] flex flex-col md:flex-row md:gap-10 lg:justify-between items-center">
           <div className="flex flex-col gap-4 md:gap-10 p-4 w-full lg:w-[50%]">
             <img className="w-full object-cover lg:hidden rounded-[40px]" src="images/mise.jpg" alt="alt text" />
@@ -40,7 +43,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="flex flex-col gap-10 mx-2 md:mx-16 xl:mx-32 pt-8 mb-16 md:mb-32 items-center justify-center">
+      <section id="contact" className="flex flex-col gap-10 px-8 sm:px-14 md:px-20 lg:px-32 pt-8 mb-16 md:mb-32 items-center justify-center">
         <h2 className="w-fit">Ozvěte se nám</h2>
         <p className="text-center body-l">Nechte nám zprávu a info kam a kdy se máme ozvat. Nebo rovnou zavolejte Ondrovi.</p>
         <ContactForm />

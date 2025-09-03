@@ -223,7 +223,9 @@ const InqbayClient = () => {
         <ArticleList articles={filteredArticles} />
         {isFetchingArticles && (
           <div className='w-full flex justify-center mt-4'>
-            <div className='animate-spin rounded-full h-8 w-8 border-4 border-cvut-green border-t-transparent'></div>
+            <div className='animate-spin rounded-full h-8 w-8 border-4 
+                          border-cvut-green border-t-transparent'>
+            </div>
           </div>
         )}
       </TileSectionWrapper>
@@ -241,7 +243,8 @@ const InqbayClient = () => {
         <PodcastList podcasts={podcasts} />
         {isFetchingPodcasts && (
           <div className='w-full flex justify-center mt-4'>
-            <div className='animate-spin rounded-full h-8 w-8 border-4 border-cvut-green border-t-transparent'></div>
+            <div className='animate-spin rounded-full h-8 w-8 border-4 
+                          border-cvut-green border-t-transparent'></div>
           </div>
         )}
       </TileSectionWrapper>
@@ -259,7 +262,8 @@ const InqbayClient = () => {
           <LectureList lectures={lectures}/>
           {isFetchingLectures && (
             <div className='w-full flex justify-center mt-4'>
-              <div className='animate-spin rounded-full h-8 w-8 border-4 border-cvut-green border-t-transparent'></div>
+              <div className='animate-spin rounded-full h-8 w-8 border-4 
+                            border-cvut-green border-t-transparent'></div>
             </div>
           )}
       </TileSectionWrapper>
