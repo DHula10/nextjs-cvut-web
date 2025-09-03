@@ -23,17 +23,19 @@ const InqbayClient = () => {
   const [articleOffset, setArticleOffset] = useState(10);
   const [articleTotal, setArticleTotal] = useState(0);
   const [isFetchingArticles, setIsFetchingArticles] = useState(false);
+  const [articleError, setArticleError] = useState<string | null>(null);
 
   const [podcasts, setPodcasts] = useState<Podcasts[]>([]);
   const [podcastOffset, setPodcastOffset] = useState(10);
   const [podcastTotal, setPodcastTotal] = useState(0);
   const [isFetchingPodcasts, setIsFetchingPodcasts] = useState(false);
-
+  const [podcastError, setPodcastError] = useState<string | null>(null);
 
   const [lectures, setLectures] = useState<Lectures[]>([]);
   const [lectureOffset, setLectureOffset] = useState(10);
   const [lectureTotal, setLectureTotal] = useState(0);
   const [isFetchingLectures, setIsFetchingLectures] = useState(false);
+  const [lectureError, setLectureError] = useState<string | null>(null);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -61,6 +63,7 @@ const InqbayClient = () => {
         // Handle articles
         if (articlesResponse.error) {
           console.error('Error fetching articles:', articlesResponse.error);
+          setArticleError('Nepodařilo se načíst články.');
         } else {
           setArticles(articlesResponse.data as Articles[]);
           setArticleTotal(articlesResponse.total);
@@ -70,6 +73,7 @@ const InqbayClient = () => {
         // Handle podcasts
         if (podcastsResponse.error) {
           console.error('Error fetching podcasts:', podcastsResponse.error);
+          setPodcastError('Nepodařilo se načíst podcasty.');
         } else {
           setPodcasts(podcastsResponse.data as Podcasts[]);
           setPodcastTotal(podcastsResponse.total);
@@ -79,6 +83,7 @@ const InqbayClient = () => {
         // Handle lectures
         if (lecturesResponse.error) {
           console.error('Error fetching lectures:', lecturesResponse.error);
+          setLectureError('Nepodařilo se načíst přednášky.');
         } else {
           setLectures(lecturesResponse.data as Lectures[]);
           setLectureTotal(lecturesResponse.total);
@@ -87,7 +92,7 @@ const InqbayClient = () => {
 
       } catch (err) {
         console.error('Error fetching data:', err);
-        setError('Failed to load data');
+        setError('Nepodařilo se načíst data z CMS.');
       } finally {
         setLoading(false);
       }
@@ -110,6 +115,7 @@ const InqbayClient = () => {
       setArticleOffset(prev => prev + 10);
     } else {
       console.log("Chyba při načítání dalších článků:", response.error);
+      setArticleError('Chyba při načítání dalších článků.')
     }
     setIsFetchingArticles(false);
   };
@@ -129,6 +135,7 @@ const InqbayClient = () => {
       setPodcastOffset(prev => prev + 10);
     } else {
       console.log('Chyba při načítání dalších podcastů:', response.error);
+      setPodcastError('Chyba při načítání dalších podcastů.');
     }
     setIsFetchingPodcasts(false);
   };
@@ -147,6 +154,7 @@ const InqbayClient = () => {
       setLectureOffset(prev => prev + 10);
     } else {
       console.log('Chyba při načítání dalších přednášek:', response.error);
+      setLectureError('Chyba při načítání dalších přednášek.');
     }
     setIsFetchingLectures(false);
   };
@@ -161,7 +169,7 @@ const InqbayClient = () => {
   if (loading) {
     return (
       <main className="flex justify-center items-center h-screen">
-        <div>Načítám...</div>
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-cvut-green border-t-transparent"></div>
       </main>
     );
   }
@@ -169,7 +177,7 @@ const InqbayClient = () => {
   if (error) {
     return (
       <main className="flex justify-center items-center h-screen">
-        <div>Error: {error}</div>
+        <div className="text-red-500 text-lg">{error}</div>
       </main>
     );
   }
@@ -202,34 +210,61 @@ const InqbayClient = () => {
           ))}
         </div>
       </section>
-
-      <TileSectionWrapper
+      
+      {/* ČLÁNKY */}
+      {articleError ? (
+        <p className="text-red-500 text-center mt-10">{articleError}</p>
+      ) : (
+        <TileSectionWrapper
         title='Články'
         hasMore={filteredArticles.length < filteredTotal}
         onLoadMore={handleLoadMoreArticles}
       >
         <ArticleList articles={filteredArticles} />
+        {isFetchingArticles && (
+          <div className='w-full flex justify-center mt-4'>
+            <div className='animate-spin rounded-full h-8 w-8 border-4 border-cvut-green border-t-transparent'></div>
+          </div>
+        )}
       </TileSectionWrapper>
-
-      <TileSectionWrapper
+      )}
+      
+      {/* PODCASTY */}
+      {podcastError ? (
+        <p className='text-red-500 text-center mt-10'>{podcastError}</p>
+      ) : (
+        <TileSectionWrapper
         title='Podcasty'
         hasMore={podcasts.length < podcastTotal}
         onLoadMore={handleLoadMorePodcasts}
       >
         <PodcastList podcasts={podcasts} />
+        {isFetchingPodcasts && (
+          <div className='w-full flex justify-center mt-4'>
+            <div className='animate-spin rounded-full h-8 w-8 border-4 border-cvut-green border-t-transparent'></div>
+          </div>
+        )}
       </TileSectionWrapper>
-
-      <TileSectionWrapper
+      )}
+      
+      {/* PŘEDNÁŠKY */}
+      {lectureError ? (
+        <p className='text-red-500 text-center mt-10'>{lectureError}</p>
+      ) : (
+        <TileSectionWrapper
         title='Přednášky'
         hasMore={lectures.length < lectureTotal}
         onLoadMore={handleLoadMoreLectures}
       >
           <LectureList lectures={lectures}/>
+          {isFetchingLectures && (
+            <div className='w-full flex justify-center mt-4'>
+              <div className='animate-spin rounded-full h-8 w-8 border-4 border-cvut-green border-t-transparent'></div>
+            </div>
+          )}
       </TileSectionWrapper>
-    
-    
+      )}
     </>
-
   );
 }
 
