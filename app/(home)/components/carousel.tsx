@@ -51,7 +51,7 @@ export function Carousel() {
 
     return (
         <>
-            <div className="embla w-[100%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%]" ref={emblaRef}>
+            <div className="embla w-[100%] xl:w-[80%] 2xl:w-[60%]" ref={emblaRef}>
                 <div className="embla__container">
                     {references.map((ref) => (
                         <CarouselItem 
