@@ -21,16 +21,14 @@ export default function Home() {
         <Button isLink label="chci konzultaci" bgColor="y" href="#contact" />
       </section>
 
-      <section id="Reference" className="flex flex-col gap-8 items-center py-8 xl:py-24
-                                         px-4 sm:px-10 md:px-16 lg:px-28">
+      <section id="Reference" className="flex flex-col gap-8 items-center py-8 xl:py-24">
         <h2>Úspěšné realizace</h2>
         <Carousel />
       </section>
 
       <ProcessSection />
 
-      <section id="mission" className="flex flex-col items-center my-8 md:my-16
-                                       px-8 sm:px-14 md:px-20 lg:px-32">
+      <section id="mission" className="flex flex-col items-center not-xl:mx-4 my-8 md:my-16">
         <div className="w-[100%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%] bg-cvut-blue-lighter p-2 md:p-8 lg:p-12 rounded-[40px] flex flex-col md:flex-row md:gap-10 lg:justify-between items-center">
           <div className="flex flex-col gap-4 md:gap-10 p-4 w-full lg:w-[50%]">
             <img className="w-full object-cover lg:hidden rounded-[40px]" src="images/mise.jpg" alt="alt text" />
