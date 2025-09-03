@@ -69,7 +69,7 @@ export default function TransferPage() {
 
                 <div className={`relative z-50 mt-15 flex flex-col gap-5`}>
                     <article className={`${styles.supportArticle} py-5 pl-8 sm:pl-16 md:pl-20 lg:pl-32
-                                                                  lg:w-7/12 w-8/12`}>
+                                                                  w-full md:w-8/12 lg:w-7/12`}>
                         <img src="/icons/ChartPieSlice.svg" alt="Ikonka koláčového grafu" className={`h-14`} />
                         <p className={`body-l max-w-[80%] pr-5`}>
                             Posoudíme potenciál vašeho projektu
@@ -77,28 +77,28 @@ export default function TransferPage() {
                         </p>
                     </article>
                     <article className={`${styles.supportArticle} pl-8 sm:pl-16 md:pl-20 lg:pl-32 
-                                                                  lg:w-8/12 w-9/12`}>
+                                                                  w-full md:w-9/12 lg:w-8/12`}>
                         <img src="/icons/MagnifyingGlass.svg" alt="Ikonka lupy" className={`h-14`} />
                         <p className={`body-l max-w-[80%] pr-5`}>
                             Identifikujeme partnery, zákazníky a možnosti rozvoje.
                         </p>
                     </article>
                     <article className={`${styles.supportArticle} pl-8 sm:pl-16 md:pl-20 lg:pl-32 
-                                                                  lg:w-9/12 w-10/12`}>
+                                                                  w-full md:w-10/12 lg:w-9/12`}>
                         <img src="/icons/Copyright.svg" alt="Ikonka Copyrightu" className={`h-14`} />
                         <p className={`body-l max-w-[80%] pr-5`}>
                             Pomůžeme s propagací, ochranou patentů a inkubací projektu.
                         </p>
                     </article>
                     <article className={`${styles.supportArticle} pl-8 sm:pl-16 md:pl-20 lg:pl-32 
-                                                                  lg:w-10/12 w-11/12`}>
+                                                                  w-full md:w-11/12 lg:w-10/12`}>
                         <img src="/icons/ShieldCheck.svg" alt="Ikonka fajvky v štítu" className={`h-14`} />
                         <p className={`body-l max-w-[80%] pr-5`}>
                             Poradíme s právními náležitostmi a efektivním vyjednáváním.
                         </p>
                     </article>
                     <article className={`${styles.supportArticle} pl-8 sm:pl-16 md:pl-20 lg:pl-32 
-                                                                  lg:w-11/12 w-12/12`}>
+                                                                  w-full lg:w-11/12`}>
                         <img src="/icons/ChartLineUp.svg" alt="Ikonka vzrůstajícího grafu" className={`w-12 ml-2`} />
                         <p className={`body-l max-w-[80%] pr-5`}>
                             Připravíme vás na vstup na trh a podpoříme prodeje.

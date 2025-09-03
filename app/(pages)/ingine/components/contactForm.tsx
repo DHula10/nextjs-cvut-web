@@ -69,7 +69,7 @@ export default function ContactForm() {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4" noValidate>
-            <div className="flex flex-row gap-4 sm:flex-col md:flex-col lg:flex-row">
+            <div className="flex flex-col gap-4 sm:flex-col md:flex-col lg:flex-row">
 
                 <div className="flex flex-col gap-4 flex-1">
                     <TextInput
@@ -110,16 +110,6 @@ export default function ContactForm() {
                         register={register}
                         error={errors.investmentAmountRequested}
                     />
-
-                    <FileInput
-                        name="file"
-                        label="Příloha"
-                        register={register}
-                        error={errors.file}
-                        required={false}
-                        setValue={setValue}
-                    />
-
                 </div>
 
                 <div className="flex flex-col gap-4 flex-1">
@@ -143,6 +133,15 @@ export default function ContactForm() {
                     />
                 </div>
             </div>
+
+            <FileInput
+                        name="file"
+                        label="Příloha"
+                        register={register}
+                        error={errors.file}
+                        required={false}
+                        setValue={setValue}
+                    />
 
             <Button
                 isLink={false}

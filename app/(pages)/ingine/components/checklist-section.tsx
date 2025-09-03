@@ -47,7 +47,8 @@ const ChecklistSection = () => {
     }, [allChecked]);
 
     return (
-        <section id="checklist" className='flex flex-col justify-center mx-16 my-16 gap-10 lg:mx-64'>
+        <section id="checklist" className='flex flex-col justify-center my-16 gap-10
+                                           px-8 sm:px-14 md:px-20 lg:px-32'>
 
             <div className='flex flex-col gap-4'>
                 <h3 className='text-cvut-black'>Checklist klíčových požadavků</h3>
