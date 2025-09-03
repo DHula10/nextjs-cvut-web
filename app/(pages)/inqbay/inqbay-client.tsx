@@ -177,7 +177,7 @@ const InqbayClient = () => {
   if (error) {
     return (
       <main className="flex justify-center items-center h-screen">
-        <div className="text-red-500 text-lg">{error}</div>
+        <div className="text-cvut-red text-lg">{error}</div>
       </main>
     );
   }
@@ -213,7 +213,7 @@ const InqbayClient = () => {
       
       {/* ČLÁNKY */}
       {articleError ? (
-        <p className="text-red-500 text-center mt-10">{articleError}</p>
+        <p className="text-cvut-red text-center mt-10">{articleError}</p>
       ) : (
         <TileSectionWrapper
         title='Články'
@@ -231,7 +231,7 @@ const InqbayClient = () => {
       
       {/* PODCASTY */}
       {podcastError ? (
-        <p className='text-red-500 text-center mt-10'>{podcastError}</p>
+        <p className='text-cvut-red text-center mt-10'>{podcastError}</p>
       ) : (
         <TileSectionWrapper
         title='Podcasty'
@@ -249,7 +249,7 @@ const InqbayClient = () => {
       
       {/* PŘEDNÁŠKY */}
       {lectureError ? (
-        <p className='text-red-500 text-center mt-10'>{lectureError}</p>
+        <p className='text-cvut-red text-center mt-10'>{lectureError}</p>
       ) : (
         <TileSectionWrapper
         title='Přednášky'
