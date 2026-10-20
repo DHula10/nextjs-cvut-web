@@ -1,0 +1,25 @@
+# Robots.txt for Transfer Technologií ČVUT
+
+User-agent: *
+Allow: /
+
+# Sitemap location (you can generate this later)
+Sitemap: https://www.transfer.cvut.cz
+
+# Common crawl delays
+Crawl-delay: 1
+
+# Block access to sensitive areas (if any)
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
+
+# Allow important pages
+Allow: /
+Allow: /ingine
+Allow: /transfer
+Allow: /inqbay
+Allow: /inqbay/article/
+Allow: /inqbay/lecture/
+Allow: /inqbay/podcast/

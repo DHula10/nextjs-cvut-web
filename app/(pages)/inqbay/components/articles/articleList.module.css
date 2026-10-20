@@ -1,0 +1,5 @@
+.articleList{
+    max-width: fit-content;
+    padding: 5%;
+    overflow-x: scroll;
+}

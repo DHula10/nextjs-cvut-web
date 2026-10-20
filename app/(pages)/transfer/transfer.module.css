@@ -1,0 +1,78 @@
+.hero {
+    background-image: url('/images/transfer-hero.png');
+    background-size: cover;
+    background-position: calc(50% + 150px) center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden; 
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(to right, white 0%, white 20%, transparent 100%),
+                linear-gradient(to top, white 0%, transparent 50%);
+    backdrop-filter: blur(2px); 
+    pointer-events: none;
+}
+
+.article{
+    margin-top: 12px;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-position: right  bottom;
+}
+
+.consultation{
+    background-image: url('/images/1.svg');
+}
+
+.analysis{
+    background-image: url('/images/2.svg');
+}
+
+.plan{
+    background-image: url('/images/3.svg');
+}
+
+.presentation{
+    background-image: url('/images/4.svg');
+}
+
+.articleText{
+    margin-top: 12px;
+    width: 82%;
+}
+
+.support{
+    background-image: url('/images/transfer-support.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: calc(50% + 150px) center;
+    position: relative;
+    overflow: hidden;
+}
+
+.support::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(to right, white 5%, transparent 100%),
+                linear-gradient(to bottom, white 0%, transparent 50%),
+                linear-gradient(to top, white 0%, transparent 50%);
+    backdrop-filter: blur(2px); 
+    pointer-events: none;
+}
+
+.supportArticle{
+    background: rgba(249, 176, 2, 0.25);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    height: 100px;
+    gap: 12px;
+    border-radius: 0 50px 50px 0;
+}

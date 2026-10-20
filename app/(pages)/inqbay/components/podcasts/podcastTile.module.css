@@ -1,0 +1,6 @@
+.podcastTile {
+    padding: 40px 60px;
+    align-items: flex-start;
+    border-radius: 20px;
+    justify-content: space-between;
+}
